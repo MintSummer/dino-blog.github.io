@@ -1845,7 +1845,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #78baff;
+  background: #296959;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2994,10 +2994,6 @@ pre,
   color: #4d4d4c;
   background: #f7f7f7;
   line-height: 1.6;
-}
-pre,
-code {
-  font-family: consolas;
 }
 .post-body p a {
   color: #0593d3;
