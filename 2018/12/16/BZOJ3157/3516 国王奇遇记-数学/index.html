@@ -321,206 +321,6 @@
   <div id="posts" class="posts-expand">
     
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/16/BZOJ3157\3516 国王奇遇记-数学/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="TYC">
-      <meta itemprop="description" content="少女省OIer">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Little Dino">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">BZOJ3157/3516 国王奇遇记 [数学]
-
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-16 15:52:59 / 修改时间：18:27:16" itemprop="dateCreated datePublished" datetime="2018-12-16T15:52:59+08:00">2018-12-16</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index">{
-                  #}<span itemprop="name">题解</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><script type="math/tex; mode=display">
-\sum_{i=0}^n i ^ m \times m ^ i</script><p>其中 $1 \leqslant n \leqslant 10^9$ ， $1 \leqslant m \leqslant N$  ，其中的 $N$ 是因为这个题有三个版本  </p>
-<script type="math/tex; mode=display">
-\begin{align*}
-&bzoj3157 - N \leqslant 200 \\ 
-&bzoj3516 - N \leqslant 1000 \\ 
-&b bzoj4126 - N \leqslant 500000 \\
-\end{align*}</script><p>但我只会 $O(m^2)$ 的，所以先不提第三题（挖坑待填）</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>发现  $n$ 很大，不能直接枚举 $i$ ，考虑从 $m$ 入手 递推</p>
-<p>记 $f_{n,a} = \sum_{i=0}^n i^a m^i$ （这里 $i$ 从 $0$ 开始方便后面转换，$i =0$ 对答案没有影响），题目要求 $f_{n,m}$  ，考虑转移</p>
-<script type="math/tex; mode=display">
-\begin{align*}
-f_{n,a} &= \sum_{i=0}^n i^a m^i \\
-&= m \sum_{i=0}^n i^a m^{i-1} \ \ \ //提出一个m \\
-&= m \sum_{i=0}^{n-1} (i+1)^a m^i \ \ \ //用 \ i  \ 表示 \ i+1  \\ 
-\end{align*}</script><p>当 $i = -1$ 时 $(i+1)^a =0$ 大力不理</p>
-<p>再根据二项式定理 $(a+b)^n = \sum_{i=0}^n C_n^i a^i b^{n-i}$  </p>
-<script type="math/tex; mode=display">
-\begin{align*}
-&= m \sum_{i=0}^{n-1} m^i \ \sum_{k=0}^a C_a^k i^k \\
-&= m \sum_{k=0}^a C_a^k \ \sum_{i=0}^{n-1} i^k m^i  //交换枚举顺序 \\
-&= m \sum_{k=0}^a C_a^k \ f_{n-1,k} \\  
-&= m \sum_{k=0}^a C_a^k \ (f_{n,k} - n^k m^n)  
-\end{align*}</script><p>得到了$O(m^2)$ 的转移方程，完结撒花</p>
-<p>好像 $O(m)$  的要多项式插值和快速傅里叶变换求解，<del>不会，不想填坑了</del> </p>
-<p>等等！完结不了，注意：</p>
-<p>1、上式的 $k$ 有取到 $a$ 的情况，解个关于 $f_{n,i}$ 方程就好了</p>
-<p>2、$f[0] = \sum_{i=0}^n m^i$ 等比数列，先一算，特判 $m=1$ 时不能用等比数列求和公式，直接 $ans = \sum_{i=1}^n i = \frac{n \times (n+1)}{2}$</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> ll p=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1010</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    ll f[N],Pow[N],C[N][N];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> ll <span class="title">qpow</span><span class="params">(ll x,ll tim)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ll ans=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(;tim;tim&gt;&gt;=<span class="number">1</span>,x=x*x%p)</span><br><span class="line">            <span class="keyword">if</span>(tim&amp;<span class="number">1</span>) ans=ans*x%p;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> Mod(x) (x)&gt;=p?(x)-p:(x)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        C[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            C[i][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">                C[i][j]=Mod(C[i<span class="number">-1</span>][j<span class="number">-1</span>]+C[i<span class="number">-1</span>][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        Pow[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) Pow[i]=Pow[i<span class="number">-1</span>]*n%p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">        <span class="keyword">if</span>(m==<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,(ll)(n+<span class="number">1</span>)*n/<span class="number">2</span>%p);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        init();</span><br><span class="line">        ll t1=qpow(m,n),t2=t1*m%p,inv=qpow(m<span class="number">-1</span>,p<span class="number">-2</span>);</span><br><span class="line">        f[<span class="number">0</span>]=(Mod(qpow(m,n+<span class="number">1</span>)<span class="number">-1</span>+p))*qpow(m<span class="number">-1</span>,p<span class="number">-2</span>)%p;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            ll sum=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++)</span><br><span class="line">                sum=Mod(sum+(C[i][j]*(f[j]-Pow[j]*t1%p+p)%p));</span><br><span class="line">            <span class="keyword">if</span>(m!=<span class="number">1</span>) f[i]=(Pow[i]*t2-m*sum+p)%p*inv%p;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,f[m]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/数学/" rel="tag"># 数学</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/12/16/错位排列/" rel="next" title="错位排列 [数学]">
-                <i class="fa fa-chevron-left"></i> 错位排列 [数学]
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
 
 
   </div>
@@ -690,6 +490,20 @@ f_{n,a} &= \sum_{i=0}^n i^a m^i \\
 
 
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
+
+
+<div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style="display:none">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style="display:none">
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
 
 
 
