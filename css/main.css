@@ -1103,7 +1103,7 @@ pre .javascript .function {
   transition-delay: 0s;
 }
 .header {
-  background: transparent;
+  background: url("../image/background.jpg");
 }
 .header-inner {
   position: relative;
@@ -1845,7 +1845,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f2d7df;
+  background: #78baff;
 }
 .links-of-blogroll {
   font-size: 13px;
