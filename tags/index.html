@@ -102,17 +102,17 @@
 
 
 
-  <meta name="description" content="数学基环树莫比乌斯反演">
+  <meta name="description" content="数学  基环树   莫比乌斯反演   Link Cut Tree">
 <meta property="og:type" content="website">
 <meta property="og:title" content="标签">
 <meta property="og:url" content="http://yoursite.com/tags/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="数学基环树莫比乌斯反演">
+<meta property="og:description" content="数学  基环树   莫比乌斯反演   Link Cut Tree">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-16T15:07:10.000Z">
+<meta property="og:updated_time" content="2019-01-05T16:04:49.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="标签">
-<meta name="twitter:description" content="数学基环树莫比乌斯反演">
+<meta name="twitter:description" content="数学  基环树   莫比乌斯反演   Link Cut Tree">
 
 
 
@@ -381,7 +381,7 @@
       <div class="post-body">
         
         
-          <h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a><a href="https://dino.ml/tags/%E6%95%B0%E5%AD%A6/" target="_blank" rel="noopener">数学</a></h2><h2 id="基环树"><a href="#基环树" class="headerlink" title="基环树"></a><a href="https://dino.ml/tags/%E5%9F%BA%E7%8E%AF%E6%A0%91/" target="_blank" rel="noopener">基环树</a></h2><h2 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a><a href="https://dino.ml/tags/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/" target="_blank" rel="noopener">莫比乌斯反演</a></h2>
+          <h2 id="数学-基环树-莫比乌斯反演-Link-Cut-Tree"><a href="#数学-基环树-莫比乌斯反演-Link-Cut-Tree" class="headerlink" title="数学  基环树   莫比乌斯反演   Link Cut Tree"></a><a href="https://dino.ml/tags/%E6%95%B0%E5%AD%A6/" target="_blank" rel="noopener">数学</a>  <a href="https://dino.ml/tags/%E5%9F%BA%E7%8E%AF%E6%A0%91/" target="_blank" rel="noopener">基环树</a>   <a href="https://dino.ml/tags/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/" target="_blank" rel="noopener">莫比乌斯反演</a>   <a href="">Link Cut Tree</a></h2>
         
       </div>
       
@@ -522,7 +522,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数学"><span class="nav-text">数学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基环树"><span class="nav-text">基环树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-text">莫比乌斯反演</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数学-基环树-莫比乌斯反演-Link-Cut-Tree"><span class="nav-text">数学  基环树   莫比乌斯反演   Link Cut Tree</span></a></li></ol></div>
             
 
           </div>
@@ -731,6 +731,75 @@
   
 
   
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
 
   
 

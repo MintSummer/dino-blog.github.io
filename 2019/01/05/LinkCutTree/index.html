@@ -103,14 +103,14 @@
 
 
   <meta name="description" content="写在前面最近一直在补之前欠了好久的锅，像后缀自动机啊什么的，总算轮到 LCT 了，感觉也挺对不起的，学了这么久的 OI 了现在才学会这个……   但毕竟这个学习笔记主要还是给自己复习这个算法（老是忘）的时候看的，也就不讲的那么清楚了反正写这篇博客的时候我还是会的 概述LCT实际是实链剖分，就是只有一个其中儿子的边的实边，其他的都是虚边，但是因为虚实可以动态变化，所以要用 splay 维护。 每一棵">
-<meta name="keywords" content="数据结构">
+<meta name="keywords" content="Link Cut Tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LinkCutTree动态树 学习笔记 [数据结构]">
 <meta property="og:url" content="http://yoursite.com/2019/01/05/LinkCutTree/index.html">
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="写在前面最近一直在补之前欠了好久的锅，像后缀自动机啊什么的，总算轮到 LCT 了，感觉也挺对不起的，学了这么久的 OI 了现在才学会这个……   但毕竟这个学习笔记主要还是给自己复习这个算法（老是忘）的时候看的，也就不讲的那么清楚了反正写这篇博客的时候我还是会的 概述LCT实际是实链剖分，就是只有一个其中儿子的边的实边，其他的都是虚边，但是因为虚实可以动态变化，所以要用 splay 维护。 每一棵">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-05T15:39:38.349Z">
+<meta property="og:updated_time" content="2019-01-05T16:04:39.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LinkCutTree动态树 学习笔记 [数据结构]">
 <meta name="twitter:description" content="写在前面最近一直在补之前欠了好久的锅，像后缀自动机啊什么的，总算轮到 LCT 了，感觉也挺对不起的，学了这么久的 OI 了现在才学会这个……   但毕竟这个学习笔记主要还是给自己复习这个算法（老是忘）的时候看的，也就不讲的那么清楚了反正写这篇博客的时候我还是会的 概述LCT实际是实链剖分，就是只有一个其中儿子的边的实边，其他的都是虚边，但是因为虚实可以动态变化，所以要用 splay 维护。 每一棵">
@@ -392,12 +392,24 @@
                 
               
 
-              <time title="创建时间：2019-01-05 22:28:32 / 修改时间：23:39:38" itemprop="dateCreated datePublished" datetime="2019-01-05T22:28:32+08:00">2019-01-05</time>
+              <time title="创建时间：2019-01-05 22:28:32" itemprop="dateCreated datePublished" datetime="2019-01-05T22:28:32+08:00">2019-01-05</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-06 00:04:39" itemprop="dateModified" datetime="2019-01-06T00:04:39+08:00">2019-01-06</time>
               
             
           </span>
@@ -507,7 +519,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+            <a href="/tags/Link-Cut-Tree/" rel="tag"># Link Cut Tree</a>
           
         </div>
       
@@ -910,6 +922,75 @@
   
 
   
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
 
   
 
