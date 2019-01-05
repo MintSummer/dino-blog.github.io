@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/dino_32*32.ico?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/dino_32*32.ico?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/dino_16*16.ico?v=6.6.0">
+
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="写在前面最近一直在补之前欠了好久的锅，像后缀自动机啊什么的，总算轮到 LCT 了，感觉也挺对不起的，学了这么久的 OI 了现在才学会这个……   但毕竟这个学习笔记主要还是给自己复习这个算法（老是忘）的时候看的，也就不讲的那么清楚了反正写这篇博客的时候我还是会的 概述LCT实际是实链剖分，就是只有一个其中儿子的边的实边，其他的都是虚边，但是因为虚实可以动态变化，所以要用 splay 维护。 每一棵">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LinkCutTree动态树 学习笔记 [数据结构]">
+<meta property="og:url" content="http://yoursite.com/2019/01/05/LinkCutTree/index.html">
+<meta property="og:site_name" content="Little Dino">
+<meta property="og:description" content="写在前面最近一直在补之前欠了好久的锅，像后缀自动机啊什么的，总算轮到 LCT 了，感觉也挺对不起的，学了这么久的 OI 了现在才学会这个……   但毕竟这个学习笔记主要还是给自己复习这个算法（老是忘）的时候看的，也就不讲的那么清楚了反正写这篇博客的时候我还是会的 概述LCT实际是实链剖分，就是只有一个其中儿子的边的实边，其他的都是虚边，但是因为虚实可以动态变化，所以要用 splay 维护。 每一棵">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-05T15:39:38.349Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LinkCutTree动态树 学习笔记 [数据结构]">
+<meta name="twitter:description" content="写在前面最近一直在补之前欠了好久的锅，像后缀自动机啊什么的，总算轮到 LCT 了，感觉也挺对不起的，学了这么久的 OI 了现在才学会这个……   但毕竟这个学习笔记主要还是给自己复习这个算法（老是忘）的时候看的，也就不讲的那么清楚了反正写这篇博客的时候我还是会的 概述LCT实际是实链剖分，就是只有一个其中儿子的边的实边，其他的都是虚边，但是因为虚实可以动态变化，所以要用 splay 维护。 每一棵">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/05/LinkCutTree/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>LinkCutTree动态树 学习笔记 [数据结构] | Little Dino</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Little Dino</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">喜欢你欢喜的样子</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/05/LinkCutTree/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TYC">
+      <meta itemprop="description" content="少女省OIer">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Little Dino">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LinkCutTree动态树 学习笔记 [数据结构]
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-05 22:28:32 / 修改时间：23:39:38" itemprop="dateCreated datePublished" datetime="2019-01-05T22:28:32+08:00">2019-01-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法讲解/" itemprop="url" rel="index"><span itemprop="name">算法讲解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>最近一直在补之前欠了好久的锅，像后缀自动机啊什么的，总算轮到 LCT 了，感觉也挺对不起的，学了这么久的 OI 了现在才学会这个……  </p>
+<p>但毕竟这个学习笔记主要还是给自己复习这个算法（老是忘）的时候看的，也就不讲的那么清楚了<del>反正写这篇博客的时候我还是会的</del></p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>LCT实际是实链剖分，就是只有一个其中儿子的边的实边，其他的都是虚边，但是因为虚实可以动态变化，所以要用 splay 维护。</p>
+<p>每一棵 splay 维护的是一条实链的信息，构成一个 splay 森林（原来的其实也是一个森林）。其中满足：<br>1、splay 按照<strong>深度</strong>为关键字对原树上节点排序，中序遍历 splay 树得到的是该实链的深度严格递增的排列。<br>2、每个节点在且仅在一棵 splay 中<br>3、父亲只认实儿子，儿子认父亲。（所以当一个点是它所在的实链的根的条件就是他的父亲没有他这个儿子）</p>
+<p>因为原树是没有根的，所以本身也没有深度这一说，但是 LCT 中要指定一个根才行（然后就有了换根的操作）</p>
+<p>可以资瓷：<br>1、查询、修改链上的信息  （子树不行！！！）<br>2、指定原树上一个点作为根（就是上面说的换根）<br>3、连边、删边、动态维护连通性<br>4、挖坑留给以后见到的神奇用法</p>
+<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><h3 id="isroot-x"><a href="#isroot-x" class="headerlink" title="$isroot(x)$"></a>$isroot(x)$</h3><p>判断 $x$ 是不是它所在实链的根 -&gt; $x$ 不是 $fa[x]$ 的任意一个儿子。</p>
+<h2 id="access-x"><a href="#access-x" class="headerlink" title="$access(x)$"></a>$access(x)$</h2><p><del>这个操作很重要所以要大一点</del><br>打通 $x$ 到 $x$ 的路径为新的实链，即 $x$ 到 $x$ 的路径上的点维护在一棵 splay 中（没有图，所以只能感性理解）</p>
+<p>方法：  </p>
+<p>1、将 $x$ splay 到所在实链的根，断开他的右子树 (深度比他大的点就不认了）  </p>
+<p>2、再看 $fa[x]$ 这个点，同样把它转到根，将刚刚的 $x$ 所在实链接在右子树上。</p>
+<p>3、将 $x$ 变成 $fa[x]$，反复进行操作2直到 $fa[x]$ 不存在</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">access</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> tmp=<span class="number">0</span>;x;tmp=x,x=fa[x])</span><br><span class="line">        splay(x),son[x][<span class="number">1</span>]=tmp,update(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="makeroot-x"><a href="#makeroot-x" class="headerlink" title="$makeroot(x)$"></a>$makeroot(x)$</h2><p>将 $x$ 作为原树的根，会修改的就是 splay 上按照深度的遍历顺序，因为 $access(x)$ 后 $x$ 一定是所在实链上深度最大的点，当 $x$ splay 到根时，是不会有右子树的，直接 $reverse$ 左右子树就达到了反转序列的效果了。</p>
+<p>所以要打一个 $rev$ 的 $tag$ （和系列的 $pushdown$ 操作）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;root)</span> </span>&#123;rev[root]^=<span class="number">1</span>,swap(ls,rs);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">makeroot</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> root)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    access(root),splay(root),reverse(root);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为有了 $tag$ ，splay的时候就要注意 $pushdown$ 避免转错了。先将 $x$ 到 $root$ 的路径上点从上到小 $pushdown$ 完再 splay 吧。</p>
+<h2 id="findroot-x"><a href="#findroot-x" class="headerlink" title="$findroot(x)$"></a>$findroot(x)$</h2><p>找到 $x$ 所在原树上的根，用于判断连通性。<br>方法：$access(x)$ 后 $x$ 所在 $splay$ 中深度最小的点（序列最左）的便是根了，再将 $x$ splay 到根，一路找左儿子便能找到根了。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">findroot</span><span class="params">(<span class="keyword">int</span> root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    access(root),splay(root);</span><br><span class="line">    <span class="keyword">while</span>(ls) pushdown(ls),root=ls;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="split-x-y"><a href="#split-x-y" class="headerlink" title="$split(x,y)$"></a>$split(x,y)$</h2><p>因为经常要求的是两点之间路径的情况，光是一个点到根是不够的，所以就有了 $split(x,y)$ 用于将 $x$ 的 $y$ 路径上的点放在一个 splay 中方便查询。<br>方法：将 $x$ 变成根以后，$access(y)$ 得到的便是 上述的 splay 了，此时再将 $y$ 转到根，便可以直接通过 $y$ 得到整个 splay （这条路径） 的所有信息了。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x,<span class="keyword">const</span> <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    makeroot(x),access(y),splay(y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="link-x-y"><a href="#link-x-y" class="headerlink" title="$link(x,y)$"></a>$link(x,y)$</h2><p>将 $x$ 变成根以后，将 $X$ 的父亲置成 $y$ 便是连边 $x$、$y$ 了。别忘了判断当前的 $y$ 是不是已经在 $x$ 所在的树中了。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x,<span class="keyword">const</span> <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    makeroot(x);</span><br><span class="line">    <span class="keyword">if</span>(findroot(y)!=x) fa[x]=y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="cut-x-y"><a href="#cut-x-y" class="headerlink" title="$cut(x,y)$"></a>$cut(x,y)$</h2><p>如果保证存在边 $(x,y)$ 的话，$split(x,y)$ 后 $y$ 为根，$x$ 必为 $y$ 的左儿子（深度比 $y$ 小一），直接 $fa[x]=son[y][0]=0$断掉就行。  </p>
+<p>但是当不保证时需要满足:<br>1&gt; $x$ 和 $y$ 在同一棵树中<br>2&gt; $split(x,y)$ 后 $son[y][0]==x$<br>3&gt; $split(x,y)$ 后 $x$ 没有右子树（因为 $x$ 的后继只应该是 $y$）  </p>
+<p><strong>三个条件缺一不可</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">cut</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x,<span class="keyword">const</span> <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    split(x,y);</span><br><span class="line">    <span class="keyword">if</span>(findroot(x)==findroot(y)||son[y][<span class="number">0</span>]!=x||son[x][<span class="number">1</span>]) <span class="keyword">return</span>;</span><br><span class="line">    fa[x]=son[y][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    update(y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>若还有别的操作待补</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="一、luogu3690-模板-Link-Cut-Tree-动态树"><a href="#一、luogu3690-模板-Link-Cut-Tree-动态树" class="headerlink" title="一、luogu3690 [模板]Link Cut Tree(动态树)"></a>一、luogu3690 [模板]Link Cut Tree(动态树)</h2><p><a href="https://www.luogu.org/problemnew/show/P3690" target="_blank" rel="noopener">洛咕</a><br>就是上面说的那些操作啦，splay 维护一下子树 xor 和  </p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">3e5</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">0</span>;<span class="keyword">char</span> ch=getchar();</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch)) f|=(ch==<span class="string">'-'</span>),ch=getchar();</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch)) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">        <span class="keyword">return</span> f?-x:x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len=<span class="number">0</span>;<span class="keyword">static</span> <span class="keyword">int</span> bask[<span class="number">50</span>];</span><br><span class="line">        <span class="keyword">do</span> bask[++len]=x%<span class="number">10</span>,x/=<span class="number">10</span>; <span class="keyword">while</span>(x);</span><br><span class="line">        <span class="keyword">for</span>(;len;len--) <span class="built_in">putchar</span>(<span class="string">'0'</span>+bask[len]);</span><br><span class="line">        <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> val[N];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">namespace</span> LinkCutTree</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> son[N][<span class="number">2</span>],fa[N],sum[N],rev[N];</span><br><span class="line"></span><br><span class="line">        <span class="meta">#<span class="meta-keyword">define</span> ls son[root][0]</span></span><br><span class="line">        <span class="meta">#<span class="meta-keyword">define</span> rs son[root][1]</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">dir</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;root)</span> </span>&#123;<span class="keyword">return</span> son[fa[root]][<span class="number">1</span>]==root;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">isroot</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;root)</span> </span>&#123;<span class="keyword">return</span> son[fa[root]][<span class="number">0</span>]!=root&amp;&amp;son[fa[root]][<span class="number">1</span>]!=root;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;root)</span> </span>&#123;sum[root]=sum[ls]^sum[rs]^val[root];&#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;root)</span> </span>&#123;rev[root]^=<span class="number">1</span>,swap(ls,rs);&#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;root)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(rev[root]) <span class="keyword">return</span>;</span><br><span class="line">            <span class="keyword">if</span>(ls) reverse(ls);</span><br><span class="line">            <span class="keyword">if</span>(rs) reverse(rs);</span><br><span class="line">            rev[root]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;root)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> f=fa[root],d=dir(root);</span><br><span class="line">            <span class="keyword">if</span>(!isroot(f)) son[fa[f]][dir(f)]=root;</span><br><span class="line">            fa[root]=fa[f];</span><br><span class="line">            fa[son[root][d^<span class="number">1</span>]]=f;</span><br><span class="line">            son[f][d]=son[root][d^<span class="number">1</span>];</span><br><span class="line">            son[root][d^<span class="number">1</span>]=f,fa[f]=root;</span><br><span class="line">            update(f),update(root);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;root)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">static</span> <span class="keyword">int</span> tot,<span class="built_in">list</span>[N];</span><br><span class="line">            <span class="built_in">list</span>[tot=<span class="number">1</span>]=root;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> iroot=root;!isroot(i);i=fa[i]) <span class="built_in">list</span>[++tot]=fa[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=tot;i;i--) pushdown(<span class="built_in">list</span>[i]);</span><br><span class="line">            <span class="keyword">for</span>(;!isroot(root);rotate(root))</span><br><span class="line">                <span class="keyword">if</span>(!isroot(fa[root])) </span><br><span class="line">                    rotate(dir(fa[root])^dir(root)?root:fa[root]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">access</span><span class="params">(<span class="keyword">int</span> root)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> tmp=<span class="number">0</span>;root;tmp=root,root=fa[root])</span><br><span class="line">                splay(root),son[root][<span class="number">1</span>]=tmp,update(root);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">makeroot</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> root)</span> </span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            access(root),splay(root),reverse(root);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x,<span class="keyword">const</span> <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            makeroot(x);</span><br><span class="line">            access(y);</span><br><span class="line">            splay(y);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">findroot</span><span class="params">(<span class="keyword">int</span> root)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            access(root),splay(root);</span><br><span class="line">            <span class="keyword">while</span>(ls) pushdown(ls),root=ls;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x,<span class="keyword">const</span> <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            makeroot(x);</span><br><span class="line">            <span class="keyword">if</span>(findroot(y)!=x) fa[x]=y;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">cut</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x,<span class="keyword">const</span> <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            split(x,y);</span><br><span class="line">            <span class="keyword">if</span>(son[y][<span class="number">0</span>]!=x||son[x][<span class="number">1</span>]) <span class="keyword">return</span>;</span><br><span class="line">            fa[x]=son[y][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">            update(y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n=read(),m=read();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) val[i]=read();</span><br><span class="line">        <span class="keyword">using</span> <span class="keyword">namespace</span> LinkCutTree;</span><br><span class="line">        <span class="keyword">while</span>(m--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> op=read(),x=read(),y=read();</span><br><span class="line">            <span class="keyword">switch</span>(op)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">0</span>: split(x,y),write(sum[y]);<span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">1</span>: link(x,y);<span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">2</span>:    <span class="keyword">if</span>(findroot(x)==findroot(y)) cut(x,y);<span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">3</span>: val[x]=y,splay(x);    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后来都把 root 打成 x 了，四个字母看着好长</p>
+<h2 id="二、bzoj3669-Noi2014-魔法森林"><a href="#二、bzoj3669-Noi2014-魔法森林" class="headerlink" title="二、bzoj3669 [Noi2014]魔法森林"></a>二、bzoj3669 [Noi2014]魔法森林</h2><p><a href="https://www.luogu.org/problemnew/show/P2387" target="_blank" rel="noopener">洛咕2387</a>    <a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3669" target="_blank" rel="noopener">bzoj3669</a></p>
+<p>先按照 $a$ 排序，然后对于边 $edge(u,v)$ 判断：<br>当 $u$，$v$ 没有连通时，加上 $edge$；否则，找到连通 $u$，$v$ 的边中 $b$ 最大的边 $t$，如果 $b(t) &gt; b(edge)$，用 $edge$ 替换 $t$。（删掉 $t$ 加上 $edge$）</p>
+<p>每次判断 $1$ 是否已经连通 $n$，若已连通，更新<br>$ans=min(ans,a(edge)+1到n路径上b的最大值)$</p>
+<p>对于动态加边、删边、维护连通性和查询两点最大权值用 LCT 解决。</p>
+<p>但是由于 LCT 只能存储点的信息（边不行），所以我们将一条边也看作一个点.若要加上边 $edge$，就相当于 $link(u,edge)$、$link(edge,v)$。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><p>还是挺好写的，$cut$ 的时候写成了 $fa[y]=son[y][0]=0$ 调了好久……<del>偷懒记了一些神奇的东西</del><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">0</span>;<span class="keyword">char</span> ch=getchar();</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch)) f|=(ch==<span class="string">'-'</span>),ch=getchar();</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch)) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">        <span class="keyword">return</span> f?-x:x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="keyword">int</span> u,v,a,b;</span><br><span class="line">        <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> edge &amp;t) <span class="keyword">const</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> a&lt;t.a;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;e[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">namespace</span> LinkCutTree</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> son[N][<span class="number">2</span>],fa[N],val[N],rev[N],id[N],mx[N],idedge[N];</span><br><span class="line">        <span class="meta">#<span class="meta-keyword">define</span> ls son[x][0]</span></span><br><span class="line">        <span class="meta">#<span class="meta-keyword">define</span> rs son[x][1]</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">isroot</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x)</span> </span>&#123;<span class="keyword">return</span> son[fa[x]][<span class="number">0</span>]!=x&amp;&amp;son[fa[x]][<span class="number">1</span>]!=x;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">dir</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x)</span> </span>&#123;<span class="keyword">return</span> son[fa[x]][<span class="number">1</span>]==x;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x)</span> </span>&#123;rev[x]^=<span class="number">1</span>,swap(ls,rs);&#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Max</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span> </span>&#123;<span class="keyword">return</span> val[x]&gt;val[y]?x:y;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x)</span> </span>&#123;mx[x]=Max(Max(mx[ls],mx[rs]),id[x]);&#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x)</span> </span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(!rev[x]) <span class="keyword">return</span>;</span><br><span class="line">            <span class="keyword">if</span>(ls) reverse(ls);</span><br><span class="line">            <span class="keyword">if</span>(rs) reverse(rs);</span><br><span class="line">            rev[x]=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> f=fa[x],d=dir(x);</span><br><span class="line">            <span class="keyword">if</span>(!isroot(f)) son[fa[f]][dir(f)]=x;</span><br><span class="line">            fa[x]=fa[f];</span><br><span class="line">            son[f][d]=son[x][d^<span class="number">1</span>];</span><br><span class="line">            fa[son[x][d^<span class="number">1</span>]]=f;</span><br><span class="line">            son[x][d^<span class="number">1</span>]=f,fa[f]=x;</span><br><span class="line">            update(f),update(x);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">static</span> <span class="keyword">int</span> tot,<span class="built_in">list</span>[N];</span><br><span class="line">            <span class="built_in">list</span>[tot=<span class="number">1</span>]=x;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=x;!isroot(i);i=fa[i]) <span class="built_in">list</span>[++tot]=fa[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=tot;i;i--) pushdown(<span class="built_in">list</span>[i]);</span><br><span class="line">            <span class="keyword">for</span>(;!isroot(x);rotate(x))</span><br><span class="line">                <span class="keyword">if</span>(!isroot(fa[x])) </span><br><span class="line">                    rotate(dir(x)^dir(fa[x])?x:fa[x]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">access</span><span class="params">(<span class="keyword">int</span> x)</span> </span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> t=<span class="number">0</span>;x;t=x,x=fa[x])</span><br><span class="line">                splay(x),son[x][<span class="number">1</span>]=t,update(x);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">makeroot</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            access(x),splay(x),reverse(x);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            makeroot(x),access(y),splay(y);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            access(x),splay(x);</span><br><span class="line">            <span class="keyword">while</span>(ls) pushdown(x),x=ls;</span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            makeroot(x);</span><br><span class="line">            <span class="keyword">if</span>(find(y)!=x) fa[x]=y;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">cut</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            split(x,y);</span><br><span class="line">            <span class="keyword">if</span>(son[y][<span class="number">0</span>]!=x||son[x][<span class="number">1</span>]) <span class="keyword">return</span>;</span><br><span class="line">            fa[x]=son[y][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">            update(y);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x,<span class="keyword">const</span> <span class="keyword">int</span> &amp;y)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            split(x,y);</span><br><span class="line">            <span class="keyword">return</span> mx[y];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n=read(),m=read(),ans=inf;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">            e[i]=(edge)&#123;read(),read(),read(),read()&#125;;</span><br><span class="line">        sort(e+<span class="number">1</span>,e+<span class="number">1</span>+m);</span><br><span class="line">        <span class="keyword">using</span> <span class="keyword">namespace</span> LinkCutTree;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,tot=n;i&lt;=m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> u=e[i].u,v=e[i].v,w=e[i].b;</span><br><span class="line">            <span class="keyword">if</span>(find(u)==find(v))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> ed=query(u,v);</span><br><span class="line">                <span class="keyword">if</span>(val[ed]&lt;=w) <span class="keyword">continue</span>;</span><br><span class="line">                cut(e[idedge[ed]].u,ed),cut(e[idedge[ed]].v,ed);</span><br><span class="line">                val[ed]=w,idedge[ed]=i;</span><br><span class="line">                link(u,ed),link(v,ed);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">            &#123;</span><br><span class="line">                val[++tot]=w,id[tot]=tot;</span><br><span class="line">                idedge[tot]=i;</span><br><span class="line">                link(u,tot),link(v,tot);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(find(<span class="number">1</span>)==find(n)) </span><br><span class="line">                ans=min(ans,e[i].a+val[query(<span class="number">1</span>,n)]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans==inf?<span class="number">-1</span>:ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>一粘代码就显得好长……</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>FlashHu <a href="http://www.cnblogs.com/flashhu/p/8324551.html" target="_blank" rel="noopener">http://www.cnblogs.com/flashhu/p/8324551.html</a><br>Candy? <a href="https://www.cnblogs.com/candy99/p/6271344.html" target="_blank" rel="noopener">https://www.cnblogs.com/candy99/p/6271344.html</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/16/bzoj2154Crash的数字表格-数学/" rel="next" title="BZOJ2154 Crash的数字表格 [数学]">
+                <i class="fa fa-chevron-left"></i> BZOJ2154 Crash的数字表格 [数学]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">TYC</p>
+              <p class="site-description motion-element" itemprop="description">少女省OIer</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作"><span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#isroot-x"><span class="nav-text">$isroot(x)$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#access-x"><span class="nav-text">$access(x)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#makeroot-x"><span class="nav-text">$makeroot(x)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#findroot-x"><span class="nav-text">$findroot(x)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#split-x-y"><span class="nav-text">$split(x,y)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#link-x-y"><span class="nav-text">$link(x,y)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cut-x-y"><span class="nav-text">$cut(x,y)$</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、luogu3690-模板-Link-Cut-Tree-动态树"><span class="nav-text">一、luogu3690 [模板]Link Cut Tree(动态树)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、bzoj3669-Noi2014-魔法森林"><span class="nav-text">二、bzoj3669 [Noi2014]魔法森林</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+      
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="355" height="86" src="//music.163.com/outchain/player?type=2&id=558261233&auto=1&height=66">
+        </iframe>
+      </div>
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TYC</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+    overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+  </script>
+  
+  
+  
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
