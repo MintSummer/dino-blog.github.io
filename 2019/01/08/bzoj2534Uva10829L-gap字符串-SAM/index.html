@@ -102,18 +102,18 @@
 
 
 
-  <meta name="description" content="题意bzoj2534 给你一个字符串 $S$，以及一个 $L$。 求 $S$ 中有多少个形如  $uvu$ 的子串，其中 $u$ 非空，且 $v$ 的长度恰好为 $L$。 其中 $len(S) \leqslant 50000$ ，$L \leqslant 10$。 分析总感觉自己YY出来了什么神奇的东西，网上好像用 $SA$ 的比较多。 看到字符串第一个想 $SAM$ （被我校 $SAM$ 之神兔">
+  <meta name="description" content="题意bzoj2534 给你一个字符串 $S$，以及一个 $L$。 求 $S$ 中有多少个形如  $uvu$ 的子串，其中 $u$ 非空，且 $v$ 的长度恰好为 $L$。 其中 $len(S) \leqslant 50000$ ，$L \leqslant 10$。 分析讲道理数据里面居然全是大写字母 总感觉自己YY出来了什么神奇的东西，网上好像用 $SA$ 的比较多。 看到字符串第一个想 $SAM">
 <meta name="keywords" content="后缀自动机,线段树,启发式合并">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bzoj2534 L-gap字符串 [SAM] [线段树] [启发式合并]">
 <meta property="og:url" content="http://yoursite.com/2019/01/08/bzoj2534Uva10829L-gap字符串-SAM/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="题意bzoj2534 给你一个字符串 $S$，以及一个 $L$。 求 $S$ 中有多少个形如  $uvu$ 的子串，其中 $u$ 非空，且 $v$ 的长度恰好为 $L$。 其中 $len(S) \leqslant 50000$ ，$L \leqslant 10$。 分析总感觉自己YY出来了什么神奇的东西，网上好像用 $SA$ 的比较多。 看到字符串第一个想 $SAM$ （被我校 $SAM$ 之神兔">
+<meta property="og:description" content="题意bzoj2534 给你一个字符串 $S$，以及一个 $L$。 求 $S$ 中有多少个形如  $uvu$ 的子串，其中 $u$ 非空，且 $v$ 的长度恰好为 $L$。 其中 $len(S) \leqslant 50000$ ，$L \leqslant 10$。 分析讲道理数据里面居然全是大写字母 总感觉自己YY出来了什么神奇的东西，网上好像用 $SA$ 的比较多。 看到字符串第一个想 $SAM">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T13:38:52.058Z">
+<meta property="og:updated_time" content="2019-01-08T13:44:34.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj2534 L-gap字符串 [SAM] [线段树] [启发式合并]">
-<meta name="twitter:description" content="题意bzoj2534 给你一个字符串 $S$，以及一个 $L$。 求 $S$ 中有多少个形如  $uvu$ 的子串，其中 $u$ 非空，且 $v$ 的长度恰好为 $L$。 其中 $len(S) \leqslant 50000$ ，$L \leqslant 10$。 分析总感觉自己YY出来了什么神奇的东西，网上好像用 $SA$ 的比较多。 看到字符串第一个想 $SAM$ （被我校 $SAM$ 之神兔">
+<meta name="twitter:description" content="题意bzoj2534 给你一个字符串 $S$，以及一个 $L$。 求 $S$ 中有多少个形如  $uvu$ 的子串，其中 $u$ 非空，且 $v$ 的长度恰好为 $L$。 其中 $len(S) \leqslant 50000$ ，$L \leqslant 10$。 分析讲道理数据里面居然全是大写字母 总感觉自己YY出来了什么神奇的东西，网上好像用 $SA$ 的比较多。 看到字符串第一个想 $SAM">
 
 
 
@@ -392,7 +392,7 @@
                 
               
 
-              <time title="创建时间：2019-01-08 21:16:01 / 修改时间：21:38:52" itemprop="dateCreated datePublished" datetime="2019-01-08T21:16:01+08:00">2019-01-08</time>
+              <time title="创建时间：2019-01-08 21:16:01 / 修改时间：21:44:34" itemprop="dateCreated datePublished" datetime="2019-01-08T21:16:01+08:00">2019-01-08</time>
             
 
             
@@ -451,7 +451,8 @@
         <h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2534" target="_blank" rel="noopener">bzoj2534</a></p>
 <p>给你一个字符串 $S$，以及一个 $L$。 求 $S$ 中有多少个形如  $uvu$ 的子串，其中 $u$ 非空，且 $v$ 的长度恰好为 $L$。</p>
 <p>其中 $len(S) \leqslant 50000$ ，$L \leqslant 10$。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>总感觉自己YY出来了什么神奇的东西，网上好像用 $SA$ 的比较多。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>讲道理数据里面居然全是大写字母</p>
+<p>总感觉自己YY出来了什么神奇的东西，网上好像用 $SA$ 的比较多。</p>
 <p>看到字符串第一个想 $SAM$ （被我校 $SAM$ 之神兔子教坏了）</p>
 <p>考虑对于一个某个点 $now$ 的 $right$ 集合中的一个元素 $k$ ，它所能产生贡献的条件是在区间 $[k-L-mx[now],k-L-1]$ 或者 $[k+L+1,k+L+mx[now]]$ 并且在这个点的 $right$ 的集合中的点的个数 （$k-L-1$ 保证 $u$ 不为空）。</p>
 <p>因为合并 $right$ 集合的时候，每一个点对仅会出现一次（或者说产生一次贡献），所以区间并不是在 $now$ 的长度 $[min,max]$ 之间，而是任意可行的长度 ($u$ 相同，即 $max$ 以内），因为在这个长度范围内的都是合法，并且下次不会被重复算到（合并后就不会再枚举到这个点对了）。</p>
