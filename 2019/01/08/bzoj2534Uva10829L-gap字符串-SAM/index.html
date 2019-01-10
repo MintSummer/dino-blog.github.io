@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="题意bzoj2534 给你一个字符串 $S$，以及一个 $L$。 求 $S$ 中有多少个形如  $uvu$ 的子串，其中 $u$ 非空，且 $v$ 的长度恰好为 $L$。 其中 $len(S) \leqslant 50000$ ，$L \leqslant 10$。 分析讲道理数据里面居然全是大写字母 总感觉自己YY出来了什么神奇的东西，网上好像用 $SA$ 的比较多。 看到字符串第一个想 $SAM">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T13:44:34.033Z">
+<meta property="og:updated_time" content="2019-01-10T08:36:37.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj2534 L-gap字符串 [SAM] [线段树] [启发式合并]">
 <meta name="twitter:description" content="题意bzoj2534 给你一个字符串 $S$，以及一个 $L$。 求 $S$ 中有多少个形如  $uvu$ 的子串，其中 $u$ 非空，且 $v$ 的长度恰好为 $L$。 其中 $len(S) \leqslant 50000$ ，$L \leqslant 10$。 分析讲道理数据里面居然全是大写字母 总感觉自己YY出来了什么神奇的东西，网上好像用 $SA$ 的比较多。 看到字符串第一个想 $SAM">
@@ -392,12 +392,24 @@
                 
               
 
-              <time title="创建时间：2019-01-08 21:16:01 / 修改时间：21:44:34" itemprop="dateCreated datePublished" datetime="2019-01-08T21:16:01+08:00">2019-01-08</time>
+              <time title="创建时间：2019-01-08 21:16:01" itemprop="dateCreated datePublished" datetime="2019-01-08T21:16:01+08:00">2019-01-08</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-10 16:36:37" itemprop="dateModified" datetime="2019-01-10T16:36:37+08:00">2019-01-10</time>
               
             
           </span>
@@ -454,8 +466,9 @@
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>讲道理数据里面居然全是大写字母</p>
 <p>总感觉自己YY出来了什么神奇的东西，网上好像用 $SA$ 的比较多。</p>
 <p>看到字符串第一个想 $SAM$ （被我校 $SAM$ 之神兔子教坏了）</p>
-<p>考虑对于一个某个点 $now$ 的 $right$ 集合中的一个元素 $k$ ，它所能产生贡献的条件是在区间 $[k-L-mx[now],k-L-1]$ 或者 $[k+L+1,k+L+mx[now]]$ 并且在这个点的 $right$ 的集合中的点的个数 （$k-L-1$ 保证 $u$ 不为空）。</p>
+<p>考虑对于一个某个点 $now$ 的 $right$ 集合中的一个元素 $k$ ，它所能产生的贡献是在区间 $[k-L-mx[now],k-L-1]$ 或者 $[k+L+1,k+L+mx[now]]$ 并且在这个点的 $right$ 的集合中的点的个数 （$k-L-1$ 保证 $u$ 不为空）。</p>
 <p>因为合并 $right$ 集合的时候，每一个点对仅会出现一次（或者说产生一次贡献），所以区间并不是在 $now$ 的长度 $[min,max]$ 之间，而是任意可行的长度 ($u$ 相同，即 $max$ 以内），因为在这个长度范围内的都是合法，并且下次不会被重复算到（合并后就不会再枚举到这个点对了）。</p>
+<p>相当于两个右端点在 $parent$ 树上的 $LCA$ 处计算贡献。</p>
 <p>那么就很简单了，建 $SAM$ 用线段树维护 $right$ 集合（用于求区间中点的个数），启发式合并，合并的时候统计 $y$ 合并入 $x$ 时 $y$ 中的点与 $x$ 中的点的贡献。</p>
 <p>因为比较懒，所以再用了一个 $set$ 辅助启发式合并。</p>
 <p>写完了感觉很奇怪因为并没有用到 $L \leqslant 10$ 这个条件……</p>
@@ -583,7 +596,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
