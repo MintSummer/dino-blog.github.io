@@ -112,7 +112,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/01/08/5c3453783dd67.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/08/5c3453866e251.png">
-<meta property="og:updated_time" content="2019-01-11T06:22:34.708Z">
+<meta property="og:updated_time" content="2019-01-11T06:36:26.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LinkCutTree动态树 学习笔记 [数据结构]">
 <meta name="twitter:description" content="upd in 2019.1.8 ：   真是震惊极了……我打了这么久的板子（包括网上某些LCT讲解中的代码）竟然复杂度是假的！！！ 因为 splay 的复杂度是均摊的，每一次从根遍历了一条链就要将链尾 splay 上去（例如，如果当前的 splay 树形是一条长为 $n$ 递增的链-&amp;gt;最大点为根，$m$ 次查询，每次查询第一个，如果不这样复杂度就变成 $O(mn)$ 了），才能保证复杂度均摊">
@@ -412,7 +412,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-11 14:22:34" itemprop="dateModified" datetime="2019-01-11T14:22:34+08:00">2019-01-11</time>
+                <time title="修改时间：2019-01-11 14:36:26" itemprop="dateModified" datetime="2019-01-11T14:36:26+08:00">2019-01-11</time>
               
             
           </span>
@@ -488,6 +488,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;root)</span> </span>&#123;rev[root]^=<span class="number">1</span>,swap(ls,rs);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">makeroot</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> root)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    access(root),splay(root),reverse(root);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>因为有了 $tag$ ，splay的时候就要注意 $pushdown$ 避免转错了。先将 $x$ 到 $root$ 的路径上点从上到小 $pushdown$ 完再 splay 吧。</p>
 <h2 id="findroot-x"><a href="#findroot-x" class="headerlink" title="$findroot(x)$"></a>$findroot(x)$</h2><p>找到 $x$ 所在原树上的根，用于判断连通性。<br>方法：$access(x)$ 后 $x$ 所在 $splay$ 中深度最小的点（序列最左）的便是根了，再将 $x$ splay 到根，一路找左儿子便能找到根了。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">findroot</span><span class="params">(<span class="keyword">int</span> root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    access(root),splay(root);</span><br><span class="line">    <span class="keyword">while</span>(ls) pushdown(ls),root=ls;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>upd:某位神仙告诉我splay了就不用pushdown了（好像很有道理）OrzOrz</p>
 <h2 id="split-x-y"><a href="#split-x-y" class="headerlink" title="$split(x,y)$"></a>$split(x,y)$</h2><p>因为经常要求的是两点之间路径的情况，光是一个点到根是不够的，所以就有了 $split(x,y)$ 用于将 $x$ 的 $y$ 路径上的点放在一个 splay 中方便查询。<br>方法：将 $x$ 变成根以后，$access(y)$ 得到的便是 上述的 splay 了，此时再将 $y$ 转到根，便可以直接通过 $y$ 得到整个 splay （这条路径） 的所有信息了。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x,<span class="keyword">const</span> <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    makeroot(x),access(y),splay(y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="link-x-y"><a href="#link-x-y" class="headerlink" title="$link(x,y)$"></a>$link(x,y)$</h2><p>将 $x$ 变成根以后，将 $X$ 的父亲置成 $y$ 便是连边 $x$、$y$ 了。别忘了判断当前的 $y$ 是不是已经在 $x$ 所在的树中了。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x,<span class="keyword">const</span> <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    makeroot(x);</span><br><span class="line">    <span class="keyword">if</span>(findroot(y)!=x) fa[x]=y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="cut-x-y"><a href="#cut-x-y" class="headerlink" title="$cut(x,y)$"></a>$cut(x,y)$</h2><p>如果保证存在边 $(x,y)$ 的话，$split(x,y)$ 后 $y$ 为根，$x$ 必为 $y$ 的左儿子（深度比 $y$ 小一），直接 $fa[x]=son[y][0]=0$断掉就行。  </p>
@@ -542,8 +543,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/16/bzoj2154Crash的数字表格-数学/" rel="next" title="BZOJ2154 Crash的数字表格 [数学]">
-                <i class="fa fa-chevron-left"></i> BZOJ2154 Crash的数字表格 [数学]
+              <a href="/2018/12/16/bzoj4591超能粒子炮-改-数学/" rel="next" title="BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]">
+                <i class="fa fa-chevron-left"></i> BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]
               </a>
             
           </div>
