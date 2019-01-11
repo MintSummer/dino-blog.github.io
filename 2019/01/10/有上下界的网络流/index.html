@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="安利博客 liu_runda 有上下界的网络流，顺便抄一段话    有上下界的网络流的核心是”调整”,我们通过一个初始的未必可行的流调整出一个可行流,还可以从可行的未必最大/最小的流调整出最大/最小。另一个常用技巧是有源汇的流和无源汇的流(循环流)的转换。除了无源汇可行流的求解,其他有源汇的上下界网络流都要用到这个技巧。  无源汇上下界可行流 （循环流）模型给定一个网络，求一个流，满足每条边的流量">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-11T05:53:46.386Z">
+<meta property="og:updated_time" content="2019-01-11T06:30:04.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="有上下界的网络流&#x2F;费用流 学习笔记 [网络流]">
 <meta name="twitter:description" content="安利博客 liu_runda 有上下界的网络流，顺便抄一段话    有上下界的网络流的核心是”调整”,我们通过一个初始的未必可行的流调整出一个可行流,还可以从可行的未必最大/最小的流调整出最大/最小。另一个常用技巧是有源汇的流和无源汇的流(循环流)的转换。除了无源汇可行流的求解,其他有源汇的上下界网络流都要用到这个技巧。  无源汇上下界可行流 （循环流）模型给定一个网络，求一个流，满足每条边的流量">
@@ -409,7 +409,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-11 13:53:46" itemprop="dateModified" datetime="2019-01-11T13:53:46+08:00">2019-01-11</time>
+                <time title="修改时间：2019-01-11 14:30:04" itemprop="dateModified" datetime="2019-01-11T14:30:04+08:00">2019-01-11</time>
               
             
           </span>
@@ -502,7 +502,7 @@ d[i] < 0 & \ \ \ \  建 i 指向 t 的边，使附加流中 i 的流入量增加
 <p>感觉没啥给代码的必要……（可以参见最小流）</p>
 <h1 id="有源汇的上下界最小流"><a href="#有源汇的上下界最小流" class="headerlink" title="有源汇的上下界最小流"></a>有源汇的上下界最小流</h1><h2 id="模型-3"><a href="#模型-3" class="headerlink" title="模型"></a>模型</h2><p>在上上一个模块条件要求下，<strong>总流量最小</strong></p>
 <h2 id="方法-3"><a href="#方法-3" class="headerlink" title="方法"></a>方法</h2><p>先跑有源汇可行流，然后在残余网络上跑 $t$ 到 $s$ 的最大流，这样实际上消耗的图中的反向边，反向边流量的减少就是总流量的减少，即缩减流量。</p>
-<p><strong>最大流=可行流流量（ $t-&gt;s$ 边的流量）- 减去的 $t$ 到 $s$ 的最大流</strong></p>
+<p><strong>最小流=可行流流量（ $t-&gt;s$ 边的流量）- 减去的 $t$ 到 $s$ 的最大流</strong></p>
 <p>因为这些边的下界并没有在图中建出，即无论怎么减少，只要边的流量还是 $\leqslant 0$ 的，它就依旧满足流量下界。</p>
 <h2 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h2><p><a href="https://www.lydsy.com/JudgeOnline/show.php?id=2502" target="_blank" rel="noopener">bzoj2502 清理雪道</a><br><a href="https://www.luogu.org/problemnew/show/P4843" target="_blank" rel="noopener">luogu4843 清理雪道</a></p>
 <p>画个图<del>一看数据范围这么小</del>，这不就是个流嘛，将总部看作源点，源点可以到达任意点；再将结束看作汇点，任意点都可以到汇点。然后要求每条边至少走一次，那就是边的流量有下界为1，没有上界，求最小次数直接跑有源汇上下界最小流就行了</p>
