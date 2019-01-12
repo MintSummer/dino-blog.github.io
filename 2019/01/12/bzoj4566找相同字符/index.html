@@ -102,27 +102,25 @@
 
 
 
-  <meta name="description" content="题意bzoj2154luogu1829 给定两个数 $n$，$m$（ $n，m \leqslant 1e7$ ），求 \sum_{i=1}^n \sum_{j=1}^m lcm(i,j)分析这篇题解是很早以前写的了，然后搬到了博客上……果然，人总要为一些很傻的事情付出代价，就像当时的我知道 markdown 怎么转成 PDF 后删掉 markdown 源码的一样。emmmmm……大力图片  代码1">
-<meta name="keywords" content="数学,莫比乌斯反演">
+  <meta name="description" content="写在前面写这篇题解的原因纯粹是 zyt 神仙的方法太麻烦了 题目luogu 3181 bzoj 4566 给定两个字符串，求出在两个字符串中各取出一个子串使得这两个子串相同的方案数。两个方案不同当且仅当这两个子串中有一个位置不同。 $1 \leqslant length \leqslant 200000$ 方法可以直接跳到“简单来说” 对于有多个串的问题，我们可以建广义 $SAM$，但是实际上没有">
+<meta name="keywords" content="后缀自动机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bzoj2154 Crash的数字表格 [数学]">
-<meta property="og:url" content="http://yoursite.com/2018/12/16/bzoj2154Crash的数字表格-数学/index.html">
+<meta property="og:title" content="bzoj4566 [HAOI2016]找相同字符 [SAM]">
+<meta property="og:url" content="http://yoursite.com/2019/01/12/bzoj4566找相同字符/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="题意bzoj2154luogu1829 给定两个数 $n$，$m$（ $n，m \leqslant 1e7$ ），求 \sum_{i=1}^n \sum_{j=1}^m lcm(i,j)分析这篇题解是很早以前写的了，然后搬到了博客上……果然，人总要为一些很傻的事情付出代价，就像当时的我知道 markdown 怎么转成 PDF 后删掉 markdown 源码的一样。emmmmm……大力图片  代码1">
+<meta property="og:description" content="写在前面写这篇题解的原因纯粹是 zyt 神仙的方法太麻烦了 题目luogu 3181 bzoj 4566 给定两个字符串，求出在两个字符串中各取出一个子串使得这两个子串相同的方案数。两个方案不同当且仅当这两个子串中有一个位置不同。 $1 \leqslant length \leqslant 200000$ 方法可以直接跳到“简单来说” 对于有多个串的问题，我们可以建广义 $SAM$，但是实际上没有">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://i.loli.net/2018/12/16/5c1668efc3215.png">
-<meta property="og:updated_time" content="2019-01-12T15:10:54.815Z">
+<meta property="og:updated_time" content="2019-01-12T15:12:41.334Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bzoj2154 Crash的数字表格 [数学]">
-<meta name="twitter:description" content="题意bzoj2154luogu1829 给定两个数 $n$，$m$（ $n，m \leqslant 1e7$ ），求 \sum_{i=1}^n \sum_{j=1}^m lcm(i,j)分析这篇题解是很早以前写的了，然后搬到了博客上……果然，人总要为一些很傻的事情付出代价，就像当时的我知道 markdown 怎么转成 PDF 后删掉 markdown 源码的一样。emmmmm……大力图片  代码1">
-<meta name="twitter:image" content="https://i.loli.net/2018/12/16/5c1668efc3215.png">
+<meta name="twitter:title" content="bzoj4566 [HAOI2016]找相同字符 [SAM]">
+<meta name="twitter:description" content="写在前面写这篇题解的原因纯粹是 zyt 神仙的方法太麻烦了 题目luogu 3181 bzoj 4566 给定两个字符串，求出在两个字符串中各取出一个子串使得这两个子串相同的方案数。两个方案不同当且仅当这两个子串中有一个位置不同。 $1 \leqslant length \leqslant 200000$ 方法可以直接跳到“简单来说” 对于有多个串的问题，我们可以建广义 $SAM$，但是实际上没有">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/16/bzoj2154Crash的数字表格-数学/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/12/bzoj4566找相同字符/">
 
 
 
@@ -132,7 +130,7 @@
   };
 </script>
 
-  <title>bzoj2154 Crash的数字表格 [数学] | Little Dino</title>
+  <title>bzoj4566 [HAOI2016]找相同字符 [SAM] | Little Dino</title>
   
 
 
@@ -351,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/16/bzoj2154Crash的数字表格-数学/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/12/bzoj4566找相同字符/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TYC">
@@ -368,7 +366,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">bzoj2154 Crash的数字表格 [数学]
+          <h1 class="post-title" itemprop="name headline">bzoj4566 [HAOI2016]找相同字符 [SAM]
 
               
             
@@ -394,24 +392,12 @@
                 
               
 
-              <time title="创建时间：2018-12-16 22:55:09" itemprop="dateCreated datePublished" datetime="2018-12-16T22:55:09+08:00">2018-12-16</time>
+              <time title="创建时间：2019-01-12 22:43:13 / 修改时间：23:12:41" itemprop="dateCreated datePublished" datetime="2019-01-12T22:43:13+08:00">2019-01-12</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-12 23:10:54" itemprop="dateModified" datetime="2019-01-12T23:10:54+08:00">2019-01-12</time>
               
             
           </span>
@@ -462,11 +448,20 @@
       
 
       
-        <h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2154" target="_blank" rel="noopener">bzoj2154</a><br><a href="https://www.luogu.org/problemnew/show/P1829" target="_blank" rel="noopener">luogu1829</a></p>
-<p>给定两个数 $n$，$m$（ $n，m \leqslant 1e7$ ），求</p>
-<script type="math/tex; mode=display">\sum_{i=1}^n \sum_{j=1}^m lcm(i,j)</script><h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这篇题解是很早以前写的了，然后搬到了博客上……<br>果然，人总要为一些很傻的事情付出代价，就像当时的我知道 markdown 怎么转成 PDF 后删掉 markdown 源码的一样。emmmmm……大力图片</p>
-<p><img src="https://i.loli.net/2018/12/16/5c1668efc3215.png" alt=""></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> p=<span class="number">20101009</span>,N=<span class="number">1e7</span>+<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> inv2=(p+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> n,m,cnt,mu[N],prime[N];</span><br><span class="line">    ll sum[N];</span><br><span class="line">    <span class="keyword">bool</span> vis[N];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> maxn)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        mu[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=maxn;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!vis[i]) prime[++cnt]=i,mu[i]=<span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>,k;j&lt;=cnt&amp;&amp;(k=i*prime[j])&lt;=maxn;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                vis[k]=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) &#123;mu[k]=<span class="number">0</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">                mu[k]=-mu[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=maxn;i++)</span><br><span class="line">            sum[i]=(sum[i<span class="number">-1</span>]+<span class="number">1L</span>L*i*i*mu[i]%p)%p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> ll <span class="title">cal</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span>+x)*x%p*inv2%p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">ll <span class="title">F</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ll ans=<span class="number">0</span>,limit=min(x,y);</span><br><span class="line">        <span class="keyword">for</span>(ll l=<span class="number">1</span>,r;l&lt;=limit;l=r+<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            r=min(x/(x/l),y/(y/l));</span><br><span class="line">            ans=(ans+cal(x/l)*cal(y/l)%p*(sum[r]-sum[l<span class="number">-1</span>]+p)%p)%p;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">        ll limit=min(n,m),ans=<span class="number">0</span>;</span><br><span class="line">        init(limit);</span><br><span class="line">        <span class="keyword">for</span>(ll d=<span class="number">1</span>,last;d&lt;=limit;d=last+<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            last=min(n/(n/d),m/(m/d));</span><br><span class="line">            ans=(ans+(d+last)*(last-d+<span class="number">1</span>)%p*inv2%p*F(n/d,m/d)%p)%p;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,(ans+p)%p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>写这篇题解的原因纯粹是 zyt 神仙的方法太麻烦了</p>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://www.luogu.org/problemnew/show/P3181" target="_blank" rel="noopener">luogu 3181</a></p>
+<p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4566" target="_blank" rel="noopener">bzoj 4566</a></p>
+<p>给定两个字符串，求出在两个字符串中各取出一个子串使得这两个子串相同的方案数。两个方案不同当且仅当这两<br>个子串中有一个位置不同。</p>
+<p>$1 \leqslant length \leqslant 200000$</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p><del>可以直接跳到“简单来说”</del></p>
+<p>对于有多个串的问题，我们可以建广义 $SAM$，但是实际上没有什么必要，可以将每两个串之间用一个奇怪的字符（例如 $’a’+26$）全部连起来，变成一个串，对于这个串建 $SAM$。</p>
+<p>然后可以发现，如果这两个串有一个子串相同，那么这个子串在 $SAM$ 上对应的是同一个节点。我们转化一下，如果 $SAM$ 上的一个节点在串 $A$ 中的 $right$ 集合大小为 $a$，在串 $B$ 中的 $right$ 集合大小为 $b$，那么 $a$ ，$b$ 中任意两个配对都是一个合法的情况（即子串相同）。</p>
+<p>又因为要求是本质不同的子串，$SAM$ 上每个节点代表了长度在 $[minlen,maxlen]$ 之间的相同的子串，故每个点的贡献还要乘上 $maxlen-minlen+1$。</p>
+<p>简单来说，连接串 $A$，$B$ 建在一个 $SAM$ 上，如果用 $tot$ 表示 $SAM$ 的点数， $size[i][0/1]$ 表示 $SAM$ 上节点 $i$ 中包含的串 $A$ 或 $B$ 的 $right$ 集合的大小，$mx[i]$ 表示点 $i$ 的 $maxlen$，那么</p>
+<script type="math/tex; mode=display">
+ans=\sum_{i=1}^{tot} size[i][0] \times size[i][1] \times (mx[i] - mx[fa[i]])</script><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>代码写起来就是 $SAM$ 的基础操作：插入和基数排序</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">800010</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">namespace</span> SAM</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> last=<span class="number">1</span>,tot=<span class="number">1</span>,size[N][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">        &#123;</span></span><br><span class="line">            <span class="keyword">int</span> fa,mx,son[<span class="number">27</span>];</span><br><span class="line">        &#125;tr[N];</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> c,<span class="keyword">const</span> <span class="keyword">int</span> id)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> now=++tot,p=last;</span><br><span class="line">            tr[now].mx=tr[p].mx+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(id!=<span class="number">2</span>) size[now][id]++;</span><br><span class="line">            <span class="keyword">while</span>(p&amp;&amp;!tr[p].son[c])</span><br><span class="line">                tr[p].son[c]=now,p=tr[p].fa;</span><br><span class="line">            <span class="keyword">if</span>(!p) tr[now].fa=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> q=tr[p].son[c];</span><br><span class="line">                <span class="keyword">if</span>(tr[q].mx==tr[p].mx+<span class="number">1</span>) tr[now].fa=q;</span><br><span class="line">                <span class="keyword">else</span> </span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> clone=++tot;</span><br><span class="line">                    tr[clone]=tr[q];</span><br><span class="line">                    tr[clone].mx=tr[p].mx+<span class="number">1</span>;</span><br><span class="line">                    tr[q].fa=tr[now].fa=clone;</span><br><span class="line">                    <span class="keyword">while</span>(p&amp;&amp;tr[p].son[c]==q)</span><br><span class="line">                        tr[p].son[c]=clone,p=tr[p].fa;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            last=now;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">radix_sort</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">static</span> <span class="keyword">int</span> bask[N],q[N];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++) bask[tr[i].mx]++;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++) bask[i]+=bask[i<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=tot;i;i--) q[bask[tr[i].mx]--]=i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=tot;i&gt;<span class="number">1</span>;i--)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> now=q[i],f=tr[now].fa;</span><br><span class="line">                size[f][<span class="number">0</span>]+=size[now][<span class="number">0</span>];</span><br><span class="line">                size[f][<span class="number">1</span>]+=size[now][<span class="number">1</span>];</span><br><span class="line">                ans+=(<span class="keyword">long</span> <span class="keyword">long</span>)size[now][<span class="number">0</span>]*size[now][<span class="number">1</span>]*(tr[now].mx-tr[f].mx);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">char</span> s[N&gt;&gt;<span class="number">1</span>];</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">        <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">            SAM::insert(s[i]-<span class="string">'a'</span>,<span class="number">0</span>);</span><br><span class="line">        SAM::insert(<span class="number">26</span>,<span class="number">2</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">        len=<span class="built_in">strlen</span>(s);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">            SAM::insert(s[i]-<span class="string">'a'</span>,<span class="number">1</span>);</span><br><span class="line">        SAM::radix_sort();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -489,9 +484,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数学/" rel="tag"># 数学</a>
-          
-            <a href="/tags/莫比乌斯反演/" rel="tag"># 莫比乌斯反演</a>
+            <a href="/tags/后缀自动机/" rel="tag"># 后缀自动机</a>
           
         </div>
       
@@ -504,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/16/bzoj4591超能粒子炮-改-数学/" rel="next" title="BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]">
-                <i class="fa fa-chevron-left"></i> BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]
+              <a href="/2019/01/10/有上下界的网络流/" rel="next" title="有上下界的网络流/费用流 学习笔记 [网络流]">
+                <i class="fa fa-chevron-left"></i> 有上下界的网络流/费用流 学习笔记 [网络流]
               </a>
             
           </div>
@@ -513,10 +506,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/05/LinkCutTree/" rel="prev" title="LinkCutTree动态树 学习笔记 [数据结构]">
-                LinkCutTree动态树 学习笔记 [数据结构] <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -671,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题意"><span class="nav-text">题意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-text">方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
