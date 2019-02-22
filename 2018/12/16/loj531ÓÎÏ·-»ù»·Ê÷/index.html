@@ -308,7 +308,7 @@
         
         
           
-          <li class="menu-item menu-item-friends">
+          <li class="menu-item menu-item-friend">
 
     
     
@@ -318,7 +318,7 @@
 
     
 
-    <a href="/friend/" rel="section"><i class="menu-item-icon fa fa-fw fa-friend"></i> <br>友链</a>
+    <a href="/friend/" rel="section"><i class="menu-item-icon fa fa-fw fa-users"></i> <br>友链</a>
 
   </li>
 
@@ -465,6 +465,34 @@
           
 
           
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">6.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">11 分钟</span>
+              
+            </div>
+          
 
           
 
@@ -510,7 +538,7 @@
 </blockquote>
 </blockquote>
 <p>考虑 $f[i]=x$ 意味着什么：当 $a=x$，$a$ 就会转移成 $i$ ，那么说明博弈的决策边应当为 $f[i]-&gt;i$ （变成基环外向树了），每次从点 $1$ 向沿决策边转移。</p>
-<p>遇到基环外向树，果断先找环，我们从外向树向环上的点递推，就可以得到 $win[i] \in \{0,1\}$  表示如果从点 $i$ 向外走，最后是否能够必胜。就可以得到所有状态的情况了。</p>
+<p>遇到基环外向树，果断先找环，我们从外向树向环上的点递推，就可以得到 $win[i] \in {0,1}$  表示如果从点 $i$ 向外走，最后是否能够必胜。就可以得到所有状态的情况了。</p>
 <p>我们记出度 $deg[ \ \ ]$，不断找没有出度的点，从 $i$ 走到 $f[i]$，并更新 $win[f[i]]$ 和$deg[f[i]]$ 即可，遍历过的点记 $deg[i]=-1$ 表示 $i$ 存在过出度减为  $0$ 的情况（即点 $i$ 不在环上，因为环上的点必然会有出度）。</p>
 <p>当点 $1$ 不在环上时，它只存在唯一 一种决策，修改环上 $u$、$v$ 的连边对它没有影响，直接输出 $win[1]$ 即可。</p>
 <p>否则点 $1$ 必然在环上，那么我们爬边 $i-&gt;f[i]$ 就可以遍历整个环，记下来。但是因为它与我们实际决策树的边相反，应当改成 $f[i]-&gt;i$ ，即要交换点 $id[i]-1$ $(f[x]==i 的点 x)$ 和 $id[i]+1 (f[i])$ ，再重新标号后就会有 $id[f[i]]+1==id[i]$ ，即边为 $f[i]-&gt;i$ （标号表现了它到点 $1$ 的距离）。</p>
@@ -759,8 +787,8 @@
       
       
       <div id="music163player">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="355" height="86" src="//music.163.com/outchain/player?type=2&id=558261233&auto=1&height=66">
-        </iframe>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=422429425&auto=1&height=66">
+		</iframe>
       </div>
 
       
@@ -787,7 +815,21 @@
   <span class="author" itemprop="copyrightHolder">TYC</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">66k</span>
+  
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">1:50</span>
   
 </div>
 
