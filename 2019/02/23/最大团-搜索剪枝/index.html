@@ -123,18 +123,18 @@
 
 
 
-  <meta name="description" content="坑了">
+  <meta name="description" content="方法这里的图都是指无向图。 给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个完全子图。 （诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = {(u,">
 <meta name="keywords" content="最大团">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最大团[搜索剪枝]">
 <meta property="og:url" content="http://yoursite.com/2019/02/23/最大团-搜索剪枝/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="坑了">
+<meta property="og:description" content="方法这里的图都是指无向图。 给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个完全子图。 （诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = {(u,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-23T15:44:47.937Z">
+<meta property="og:updated_time" content="2019-02-25T00:34:23.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大团[搜索剪枝]">
-<meta name="twitter:description" content="坑了">
+<meta name="twitter:description" content="方法这里的图都是指无向图。 给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个完全子图。 （诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = {(u,">
 
 
 
@@ -459,12 +459,24 @@
                 
               
 
-              <time title="创建时间：2019-02-23 23:43:27 / 修改时间：23:44:47" itemprop="dateCreated datePublished" datetime="2019-02-23T23:43:27+08:00">2019-02-23</time>
+              <time title="创建时间：2019-02-23 23:43:27" itemprop="dateCreated datePublished" datetime="2019-02-23T23:43:27+08:00">2019-02-23</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-25 08:34:23" itemprop="dateModified" datetime="2019-02-25T08:34:23+08:00">2019-02-25</time>
               
             
           </span>
@@ -516,7 +528,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3</span>
+                <span title="本文字数">2.4k</span>
               
 
               
@@ -530,7 +542,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -550,7 +562,45 @@
       
 
       
-        <p>坑了</p>
+        <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>这里的图都是指无向图。</p>
+<p>给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个<strong>完全子图</strong>。</p>
+<p>（诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = {(u, v)|u,v \in V’, (u, v) \in E}$）</p>
+<p>简单来说，团就是 $G$ 的一个完全子图。</p>
+<p><strong>极大团</strong>： 如果一个团不被任意一个团所包含（即它不是任意一个团的真子集），则称这个团为 $G$ 的一个极大团。</p>
+<p><strong>最大团</strong>：极大团中点数最多的那个团。</p>
+<p><strong>最大独立集</strong>：一个无向图的独立集大小即为它补图（边的存在性取反）的最大团大小（其点集也相同）</p>
+<p>因为求最大团是 $NP$ 问题，但是在 $n \leqslant 100$ 搜索+剪枝可以跑的非常快 (0.01s 以内)</p>
+<p>一、先想到一个最简单的 $dfs$ </p>
+<p>最开始的点集 $S = { i | 1 \leqslant i \leqslant n }$ </p>
+<p>1、从 $S$ 中取出来一个点 $x$，把 $S$ 中所有 $x$ 能访问到的点 放入集合 $S_1$，再将这个集合 $S_1$ 作为新的 $S$。</p>
+<p>2、如果 $S$ 还有元素，重复操作 1，否则停止 $dfs$，这时候就找到了 $G$ 的一个完全子图。直到找到所有的完全子图。</p>
+<p>二、试图优化 $dfs$</p>
+<p>我们让这个 $S$ 为当前枚举到的点和它后面所有的点。</p>
+<p>这样，当某个 S 集合为空时，$dfs$ 结束，得到一个只用后面几个点构成的完全子图，并用它去更新只用后面几个点构成的最大团。退出当前 DFS，返回上层 DFS，接着找下一个完全子图，直到找完所有的完全子图。</p>
+<p>三、试图剪枝</p>
+<p>记当前取出来的点的个数为 $num$</p>
+<p>如果我们现在取出了 $S$ 中的一个元素 $x$，要将 $S$ 中 $x$ 后面与 $x$ 相连的点加入 $S_1$ 的时候，考虑：</p>
+<blockquote>
+<p>剪枝1： 如果 num + $S$ 中剩下的元素个数 $\leqslant ans$ ， 剪枝</p>
+</blockquote>
+<p>按照我们 $dfs$ 的方式，当选中编号为 $x$ 的点时，一定知道了 $[x + 1, n]$，$[x + 2, n]$， $\cdots$， $[n, n]$ 这些区间的点能构成的最大团的大小。记区间 $[x + 1, n]$ 的最大团的大小为 $mxsize[x + 1]$</p>
+<blockquote>
+<p>剪枝2：如果 num + mxsize[x] $\leqslant ans$ ，剪枝</p>
+</blockquote>
+<blockquote>
+<p>剪枝3： 如果 $dfs$ 到了最底层，并且能够更新答案，就不要在 $dfs$ 了，结束</p>
+</blockquote>
+<p>因为如果我们继续枚举 $dfs$，点的编号变大了，可用点变少（可用的点在一开始 $dfs$ 初始化的时候就确定了，随着不断的加深 $dfs$ 的层数，可用的点在不断的减少）</p>
+<p>剪枝后真点跑的飞快</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="HDU-1530-Maximum-Clique"><a href="#HDU-1530-Maximum-Clique" class="headerlink" title="HDU 1530 Maximum Clique"></a>HDU 1530 Maximum Clique</h2><p><a href="https://vjudge.net/problem/HDU-1530" target="_blank" rel="noopener">Vjudge-Link</a> </p>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1530" target="_blank" rel="noopener">HDU-Link</a></p>
+<p>模板题</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> best, G[N][N], mxsize[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;a, <span class="keyword">const</span> <span class="keyword">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sz = a.size();</span><br><span class="line">    <span class="keyword">if</span> (!sz)</span><br><span class="line">        <span class="keyword">return</span> num &gt; best ? best = num, <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; to;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sz; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (num + (sz - i) &lt;= best || num + mxsize[a[i]] &lt;= best) </span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        to.clear();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; sz; j++)</span><br><span class="line">            <span class="keyword">if</span> (G[a[i]][a[j]]) </span><br><span class="line">                to.push_back(a[j]);</span><br><span class="line">        <span class="keyword">if</span> (dfs(to, num + <span class="number">1</span>)) </span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MC</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; to;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        to.clear();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="keyword">if</span> (G[i][j]) </span><br><span class="line">                to.push_back(j);</span><br><span class="line">        dfs(to, <span class="number">1</span>);</span><br><span class="line">        mxsize[i] = best;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="HDU-3585"><a href="#HDU-3585" class="headerlink" title="HDU 3585"></a>HDU 3585</h2><p><a href="https://vjudge.net/problem/HDU-3585" target="_blank" rel="noopener">Vjudge-Link</a></p>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3585" target="_blank" rel="noopener">HDU-Link</a></p>
+<p>要求找出来 $k$ 个点，使得这 $k$ 个点中距离最远的两个点的距离最大。</p>
+<p>二分答案， 根据 $mid$ 重新建图，判断条件是当前这个图的最大团大小是否大于等于 $k$</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://www.cnblogs.com/zhj5chengfeng/p/3224092.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhj5chengfeng/p/3224092.html</a></p>
 
       
     </div>
@@ -640,8 +690,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -746,6 +805,22 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-text">方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HDU-1530-Maximum-Clique"><span class="nav-text">HDU 1530 Maximum Clique</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDU-3585"><span class="nav-text">HDU 3585</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
       
       <div id="music163player">
         <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=558261233&auto=1&height=66">
@@ -783,7 +858,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">75k</span>
+    <span title="站点总字数">77k</span>
   
 
   
@@ -792,7 +867,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:05</span>
+    <span title="站点阅读时长">2:09</span>
   
 </div>
 
