@@ -131,7 +131,7 @@
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="方法这里的图都是指无向图。 给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个完全子图。 （诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = {(u,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-25T00:34:23.125Z">
+<meta property="og:updated_time" content="2019-02-25T00:41:21.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大团[搜索剪枝]">
 <meta name="twitter:description" content="方法这里的图都是指无向图。 给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个完全子图。 （诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = {(u,">
@@ -476,7 +476,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-25 08:34:23" itemprop="dateModified" datetime="2019-02-25T08:34:23+08:00">2019-02-25</time>
+                <time title="修改时间：2019-02-25 08:41:21" itemprop="dateModified" datetime="2019-02-25T08:41:21+08:00">2019-02-25</time>
               
             
           </span>
@@ -581,11 +581,11 @@
 <p>记当前取出来的点的个数为 $num$</p>
 <p>如果我们现在取出了 $S$ 中的一个元素 $x$，要将 $S$ 中 $x$ 后面与 $x$ 相连的点加入 $S_1$ 的时候，考虑：</p>
 <blockquote>
-<p>剪枝1： 如果 num + $S$ 中剩下的元素个数 $\leqslant ans$ ， 剪枝</p>
+<p>剪枝1： 如果 $num + S$ 中剩下的元素个数 $\leqslant ans$ ， 剪枝</p>
 </blockquote>
 <p>按照我们 $dfs$ 的方式，当选中编号为 $x$ 的点时，一定知道了 $[x + 1, n]$，$[x + 2, n]$， $\cdots$， $[n, n]$ 这些区间的点能构成的最大团的大小。记区间 $[x + 1, n]$ 的最大团的大小为 $mxsize[x + 1]$</p>
 <blockquote>
-<p>剪枝2：如果 num + mxsize[x] $\leqslant ans$ ，剪枝</p>
+<p>剪枝2：如果 $num + mxsize[x] \leqslant ans$ ，剪枝</p>
 </blockquote>
 <blockquote>
 <p>剪枝3： 如果 $dfs$ 到了最底层，并且能够更新答案，就不要在 $dfs$ 了，结束</p>
