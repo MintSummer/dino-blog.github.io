@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[bzoj3739DZY-loves-math-VIII-莫比乌斯反演]]></title>
+    <url>%2F2019%2F02%2F27%2Fbzoj3739DZY-loves-math-VIII-%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%2F</url>
+    <content type="text"><![CDATA[题目bzoj3739 $$\sum_{i = 1}^n sum_{j = 1}^n \mu \left(\operatorname{lcm}(i, j)^{\operatorname{gcd}(i, j)} \right)$$ $T (T \leqslant 10^3)$ 组数据，$n \leqslant 10^7$ 分析首先，当 $\operatorname{gcd}(i, j) \neq 1$ 时，根据 $\mu$ 的定义答案为 $0$，那么上式就变成了 $$\sum_{i = 1}^n \sum_{j = 1}^n \mu (ij) [\operatorname{gcd}(i, j) = 1] \\begin{aligned}&amp;= \sum_{i = 1}^n \mu (i) \sum_{j = 1}^n \mu(j) \sum_{d | i, d|j} \mu(d) \&amp;= \sum_{d = 1}^n \mu(i) \sum_{d | i} \mu(d) \sum_{j = 1}^{\frac{i}{d}} \mu(j)\end{aligned}$$ 记 $S(i, d) = \sum_{j = 1}^{\frac{i}{d}} \mu(dj)$ ，发现 $S(i, d) = S(i - d, d) + \mu(i)$ $$= \sum_{i = 1}^n \mu(i) \sum_{d | i} \mu(d) S(i,d)$$ 因为只有当 $i$ 不含有质数的平方因子时 $\mu(i) \neq 0$，对这样的 $i$ 分解质因数，更新 $S(i,d)$ 即可（$S(i,d)$ 只用保存 $d$ 那一维就行了） 因为 $i$ 没有分解质数平方因子，预处理 $p[x]$ 为 $x$ 的最小质因子，然后沿着 $p$ 就可以分解 $i$ 了，前 $9$ 个质数的乘积就已经大于 $10^7$ 了。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081#include &lt;bits/stdc++.h&gt;using namespace std;namespace TYC&#123; const int N = 1e7; int T, cnt, tot, query[1010], ans[N], mu[N + 10], prime[N / 10 + 10], f[N], a[1010], p[N]; bool vis[N + 10]; inline int read() &#123; int x = 0, f = 0; char ch = getchar(); while (!isdigit(ch)) f |= (ch == '-'), ch = getchar(); while (isdigit(ch)) x = x * 10 + ch - '0', ch = getchar(); return f ? -x : x; &#125; inline void init() &#123; mu[1] = 1; for (int i = 2; i &lt;= N; i++) &#123; if (!vis[i]) p[i] = prime[++cnt] = i, mu[i] = -1; for (int j = 1; j &lt;= cnt &amp;&amp; i * prime[j] &lt;= N; j++) &#123; int k = i * prime[j]; vis[k] = 1; p[k] = prime[j]; if (i % prime[j] == 0) &#123; mu[k] = 0; break; &#125; else mu[k] = -mu[i]; &#125; &#125; &#125; int getans(int now, int pai, int val) &#123; if (now &gt; tot) &#123; f[pai] += val; return f[pai] * mu[pai]; &#125; return getans(now + 1, pai * a[now], val) + getans(now + 1, pai, val); &#125; void work() &#123; init(); T = read(); int mx = 0; for (int i = 1; i &lt;= T; i++) query[i] = read(), mx = max(mx, query[i]); for (int i = 1; i &lt;= mx; i++) &#123; ans[i] += ans[i - 1]; if (!mu[i]) continue; tot = 0; int x = i; while (x &gt; 1) a[++tot] = p[x], x /= p[x]; ans[i] += mu[i] * getans(1, 1, mu[i]); &#125; for (int i = 1; i &lt;= T; i++) printf("%d\n", ans[query[i]]); &#125;&#125; int main()&#123; TYC::work(); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>莫比乌斯反演</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[bzoj1109堆积木Klo[二维偏序]]]></title>
+    <url>%2F2019%2F02%2F27%2Fbzoj1109%E5%A0%86%E7%A7%AF%E6%9C%A8Klo-%E4%BA%8C%E7%BB%B4%E5%81%8F%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[题目bzoj1109 $Mary$ 在她的生日礼物中有一些积木。那些积木都是相同大小的立方体。每个积木上面都有一个数。 $Mary$ 用他的所有积木垒了一个高塔。妈妈告诉 $Mary$ 游戏的目的是建一个塔，使得最多的积木在正确的位置。一个上面写有数i的积木的正确位置是这个塔从下往上数第i个位置。 $Mary$ 决定从现有的高塔中移走一些，使得有最多的积木在正确的位置。请你告诉 $Mary$ 她应该移走哪些积木。 第一行为一个数 $n$，表示高塔的初始高度。第二行包含 $n$ 个数 $a_1$, $a_2$, $\cdots$ , $a_n$，表示从下到上每个积木上面的数。($1\leqslant n\leqslant100000$, $1\leqslant ai\leqslant1000000$)。 分析我们记 $b_i = i - a_i$ 首先有一个二维的 $dp$ 方程，记 $f_{i, j}$ 为前 $i$ 个删了 $j$ 个最多使多少个积木在正确的位置上， 转移为 $$f_{i, j} = max(f_{i - 1, j} + [b_i = j], f_{i - 1, j - 1})$$ 但是这个东西很难优化或者说我不会， GG。 然后就有一种新的 $dp$ 方程，记 $f_i$ 表示第 $i$ 个在自己位置上的最大值， 转移为 $$f_i = max(f_j) + 1$$ 其中 $j$ 满足 $j &lt; i$，$a_j &lt; a_ i$, $b_j \leqslant b_i$ （别忘了$b_j \geqslant 0$， $b_i \geqslant 0$ ）, 又因为 $$b_j \leqslant b_i \Rightarrow j - a_j \leqslant i - a_i \Rightarrow a_i - a_ j \leqslant i - j$$ 发现由 $a_j &lt; a_i$， $b_j \leqslant b_i$ 可以得到 $j &lt; i$，所以就变成了一个二维偏序问题。对 $a$ 排序，再用树状数组维护前缀最大值和单点插入即可。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include &lt;bits/stdc++.h&gt;using namespace std; namespace TYC&#123; typedef pair&lt;int, int&gt; pii; const int N = 100010; int n, ans, dp[N], val[N]; pii arr[N]; #define lowbit(x) (x) &amp; -(x) inline void update(int x, const int w) &#123; for (; x &lt;= n; x += lowbit(x)) val[x] = max(val[x], w); &#125; inline int query(int x) &#123; if (x &lt;= 0) return 0; int mx = 0; for(; x; x -= lowbit(x)) mx = max(mx, val[x]); return mx; &#125; void work() &#123; scanf("%d", &amp;n); for (int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;arr[i].second); arr[i].first = i - arr[i].second; &#125; sort(arr + 1, arr + 1 + n); for (int i = 1; i &lt;= n; i++) &#123; if (arr[i].first &lt; 0) continue; ans = max(ans, dp[i] = query(arr[i].second - 1) + 1); update(arr[i].second, dp[i]); &#125; printf("%d\n", ans); &#125;&#125; int main()&#123; TYC::work(); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+        <tag>树状数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[最大团[搜索剪枝]]]></title>
     <url>%2F2019%2F02%2F23%2F%E6%9C%80%E5%A4%A7%E5%9B%A2-%E6%90%9C%E7%B4%A2%E5%89%AA%E6%9E%9D%2F</url>
     <content type="text"><![CDATA[方法这里的图都是指无向图。 给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个完全子图。 （诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = {(u, v)|u,v \in V’, (u, v) \in E}$） 简单来说，团就是 $G$ 的一个完全子图。 极大团： 如果一个团不被任意一个团所包含（即它不是任意一个团的真子集），则称这个团为 $G$ 的一个极大团。 最大团：极大团中点数最多的那个团。 最大独立集：一个无向图的独立集大小即为它补图（边的存在性取反）的最大团大小（其点集也相同） 因为求最大团是 $NP$ 问题，但是在 $n \leqslant 100$ 搜索+剪枝可以跑的非常快 (0.01s 以内) 一、先想到一个最简单的 $dfs$ 最开始的点集 $S = { i | 1 \leqslant i \leqslant n }$ 1、从 $S$ 中取出来一个点 $x$，把 $S$ 中所有 $x$ 能访问到的点 放入集合 $S_1$，再将这个集合 $S_1$ 作为新的 $S$。 2、如果 $S$ 还有元素，重复操作 1，否则停止 $dfs$，这时候就找到了 $G$ 的一个完全子图。直到找到所有的完全子图。 二、试图优化 $dfs$ 我们让这个 $S$ 为当前枚举到的点和它后面所有的点。 这样，当某个 S 集合为空时，$dfs$ 结束，得到一个只用后面几个点构成的完全子图，并用它去更新只用后面几个点构成的最大团。退出当前 DFS，返回上层 DFS，接着找下一个完全子图，直到找完所有的完全子图。 三、试图剪枝 记当前取出来的点的个数为 $num$ 如果我们现在取出了 $S$ 中的一个元素 $x$，要将 $S$ 中 $x$ 后面与 $x$ 相连的点加入 $S_1$ 的时候，考虑： 剪枝1： 如果 $num + S$ 中剩下的元素个数 $\leqslant ans$ ， 剪枝 按照我们 $dfs$ 的方式，当选中编号为 $x$ 的点时，一定知道了 $[x + 1, n]$，$[x + 2, n]$， $\cdots$， $[n, n]$ 这些区间的点能构成的最大团的大小。记区间 $[x + 1, n]$ 的最大团的大小为 $mxsize[x + 1]$ 剪枝2：如果 $num + mxsize[x] \leqslant ans$ ，剪枝 剪枝3： 如果 $dfs$ 到了最底层，并且能够更新答案，就不要在 $dfs$ 了，结束 因为如果我们继续枚举 $dfs$，点的编号变大了，可用点变少（可用的点在一开始 $dfs$ 初始化的时候就确定了，随着不断的加深 $dfs$ 的层数，可用的点在不断的减少） 剪枝后真点跑的飞快 例题HDU 1530 Maximum CliqueVjudge-Link HDU-Link 模板题 upd 2.25 : 以前用的是vector，常数巨大，跑的巨慢，于是换成了数组 同一组数据：数组 3s，vector 45s，vector+O2 4.5s 1234567891011121314151617181920212223242526272829303132333435int best, G[N][N], mxsize[N], arr[N][N];bool dfs(const int sz, const int num)&#123; int *a = arr[num]; if (!sz) return best &lt; num ? best = num, true : false; for (int i = 1; i &lt;= sz; i++) &#123; if (num + sz - i + 1 &lt;= best || num + mxsize[a[i]] &lt;= best) return false; int tot = 0; for (int j = i + 1; j &lt;= sz; j++) if (G[a[i]][a[j]]) arr[num + 1][++tot] = a[j]; if (dfs(tot, num + 1)) return true; &#125; return false;&#125;void MC()&#123; best = 0; memset(mxsize, 0, sizeof(int[n + 1])); for (int i = n; i; i--) &#123; int tot = 0; for (int j = i + 1; j &lt;= n; j++) if (G[i][j]) arr[1][++tot] = j; dfs(tot, 1); mxsize[i] = best; &#125;&#125; HDU 3585Vjudge-Link HDU-Link 要求找出来 $k$ 个点，使得这 $k$ 个点中距离最远的两个点的距离最大。 二分答案， 根据 $mid$ 重新建图，判断条件是当前这个图的最大团大小是否大于等于 $k$ 参考资料https://www.cnblogs.com/zhj5chengfeng/p/3224092.html]]></content>
@@ -105,17 +128,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[bzoj2154 Crash的数字表格 [莫比乌斯反演]]]></title>
-    <url>%2F2018%2F12%2F16%2Fbzoj2154Crash%C2%B5%C3%84%C3%8A%C3%BD%C3%97%C3%96%C2%B1%C3%AD%C2%B8%C3%B1-%C3%8A%C3%BD%C3%91%C2%A7%2F</url>
-    <content type="text"><![CDATA[题意bzoj2154luogu1829 给定两个数 $n$，$m$（ $n，m \leqslant 1e7$ ），求$$\sum_{i=1}^n \sum_{j=1}^m lcm(i,j)$$ 分析这篇题解是很早以前写的了，然后搬到了博客上……果然，人总要为一些很傻的事情付出代价，就像当时的我知道 markdown 怎么转成 PDF 后删掉 markdown 源码的一样。emmmmm……大力图片 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364#include&lt;bits/stdc++.h&gt;using namespace std;namespace TYC&#123; typedef long long ll; const int p=20101009,N=1e7+10; const int inv2=(p+1)/2; int n,m,cnt,mu[N],prime[N]; ll sum[N]; bool vis[N]; inline void init(int maxn) &#123; mu[1]=1; for(int i=2;i&lt;=maxn;i++) &#123; if(!vis[i]) prime[++cnt]=i,mu[i]=-1; for(int j=1,k;j&lt;=cnt&amp;&amp;(k=i*prime[j])&lt;=maxn;j++) &#123; vis[k]=1; if(i%prime[j]==0) &#123;mu[k]=0;break;&#125; mu[k]=-mu[i]; &#125; &#125; for(int i=1;i&lt;=maxn;i++) sum[i]=(sum[i-1]+1LL*i*i*mu[i]%p)%p; &#125; inline ll cal(ll x) &#123; return (1+x)*x%p*inv2%p; &#125; ll F(int x,int y) &#123; ll ans=0,limit=min(x,y); for(ll l=1,r;l&lt;=limit;l=r+1) &#123; r=min(x/(x/l),y/(y/l)); ans=(ans+cal(x/l)*cal(y/l)%p*(sum[r]-sum[l-1]+p)%p)%p; &#125; return ans; &#125; void work() &#123; scanf("%d%d",&amp;n,&amp;m); ll limit=min(n,m),ans=0; init(limit); for(ll d=1,last;d&lt;=limit;d=last+1) &#123; last=min(n/(n/d),m/(m/d)); ans=(ans+(d+last)*(last-d+1)%p*inv2%p*F(n/d,m/d)%p)%p; &#125; printf("%lld\n",(ans+p)%p); &#125;&#125;int main()&#123; TYC::work(); return 0;&#125;]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>莫比乌斯反演</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]]]></title>
     <url>%2F2018%2F12%2F16%2Fbzoj4591%C2%B3%C2%AC%C3%84%C3%9C%C3%81%C2%A3%C3%97%C3%93%C3%85%C3%9A-%C2%B8%C3%84-%C3%8A%C3%BD%C3%91%C2%A7%2F</url>
     <content type="text"><![CDATA[题目bzoj4591luogu4345 $t \ (t \leqslant 1e5)$ 组询问，每次给定两个数 $n、k \ (n、k \leqslant 1e18)$，求$$\sum_{i=0}^k C_n^i \mod 2333$$ 分析emmmm……和bzoj2154那篇题解一样的命运 但是不知道为什么这个 PDF 显示的 $\LaTeX$ 这么粗 （ 好丑 ），勉强看一下 毕竟实在懒得再打了 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768#include&lt;cstdio&gt;#include&lt;cstdlib&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;namespace TYC&#123; const int p=2333,N=2350; typedef long long ll; int C[N][N],f[N][N]; inline ll read() &#123; ll x=0;int f=0;char ch=getchar(); while(!isdigit(ch)) f|=(ch=='-'),ch=getchar(); while(isdigit(ch)) x=x*10+ch-'0',ch=getchar(); return f?-x:x; &#125; inline int Mod(int x) &#123;return x&gt;=p?x-p:x;&#125; inline void init() &#123; C[0][0]=1; for(int i=1;i&lt;p;i++) &#123; C[i][0]=1; for(int j=1;j&lt;=i;j++) C[i][j]=Mod(C[i-1][j-1]+C[i-1][j]); &#125; for(int i=0;i&lt;p;i++) for(int j=0;j&lt;p;j++) f[i][j]=Mod(f[i][j-1]+C[i][j]); &#125; inline int Lucas(ll n,ll m) &#123; if(!m) return 1; if(n&lt;m) return 0; return C[n%p][m%p]*Lucas(n/p,m/p)%p; &#125; inline int F(ll n,ll k) &#123; if(!k||!k) return 1; if(n&lt;p&amp;&amp;k&lt;p) return f[n][k]; return Mod(f[n%p][p-1]*F(n/p,k/p-1)%p+Lucas(n/p,k/p)*f[n%p][k%p]%p); &#125; void work() &#123; init(); int T=read(); while(T--) &#123; ll n=read(),k=read(); printf("%d\n",F(n,k)); &#125; &#125;&#125;int main()&#123; TYC::work(); return 0;&#125;]]></content>
@@ -124,6 +136,17 @@
       </categories>
       <tags>
         <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[bzoj2154 Crash的数字表格 [莫比乌斯反演]]]></title>
+    <url>%2F2018%2F12%2F16%2Fbzoj2154Crash%C2%B5%C3%84%C3%8A%C3%BD%C3%97%C3%96%C2%B1%C3%AD%C2%B8%C3%B1-%C3%8A%C3%BD%C3%91%C2%A7%2F</url>
+    <content type="text"><![CDATA[题意bzoj2154luogu1829 给定两个数 $n$，$m$（ $n，m \leqslant 1e7$ ），求$$\sum_{i=1}^n \sum_{j=1}^m lcm(i,j)$$ 分析这篇题解是很早以前写的了，然后搬到了博客上……果然，人总要为一些很傻的事情付出代价，就像当时的我知道 markdown 怎么转成 PDF 后删掉 markdown 源码的一样。emmmmm……大力图片 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364#include&lt;bits/stdc++.h&gt;using namespace std;namespace TYC&#123; typedef long long ll; const int p=20101009,N=1e7+10; const int inv2=(p+1)/2; int n,m,cnt,mu[N],prime[N]; ll sum[N]; bool vis[N]; inline void init(int maxn) &#123; mu[1]=1; for(int i=2;i&lt;=maxn;i++) &#123; if(!vis[i]) prime[++cnt]=i,mu[i]=-1; for(int j=1,k;j&lt;=cnt&amp;&amp;(k=i*prime[j])&lt;=maxn;j++) &#123; vis[k]=1; if(i%prime[j]==0) &#123;mu[k]=0;break;&#125; mu[k]=-mu[i]; &#125; &#125; for(int i=1;i&lt;=maxn;i++) sum[i]=(sum[i-1]+1LL*i*i*mu[i]%p)%p; &#125; inline ll cal(ll x) &#123; return (1+x)*x%p*inv2%p; &#125; ll F(int x,int y) &#123; ll ans=0,limit=min(x,y); for(ll l=1,r;l&lt;=limit;l=r+1) &#123; r=min(x/(x/l),y/(y/l)); ans=(ans+cal(x/l)*cal(y/l)%p*(sum[r]-sum[l-1]+p)%p)%p; &#125; return ans; &#125; void work() &#123; scanf("%d%d",&amp;n,&amp;m); ll limit=min(n,m),ans=0; init(limit); for(ll d=1,last;d&lt;=limit;d=last+1) &#123; last=min(n/(n/d),m/(m/d)); ans=(ans+(d+last)*(last-d+1)%p*inv2%p*F(n/d,m/d)%p)%p; &#125; printf("%lld\n",(ans+p)%p); &#125;&#125;int main()&#123; TYC::work(); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>莫比乌斯反演</tag>
       </tags>
   </entry>
   <entry>
