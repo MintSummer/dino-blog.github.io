@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[狄利克雷卷积-数学]]></title>
     <url>%2F2019%2F02%2F27%2F%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%8D%B7%E7%A7%AF%2F</url>
-    <content type="text"><![CDATA[没啥写的，随便写点 记几个常用函数$$\begin{aligned}\epsilon(n) &amp;=\begin{cases} 1 \ \ (n = 1) \ 0 \ \ otherwise \\end{cases} \ 1(n) &amp;= 1 \ id_k(n) &amp;= n^k \ \mu(n) &amp;=\begin{cases}1 \ \ (n = 1) \(-1)^k \ \ (n 为 k 个不同的质数的乘积) \0 \ \ (n 含有质数平方因子)\end{cases}\end{aligned}$$ 狄利克雷卷积$$(f * g)(n) = \sum_{d | n} f \left( d \right) g \left( \frac{n}{d} \right)$$ 性质 $f ∗ g = g ∗ f$ $(f ∗ g) ∗ h = f ∗ (g ∗ h)$ $f ∗ (g + h) = f ∗ g + f ∗ h$ $f ∗ \epsilon = \epsilon ∗ f = f$ 若 $f (1) \neq 0$,则存在唯一函数 $f^{−1}$ 使得 $f ∗ f^{−1} = ε$ 若 $f$, $g$ 为积性函数,则 $f ∗ g$ 也为积性函数 若 $h$ 为完全积性函数, $(f ∗ g) · h = (f · h) ∗ (g · h)$ 常用狄利克雷卷积$\mu$ 是 $1$ 的逆，所以 $$\mu * 1 = \epsilon$$即$$\sum_{d|n} \mu(d) = \epsilon(n) = [n = 1]$$ 由 $\varphi$ 的性质$$\varphi 1 = id \$$即$$\sum_{d|n} \varphi(d) = n$$也可得到$$\mu id = \varphi \$$ $$\sum_{d=1}^n \varphi(d) \lfloor \frac{n}{d} \rfloor = \sum_{i=1}^n i = \frac{(n + 1) \times n}{2}$$]]></content>
+    <content type="text"><![CDATA[没啥写的，随便写点 记几个常用函数$$\begin{aligned}\epsilon(n) &amp;=\begin{cases} 1 \ \ (n = 1) \ 0 \ \ otherwise \\end{cases} \ 1(n) &amp;= 1 \ id_k(n) &amp;= n^k \ \mu(n) &amp;=\begin{cases}1 \ \ (n = 1) \(-1)^k \ \ (n 为 k 个不同的质数的乘积) \0 \ \ (n 含有质数平方因子)\end{cases}\end{aligned}$$ 狄利克雷卷积$$(f * g)(n) = \sum_{d | n} f \left( d \right) g \left( \frac{n}{d} \right)$$ 性质 $f ∗ g = g ∗ f$ $(f ∗ g) ∗ h = f ∗ (g ∗ h)$ $f ∗ (g + h) = f ∗ g + f ∗ h$ $f ∗ \epsilon = \epsilon ∗ f = f$ 若 $f (1) \neq 0$,则存在唯一函数 $f^{−1}$ 使得 $f ∗ f^{−1} = ε$ 若 $f$, $g$ 为积性函数,则 $f ∗ g$ 也为积性函数 若 $h$ 为完全积性函数, $(f ∗ g) · h = (f · h) ∗ (g · h)$ 常用狄利克雷卷积$\mu$ 是 $1$ 的逆，所以 $$\mu * 1 = \epsilon$$ 即 $$\sum_{d|n} \mu(d) = \epsilon(n) = [n = 1]$$ 由 $\varphi$ 的性质 $$\varphi * 1 = id \$$ 即 $$\sum_{d|n} \varphi(d) = n$$ 也可得到 $$\mu * id = \varphi \$$ $$\sum_{d=1}^n \varphi(d) \lfloor \frac{n}{d} \rfloor = \sum_{i=1}^n i = \frac{(n + 1) \times n}{2}$$]]></content>
       <categories>
         <category>算法讲解</category>
       </categories>
@@ -12,9 +12,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[杜教筛]]></title>
+    <title><![CDATA[杜教筛-筛法]]></title>
     <url>%2F2019%2F02%2F27%2F%E6%9D%9C%E6%95%99%E7%AD%9B%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求$$S(n) = \sum_{i = 1} ^ n f(i)$$ 方法主要思想是构造一个函数 $g(x)$ 考虑 $(f g)(n)$ 的前缀和可以变换为：$$\begin{aligned}&amp; \ \ \ \ \sum_{i = 1}^n (f g)(i) \&amp;= \sum_{i = 1}^n \sum_{d | i} g(i) f(\frac{i}{d}) \&amp;= \sum_{d = 1}^n \sum_{i = 1}^{\lfloor \frac{n}{d} \rfloor} g(d)f(i) \&amp;= \sum_{d = 1}^n g(d) S(\lfloor \frac{n}{d} \rfloor) \&amp;= g(1)S(n) + \sum_{d = 2}^n g(d)S(\lfloor \frac{n}{d} \rfloor)\\end{aligned}$$ 即 $$g(1)S(n) = \sum_{i = 1}^n (f * g)(i) - \sum_{d = 2}^n g(d)S(\lfloor \frac{n}{d} \rfloor)$$ $$S(n) = \frac{\sum_{i = 1}^n (f * g)(i) - \sum_{d = 2}^n g(d)S(\lfloor \frac{n}{d} \rfloor)}{g(1)}$$ 只要找到一个 $g$ 使得 $f ∗ g$ 和 $g$ 的前缀和都可以快速计算，就可以使用上式计算 $S(n)$ 分析由于作者太菜了，所以不会证明时间复杂度到底怎么算的…… 如果使用上式，对所有的 $S(\lfloor \frac{n}{d} \rfloor)$ 记忆化，时间复杂度是 $O(n^{\frac{3}{4}})$ 的 实际上,我们可以用线性筛预处理一部分,用之前的式子解决其它部分来优化时间复杂度,设预处理了前 $B$ 个，当时间复杂度最优时 $B = \sqrt{\frac{n}{B}}$， 解得 $B = n^{\frac{2}{3}}$ ，时间复杂度是 $O(n ^ {\frac{2}{3}})$ 实现时，可以将 $S(x)$ 的值存入数组的第 $\lfloor\frac{n}{x}\rfloor$ 位以避免使用 $map$ 等数据结构，可以证明这样不会冲突。]]></content>
+      <categories>
+        <category>算法讲解</category>
+      </categories>
+      <tags>
+        <tag>杜教筛</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[公告]]></title>
