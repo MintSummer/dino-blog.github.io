@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[狄利克雷卷积-数学]]></title>
+    <url>%2F2019%2F02%2F27%2F%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%8D%B7%E7%A7%AF%2F</url>
+    <content type="text"><![CDATA[没啥写的，随便写点 记几个常用函数$$\begin{aligned}\epsilon(n) &amp;=\begin{cases} 1 \ \ (n = 1) \ 0 \ \ otherwise \\end{cases} \ 1(n) &amp;= 1 \ id_k(n) &amp;= n^k \ \mu(n) &amp;=\begin{cases}1 \ \ (n = 1) \(-1)^k \ \ (n 为 k 个不同的质数的乘积) \0 \ \ (n 含有质数平方因子)\end{cases}\end{aligned}$$ 狄利克雷卷积$$(f * g)(n) = \sum_{d | n} f \left( d \right) g \left( \frac{n}{d} \right)$$ 性质 $f ∗ g = g ∗ f$ $(f ∗ g) ∗ h = f ∗ (g ∗ h)$ $f ∗ (g + h) = f ∗ g + f ∗ h$ $f ∗ \epsilon = \epsilon ∗ f = f$ 若 $f (1) \neq 0$,则存在唯一函数 $f^{−1}$ 使得 $f ∗ f^{−1} = ε$ 若 $f$, $g$ 为积性函数,则 $f ∗ g$ 也为积性函数 若 $h$ 为完全积性函数, $(f ∗ g) · h = (f · h) ∗ (g · h)$ 常用狄利克雷卷积$\mu$ 是 $1$ 的逆，所以 $$\mu * 1 = \epsilon$$即$$\sum_{d|n} \mu(d) = \epsilon(n) = [n = 1]$$ 由 $\varphi$ 的性质$$\varphi 1 = id \$$即$$\sum_{d|n} \varphi(d) = n$$也可得到$$\mu id = \varphi \$$ $$\sum_{d=1}^n \varphi(d) \lfloor \frac{n}{d} \rfloor = \sum_{i=1}^n i = \frac{(n + 1) \times n}{2}$$]]></content>
+      <categories>
+        <category>算法讲解</category>
+      </categories>
+      <tags>
+        <tag>狄利克雷卷积</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[杜教筛]]></title>
+    <url>%2F2019%2F02%2F27%2F%E6%9D%9C%E6%95%99%E7%AD%9B%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[公告]]></title>
     <url>%2F2019%2F02%2F27%2F%E5%85%AC%E5%91%8A%2F</url>
     <content type="text"><![CDATA[悲惨的事情 博客的 $$ \begin{aligned} \end{aligned}$$ 以及某些数学公式 （比如 \degree ） 好像突然不支持了 原因不明…… 鉴于博主咕咕咕的本质打算不理了，貌似打算就这么等着了 企图用机房大佬萌混过关]]></content>
