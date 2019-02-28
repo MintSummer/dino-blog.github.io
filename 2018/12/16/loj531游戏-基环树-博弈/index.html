@@ -603,7 +603,7 @@
 </blockquote>
 </blockquote>
 <p>考虑 $f[i]=x$ 意味着什么：当 $a=x$，$a$ 就会转移成 $i$ ，那么说明博弈的决策边应当为 $f[i]-&gt;i$ （变成基环外向树了），每次从点 $1$ 向沿决策边转移。</p>
-<p>遇到基环外向树，果断先找环，我们从外向树向环上的点递推，就可以得到 $win[i] \in \{0,1\}$  表示如果从点 $i$ 向外走，最后是否能够必胜。就可以得到所有状态的情况了。</p>
+<p>遇到基环外向树，果断先找环，我们从外向树向环上的点递推，就可以得到 $win[i] \in {0,1}$  表示如果从点 $i$ 向外走，最后是否能够必胜。就可以得到所有状态的情况了。</p>
 <p>我们记出度 $deg[ \ \ ]$，不断找没有出度的点，从 $i$ 走到 $f[i]$，并更新 $win[f[i]]$ 和$deg[f[i]]$ 即可，遍历过的点记 $deg[i]=-1$ 表示 $i$ 存在过出度减为  $0$ 的情况（即点 $i$ 不在环上，因为环上的点必然会有出度）。</p>
 <p>当点 $1$ 不在环上时，它只存在唯一 一种决策，修改环上 $u$、$v$ 的连边对它没有影响，直接输出 $win[1]$ 即可。</p>
 <p>否则点 $1$ 必然在环上，那么我们爬边 $i-&gt;f[i]$ 就可以遍历整个环，记下来。但是因为它与我们实际决策树的边相反，应当改成 $f[i]-&gt;i$ ，即要交换点 $id[i]-1$ $(f[x]==i 的点 x)$ 和 $id[i]+1 (f[i])$ ，再重新标号后就会有 $id[f[i]]+1==id[i]$ ，即边为 $f[i]-&gt;i$ （标号表现了它到点 $1$ 的距离）。</p>
@@ -682,8 +682,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/16/bzoj2154Crash的数字表格-莫比乌斯反演/" rel="prev" title="bzoj2154 Crash的数字表格 [莫比乌斯反演]">
-                bzoj2154 Crash的数字表格 [莫比乌斯反演] <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/16/BZOJ4591超能粒子炮·改-数学/" rel="prev" title="BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]">
+                BZOJ4591 [SHOI2015]超能粒子炮·改 [数学] <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -760,7 +760,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

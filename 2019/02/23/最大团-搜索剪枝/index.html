@@ -121,18 +121,18 @@
 
 
 
-  <meta name="description" content="方法这里的图都是指无向图。 给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个完全子图。 （诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = \{(u,">
+  <meta name="description" content="方法这里的图都是指无向图。 给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个完全子图。 （诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = {(u,">
 <meta name="keywords" content="最大团">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最大团 [搜索剪枝]">
 <meta property="og:url" content="http://yoursite.com/2019/02/23/最大团-搜索剪枝/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="方法这里的图都是指无向图。 给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个完全子图。 （诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = \{(u,">
+<meta property="og:description" content="方法这里的图都是指无向图。 给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个完全子图。 （诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = {(u,">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-02-27T10:36:27.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大团 [搜索剪枝]">
-<meta name="twitter:description" content="方法这里的图都是指无向图。 给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个完全子图。 （诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = \{(u,">
+<meta name="twitter:description" content="方法这里的图都是指无向图。 给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个完全子图。 （诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = {(u,">
 
 
 
@@ -572,14 +572,14 @@
       
         <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>这里的图都是指无向图。</p>
 <p>给定一个图 $G = (V, E)$，如果有一个点集 $V’ \subseteq V$， 满足对于任意点对 $u, v \in V’$ 都有边 $(u, v) \in E$, 则成 $V’$ 对于 $G$ 的诱导子图 $G’$ 是 $G$ 的一个<strong>完全子图</strong>。</p>
-<p>（诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = \{(u, v)|u,v \in V’, (u, v) \in E\}$）</p>
+<p>（诱导子图： 子图 $G’ = (V’, E’)$ 满足 $V’ \subseteq V$，$E’ = {(u, v)|u,v \in V’, (u, v) \in E}$）</p>
 <p>简单来说，团就是 $G$ 的一个完全子图。</p>
 <p><strong>极大团</strong>： 如果一个团不被任意一个团所包含（即它不是任意一个团的真子集），则称这个团为 $G$ 的一个极大团。</p>
 <p><strong>最大团</strong>：极大团中点数最多的那个团。</p>
 <p><strong>最大独立集</strong>：一个无向图的独立集大小即为它补图（边的存在性取反）的最大团大小（其点集也相同）</p>
 <p>因为求最大团是 $NP$ 问题，但是在 $n \leqslant 100$ 搜索+剪枝可以跑的非常快 (0.01s 以内)</p>
 <p>一、先想到一个最简单的 $dfs$ </p>
-<p>最开始的点集 $S = \{ i | 1 \leqslant i \leqslant n \}$ </p>
+<p>最开始的点集 $S = { i | 1 \leqslant i \leqslant n }$ </p>
 <p>1、从 $S$ 中取出来一个点 $x$，把 $S$ 中所有 $x$ 能访问到的点 放入集合 $S_1$，再将这个集合 $S_1$ 作为新的 $S$。</p>
 <p>2、如果 $S$ 还有元素，重复操作 1，否则停止 $dfs$，这时候就找到了 $G$ 的一个完全子图。直到找到所有的完全子图。</p>
 <p>二、试图优化 $dfs$</p>
@@ -594,6 +594,8 @@
 <p>按照我们 $dfs$ 的方式，当选中编号为 $x$ 的点时，一定知道了 $[x + 1, n]$，$[x + 2, n]$， $\cdots$， $[n, n]$ 这些区间的点能构成的最大团的大小。记区间 $[x + 1, n]$ 的最大团的大小为 $mxsize[x + 1]$</p>
 <blockquote>
 <p>剪枝2：如果 $num + mxsize[x] \leqslant ans$ ，剪枝</p>
+</blockquote>
+<blockquote>
 <p>剪枝3： 如果 $dfs$ 到了最底层，并且能够更新答案，就不要在 $dfs$ 了，结束</p>
 </blockquote>
 <p>因为如果我们继续枚举 $dfs$，点的编号变大了，可用点变少（可用的点在一开始 $dfs$ 初始化的时候就确定了，随着不断的加深 $dfs$ 的层数，可用的点在不断的减少）</p>
@@ -732,7 +734,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
