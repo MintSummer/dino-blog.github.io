@@ -504,6 +504,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/05/LinkCutTree-数据结构/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/05/LinkCutTree-数据结构/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -643,8 +653,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/16/bzoj2154Crash的数字表格-莫比乌斯反演/" rel="next" title="bzoj2154 Crash的数字表格 [莫比乌斯反演]">
-                <i class="fa fa-chevron-left"></i> bzoj2154 Crash的数字表格 [莫比乌斯反演]
+              <a href="/2018/12/16/BZOJ4591超能粒子炮·改-数学/" rel="next" title="BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]">
+                <i class="fa fa-chevron-left"></i> BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]
               </a>
             
           </div>
@@ -676,6 +686,10 @@
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
 
   
 
@@ -727,7 +741,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1034,6 +1048,31 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '3V7rkjma2Tx2bWGMpny0bDP-gzGzoHsz',
+        appKey: 'KFSD9sk3XiwzBD4pqrJsdkBos',
+        placeholder: '想说什么就写下来吧O(∩_∩)O',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
 
 
 

@@ -435,7 +435,7 @@
         
           
         
-        嗯..! 目前共计 19 篇日志。 继续努力。
+        嗯..! 目前共计 18 篇日志。 继续努力。
       </span>
       
 
@@ -505,41 +505,6 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated" datetime="2019-02-27T17:37:29+08:00" content="2019-02-27">
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/27/公告/" itemprop="url">
-              
-                <span itemprop="name">公告</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-27T17:03:03+08:00" content="2019-02-27">
           02-27
         </time>
       </div>
@@ -776,7 +741,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1063,6 +1028,31 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '3V7rkjma2Tx2bWGMpny0bDP-gzGzoHsz',
+        appKey: 'KFSD9sk3XiwzBD4pqrJsdkBos',
+        placeholder: '想说什么就写下来吧O(∩_∩)O',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
 
 
 

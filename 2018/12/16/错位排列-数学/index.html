@@ -501,6 +501,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/16/错位排列-数学/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/16/错位排列-数学/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -526,7 +536,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.4k</span>
+                <span title="本文字数">4.5k</span>
               
 
               
@@ -568,21 +578,19 @@
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>给定 $n$ 元集合 $X$，它的每一个元素都有一个特定的位置，而现在要求求出没有一个元素在它指定的位置上的排列的数目。（发现就是上面的第二支舞）  </p>
 <p>特别的，请注意，每一个元素都只有一个限定不能放的位置。</p>
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>我们这里假定第 $i$ 个元素不能放在第 $i$ 个位置上（因为不一样的我们可以通过交换达成，对应顺序没有影响）  </p>
-<p>用 $D_n$ 表示 $\{1,2,3,…n\}$ 的错位排列的数目。那么，对于 $n=1$ ，不存在可行解； $n=2$ 时，唯一的错位排列是 2 1； $n=3$ 时有两个排列 2 3 1 和 3 1 2。因此，我们有 $D_1=0$， $D_2=1$， $D_3=2$。</p>
+<p>用 $D_n$ 表示 ${1,2,3,…n}$ 的错位排列的数目。那么，对于 $n=1$ ，不存在可行解； $n=2$ 时，唯一的错位排列是 2 1； $n=3$ 时有两个排列 2 3 1 和 3 1 2。因此，我们有 $D_1=0$， $D_2=1$， $D_3=2$。</p>
 <h2 id="递推式"><a href="#递推式" class="headerlink" title="递推式"></a>递推式</h2><p>考虑将第 $n$ 个元素放到第 $k$ 个位置 $(k \neq n)$，有 $n-1$ 种放法，然后分类讨论  </p>
 <p>1、第 $k$ 个元素放到了第 $n$ 个位置上<br>发现这样的话第 $n$ 个和第 $k$ 个就相当于不存在了，不影响其他元素的放置，此时，我们将其余的元素错位排列的方案数量有 $D_{n-2}$ 种</p>
 <p>1、第 $k$ 个元素没有放到第 $n$ 个位置上<br>这样相当于是加了一个限定：第 $k$ 个元素不能放在第 $n$ 个位置上。因为 $k$ 个位置已经被用过了，相当于不存在，那么可以说去掉了 $k$ 不放 $k$ 位的限制。这样我们可以交换第 $k$ 个和第 $n$ 个位置，就变成去掉了一个元素 $n$ 和位置 $k$ 的情况，即变成 $n-1$ 个元素的错位排列 $D_{n-1}$</p>
-<p>我们有了一个很简单的递推式</p>
-<script type="math/tex; mode=display">D_n = (n-1) \times (D_{n-2}+D_{n-1})</script><h2 id="通项公式"><a href="#通项公式" class="headerlink" title="通项公式"></a>通项公式</h2><script type="math/tex; mode=display">D_n = n! \left( 1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} \cdots + (-1)^n \frac{1}{n!} \right)</script><p>证明这个……详见《组合数学》P108</p>
+<p>我们有了一个很简单的递推式<br>$$ D_n = (n-1) \times (D_{n-2}+D_{n-1}) $$ </p>
+<h2 id="通项公式"><a href="#通项公式" class="headerlink" title="通项公式"></a>通项公式</h2><p>$$ D_n = n! \left( 1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} \cdots + (-1)^n \frac{1}{n!} \right)$$ </p>
+<p>证明这个……详见《组合数学》P108</p>
 <p>简单推一下，主要思想 <strong>容斥原理</strong></p>
 <p>首先，不考虑限制，总排列数为 $n!$ 。<br>减掉不合法的：至少有一个元素放到它的指定位置的有 $C_n^1$ 种，限定了这个个的放法后，其余的 $n-1$ 个元素可以随意排列，共有 $C_n^1 \times (n-1)!$ 种。<br>但这样有算重的，还要加上两个元素都放在它的指定位置上的方案数 $C_n^2 \times (n-2)!$ 种，再减去三个元素的……就得到了</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-D_n &= n! -  C_n^1 (n-1)! + C_n^2 (n-2)! \cdots (-1)^n C_n^n (n-n)! \\
-&= n! - \frac{n!}{1!(n-1)!} \times (n-1)! + \cdots +  (-1)^n\frac{n!}{n!(n-n)!} \times (n-n)! \\ 
-&= n! \left( 1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} \cdots + (-1)^n \frac{1}{n!} \right) \\
-\end{aligned}</script><p>当然也可以</p>
-<script type="math/tex; mode=display">D_n = \sum_{i=0}^n (-1)^n C_n^i (n-i)!</script><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>1、$Planet6174$ <a href="https://www.luogu.org/blog/P6174/post-cuo-pai" target="_blank" rel="noopener">小学生都能看懂的错排问题解析</a><br>2、《组合数学》第六章 容斥原理及应用-错位排序</p>
+<p>$$<br>\begin{aligned}<br>D_n &amp;= n! -  C_n^1 (n-1)! + C_n^2 (n-2)! \cdots (-1)^n C_n^n (n-n)! \<br>&amp;= n! - \frac{n!}{1!(n-1)!} \times (n-1)! + \cdots +  (-1)^n\frac{n!}{n!(n-n)!} \times (n-n)! \<br>&amp;= n! \left( 1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} \cdots + (-1)^n \frac{1}{n!} \right) \<br>\end{aligned}<br>$$</p>
+<p>当然也可以</p>
+<p>$$ D_n = \sum_{i=0}^n (-1)^n C_n^i (n-i)! $$ </p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>1、$Planet6174$ <a href="https://www.luogu.org/blog/P6174/post-cuo-pai" target="_blank" rel="noopener">小学生都能看懂的错排问题解析</a><br>2、《组合数学》第六章 容斥原理及应用-错位排序</p>
 <p><del>完结撒花</del></p>
 <p>你以为这就完了？不不不，上面那些并不是导致我写这篇博客的根本原因，源自一道题</p>
 <h1 id="限制了一些元素放置位置的错位排列"><a href="#限制了一些元素放置位置的错位排列" class="headerlink" title="限制了一些元素放置位置的错位排列"></a>限制了一些元素放置位置的错位排列</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p><a href="https://codeforces.com/problemset/problem/340/E" target="_blank" rel="noopener">Codeforces 340E</a></p>
@@ -591,21 +599,13 @@ D_n &= n! -  C_n^1 (n-1)! + C_n^2 (n-2)! \cdots (-1)^n C_n^n (n-n)! \\
 <h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>一个非负整数表示合法的方案数，模 $1e9+7$ 。</p>
 <h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>  </span><br><span class="line"><span class="number">-1</span> <span class="number">-1</span> <span class="number">2</span> <span class="number">1</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
 <h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
-<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><script type="math/tex; mode=display">
-\begin{aligned}
-&10\% \ \ \ 1 \leqslant n \leqslant 10 \\
-&50\% \ \ \ 1 \leqslant n \leqslant 2000 \\
-&100\% \ \ \ 1 \leqslant n \leqslant 2000000 \\
-\end{aligned}</script><h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><p>真是，第一眼看到这个题目就想到了错排，但当时这是一个甚至没有列入学习计划的东西<del>却认出来了</del>，然后当场去学，发现错排好简单……再然后，被告知这个题还有放球的限制……</p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$$<br>\begin{aligned}<br>&amp;10\% \ \ \ 1 \leqslant n \leqslant 10 \<br>&amp;50\% \ \ \ 1 \leqslant n \leqslant 2000 \<br>&amp;100\% \ \ \ 1 \leqslant n \leqslant 2000000 \<br>\end{aligned}<br>$$</p>
+<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><p>真是，第一眼看到这个题目就想到了错排，但当时这是一个甚至没有列入学习计划的东西<del>却认出来了</del>，然后当场去学，发现错排好简单……再然后，被告知这个题还有放球的限制……</p>
 <p>突破口就是将球分成两部分：一个是没有限制可以随便放的，一个是有限制球 $i$ 不能放在盒子 $i$ 的 。其中已经放好了的球就不管了。</p>
 <p>然后就有了一个 $O(n^2)$ 的 $dp$ ，记 $f[i][j]$ 为剩余 $i$ 个没限制的球和 $j$ 个有限制的球的方案数，然后你大力转移一下，就有了一个 $50$ 分的好成绩，<del>再次完结撒花</del>。</p>
 <p>没有转移方程 -&gt; 因为在推 $dp$ 式敲代码的时候看了一眼原本的错位排列后突然想到了 $O(n)$ 的……</p>
-<p><strong>容斥！</strong> 不要管没有限制的球，我们记 $tot$ 为没有放好的球的个数，记 $a$ 为有限制的球的个数 。不理限制时，总共有 $tot \ !$ 种，然后再像上面一样，枚举至少有一个球 $i$ 放到盒子 $i$ ，其余随便排的 $C_a^i \times (tot-i)!$ 种减掉，再加上至少两个的……<br>最后</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-ans &= tot! - C_a^1 (tot-1)! + C_a^2 (tot-2)! + \cdots + (-1)^a C_a^a (tot-a)! \\
-&= \sum_{i=0}^a (-1)^i C_a^i(tot-i)!
-\end{aligned}</script><p>其实很简单（推式子用了一分钟，前面的一堆<del>算上和机房的那群人聊天</del>用了2h+—），好菜好菜……</p>
+<p><strong>容斥！</strong> 不要管没有限制的球，我们记 $tot$ 为没有放好的球的个数，记 $a$ 为有限制的球的个数 。不理限制时，总共有 $tot \ !$ 种，然后再像上面一样，枚举至少有一个球 $i$ 放到盒子 $i$ ，其余随便排的 $C_a^i \times (tot-i)!$ 种减掉，再加上至少两个的……<br>最后<br>$$<br>\begin{aligned}<br>ans &amp;= tot! - C_a^1 (tot-1)! + C_a^2 (tot-2)! + \cdots + (-1)^a C_a^a (tot-a)! \<br>&amp;= \sum_{i=0}^a (-1)^i C_a^i(tot-i)!<br>\end{aligned}<br>$$</p>
+<p>其实很简单（推式子用了一分钟，前面的一堆<del>算上和机房的那群人聊天</del>用了2h+—），好菜好菜……</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _ 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2e6</span>+<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> p=<span class="number">1000000007</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> arr[N],vis[N];</span><br><span class="line">    ll fac[N],inv[N];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">0</span>;<span class="keyword">char</span> ch=getchar();</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch)) f|=(ch==<span class="string">'-'</span>),ch=getchar();</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch)) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">        <span class="keyword">return</span> f?-x:x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> ll <span class="title">qpow</span><span class="params">(ll x,ll tim)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ll ans=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(;tim;tim&gt;&gt;=<span class="number">1</span>,x=x*x%p)</span><br><span class="line">            <span class="keyword">if</span>(tim&amp;<span class="number">1</span>) ans=ans*x%p;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        fac[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) fac[i]=fac[i<span class="number">-1</span>]*i%p;</span><br><span class="line">        inv[n]=qpow(fac[n],p<span class="number">-2</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i;i--) inv[i<span class="number">-1</span>]=inv[i]*i%p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> ll <span class="title">C</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> n,<span class="keyword">const</span> <span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;m) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> fac[n]*inv[m]%p*inv[n-m]%p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n=read();</span><br><span class="line">        <span class="keyword">int</span> tot=<span class="number">0</span>,x=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) </span><br><span class="line">        &#123;</span><br><span class="line">            arr[i]=read();</span><br><span class="line">            <span class="keyword">if</span>(~arr[i]) vis[arr[i]]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> tot++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="keyword">if</span>(!vis[i]) x+=(arr[i]==<span class="number">-1</span>);</span><br><span class="line">        init(tot);</span><br><span class="line">        ll ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=x;i++)</span><br><span class="line">            ans=(ans+(((i&amp;<span class="number">1</span>)?<span class="number">-1</span>:<span class="number">1</span>)*C(x,i)+p)%p*fac[tot-i]%p)%p;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> (<span class="number">0</span>^_^<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -674,6 +674,10 @@ ans &= tot! - C_a^1 (tot-1)! + C_a^2 (tot-2)! + \cdots + (-1)^a C_a^a (tot-a)! \
           
 
   
+    <div class="comments" id="comments">
+    </div>
+
+  
 
 
 
@@ -723,7 +727,7 @@ ans &= tot! - C_a^1 (tot-1)! + C_a^2 (tot-2)! + \cdots + (-1)^a C_a^a (tot-a)! \
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1030,6 +1034,31 @@ ans &= tot! - C_a^1 (tot-1)! + C_a^2 (tot-2)! + \cdots + (-1)^a C_a^a (tot-a)! \
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '3V7rkjma2Tx2bWGMpny0bDP-gzGzoHsz',
+        appKey: 'KFSD9sk3XiwzBD4pqrJsdkBos',
+        placeholder: '想说什么就写下来吧O(∩_∩)O',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
 
 
 

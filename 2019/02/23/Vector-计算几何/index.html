@@ -501,6 +501,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/23/Vector-计算几何/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/02/23/Vector-计算几何/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -526,7 +536,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">9.2k</span>
+                <span title="本文字数">9.3k</span>
               
 
               
@@ -584,15 +594,14 @@
 <p>特殊情况，计算向量的单位法线，即左转 $90$ 度 以后把长度归一化<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用前请确保 A 不是零向量</span></span><br><span class="line"><span class="function">Vector <span class="title">Normal</span><span class="params">(<span class="keyword">const</span> Vector &amp;A)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> L = Length(A);</span><br><span class="line">    <span class="keyword">return</span> Vector(-A.y / L, A.x / L);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="点和直线"><a href="#点和直线" class="headerlink" title="点和直线"></a>点和直线</h1><h2 id="直线的参数表示"><a href="#直线的参数表示" class="headerlink" title="直线的参数表示"></a>直线的参数表示</h2><p>直线可以用直线上一点 $P_0$ 和方向向量 $v$ 表示($v$ 的大小没有用)，直线上所有点 $P$ 满足 $P = P_0 + tv$ ，其中 $t$ 称为参数。例如，如果已知直线上的两个不同点 $A$ 和 $B$，则方向向量为 $B - A$，所以参数方程为 $A + (B - A)t$ </p>
 <p>参数方程最方便的地方在于直线、射线和线段的方程形式是一样的，区别仅仅在于参数的范围，故很多对于直线适用的公式对于射线、线段依旧适用。</p>
-<h2 id="直线交点"><a href="#直线交点" class="headerlink" title="直线交点"></a>直线交点</h2><p>设直线分别为 $P + tv$ 和 $Q + tw$ ，设向量 $u = P - Q$，交点在直线一的参数为 $t_1$，交点在直线二的参数为 $t_2$，，解方程得</p>
-<script type="math/tex; mode=display">
-t_1 = \frac{cross(w, u)}{cross(v, w)} \ \ \ \ t_2 = \frac{cross(v, u)}{cross(v, w)}</script><p>调用前请确保两条直线有唯一交点，当且仅当 $cross(v, w) \neq 0$</p>
+<h2 id="直线交点"><a href="#直线交点" class="headerlink" title="直线交点"></a>直线交点</h2><p>设直线分别为 $P + tv$ 和 $Q + tw$ ，设向量 $u = P - Q$，交点在直线一的参数为 $t_1$，交点在直线二的参数为 $t_2$，，解方程得<br>$$<br>t_1 = \frac{cross(w, u)}{cross(v, w)} \ \ \ \ t_2 = \frac{cross(v, u)}{cross(v, w)}<br>$$</p>
+<p>调用前请确保两条直线有唯一交点，当且仅当 $cross(v, w) \neq 0$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> Point <span class="title">GetLineIntersection</span><span class="params">(<span class="keyword">const</span> Point &amp;P, <span class="keyword">const</span> Vector &amp;v, <span class="keyword">const</span> Point &amp;Q, <span class="keyword">const</span> Vector &amp;w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Vector u = P - Q;</span><br><span class="line">    <span class="keyword">double</span> t = Cross(w, u) / Cross(v, w);</span><br><span class="line">    <span class="keyword">return</span> P + v * t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="点到直线距离"><a href="#点到直线距离" class="headerlink" title="点到直线距离"></a>点到直线距离</h2><p>利用叉积，平行四边形面积除以底即可</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">DistanceToLink</span><span class="params">(<span class="keyword">const</span> Point &amp;P, <span class="keyword">const</span> Point &amp;A, <span class="keyword">const</span> Point &amp;B)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">fabs</span>(Cross(B - A, P - A)) / Length(B - A);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>当然如果有了解析式（直线方程的一般式 $Ax + By + C = 0$ )，也可以利用高中数学的公式计算</p>
-<script type="math/tex; mode=display">
-d = \frac{\mid Ax_p + By_p + C \mid}{\sqrt{A^2 + B^2}}</script><h2 id="点到线段距离"><a href="#点到线段距离" class="headerlink" title="点到线段距离"></a>点到线段距离</h2><p>设投影点为 $Q$，分类讨论</p>
+<p>$$<br>d = \frac{\mid Ax_p + By_p + C \mid}{\sqrt{A^2 + B^2}}<br>$$</p>
+<h2 id="点到线段距离"><a href="#点到线段距离" class="headerlink" title="点到线段距离"></a>点到线段距离</h2><p>设投影点为 $Q$，分类讨论</p>
 <ul>
 <li>$Q$ 在线段 $AB$ 上，则所求距离就是 $P$ 点与直线 $AB$ 的距离</li>
 <li>$Q$ 在射线 $BA$ 上，则所求距离为 $dis(P, A)$</li>
@@ -690,6 +699,10 @@ d = \frac{\mid Ax_p + By_p + C \mid}{\sqrt{A^2 + B^2}}</script><h2 id="点到线
           
 
   
+    <div class="comments" id="comments">
+    </div>
+
+  
 
 
 
@@ -739,7 +752,7 @@ d = \frac{\mid Ax_p + By_p + C \mid}{\sqrt{A^2 + B^2}}</script><h2 id="点到线
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1046,6 +1059,31 @@ d = \frac{\mid Ax_p + By_p + C \mid}{\sqrt{A^2 + B^2}}</script><h2 id="点到线
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '3V7rkjma2Tx2bWGMpny0bDP-gzGzoHsz',
+        appKey: 'KFSD9sk3XiwzBD4pqrJsdkBos',
+        placeholder: '想说什么就写下来吧O(∩_∩)O',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
 
 
 
