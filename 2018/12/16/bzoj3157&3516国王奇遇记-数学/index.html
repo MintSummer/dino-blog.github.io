@@ -121,18 +121,18 @@
 
 
 
-  <meta name="description" content="题意$$\sum_{i=0}^n i ^ m \times m ^ i$$ 其中 $1 \leqslant n \leqslant 10^9$ ， $1 \leqslant m \leqslant N$  ，其中的 $N$ 是因为这个题有三个版本$$\begin{align}&amp;amp;bzoj3157 - N \leqslant 200 \&amp;amp;bzoj3516 - N \leqslant 1">
+  <meta name="description" content="题意 \sum_{i=0}^n i ^ m \times m ^ i其中 $1 \leqslant n \leqslant 10^9$ ， $1 \leqslant m \leqslant N$  ，其中的 $N$ 是因为这个题有三个版本    \begin{align*} &amp;bzoj3157 - N \leqslant 200 \\  &amp;bzoj3516 - N \leqslant 1000 \">
 <meta name="keywords" content="数学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bzoj3157&#x2F;3516 国王奇遇记 [数学]">
 <meta property="og:url" content="http://yoursite.com/2018/12/16/bzoj3157&3516国王奇遇记-数学/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="题意$$\sum_{i=0}^n i ^ m \times m ^ i$$ 其中 $1 \leqslant n \leqslant 10^9$ ， $1 \leqslant m \leqslant N$  ，其中的 $N$ 是因为这个题有三个版本$$\begin{align}&amp;amp;bzoj3157 - N \leqslant 200 \&amp;amp;bzoj3516 - N \leqslant 1">
+<meta property="og:description" content="题意 \sum_{i=0}^n i ^ m \times m ^ i其中 $1 \leqslant n \leqslant 10^9$ ， $1 \leqslant m \leqslant N$  ，其中的 $N$ 是因为这个题有三个版本    \begin{align*} &amp;bzoj3157 - N \leqslant 200 \\  &amp;bzoj3516 - N \leqslant 1000 \">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-02-27T08:53:18.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj3157&#x2F;3516 国王奇遇记 [数学]">
-<meta name="twitter:description" content="题意$$\sum_{i=0}^n i ^ m \times m ^ i$$ 其中 $1 \leqslant n \leqslant 10^9$ ， $1 \leqslant m \leqslant N$  ，其中的 $N$ 是因为这个题有三个版本$$\begin{align}&amp;amp;bzoj3157 - N \leqslant 200 \&amp;amp;bzoj3516 - N \leqslant 1">
+<meta name="twitter:description" content="题意 \sum_{i=0}^n i ^ m \times m ^ i其中 $1 \leqslant n \leqslant 10^9$ ， $1 \leqslant m \leqslant N$  ，其中的 $N$ 是因为这个题有三个版本    \begin{align*} &amp;bzoj3157 - N \leqslant 200 \\  &amp;bzoj3516 - N \leqslant 1000 \">
 
 
 
@@ -536,7 +536,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.6k</span>
+                <span title="本文字数">2.5k</span>
               
 
               
@@ -570,11 +570,30 @@
       
 
       
-        <h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p>$$<br>\sum_{i=0}^n i ^ m \times m ^ i<br>$$</p>
-<p>其中 $1 \leqslant n \leqslant 10^9$ ， $1 \leqslant m \leqslant N$  ，其中的 $N$ 是因为这个题有三个版本<br>$$<br>\begin{align<em>}<br>&amp;bzoj3157 - N \leqslant 200 \<br>&amp;bzoj3516 - N \leqslant 1000 \<br>&amp;b bzoj4126 - N \leqslant 500000 \<br>\end{align</em>}<br>$$<br>但我只会 $O(m^2)$ 的，所以先不提第三题（挖坑待填）</p>
+        <h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><script type="math/tex; mode=display">
+\sum_{i=0}^n i ^ m \times m ^ i</script><p>其中 $1 \leqslant n \leqslant 10^9$ ， $1 \leqslant m \leqslant N$  ，其中的 $N$ 是因为这个题有三个版本  </p>
+<script type="math/tex; mode=display">
+\begin{align*}
+&bzoj3157 - N \leqslant 200 \\ 
+&bzoj3516 - N \leqslant 1000 \\ 
+&b bzoj4126 - N \leqslant 500000 \\
+\end{align*}</script><p>但我只会 $O(m^2)$ 的，所以先不提第三题（挖坑待填）</p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>发现  $n$ 很大，不能直接枚举 $i$ ，考虑从 $m$ 入手 递推</p>
-<p>记 $f_{n,a} = \sum_{i=0}^n i^a m^i$ （这里 $i$ 从 $0$ 开始方便后面转换，$i =0$ 对答案没有影响），题目要求 $f_{n,m}$  ，考虑转移<br>$$<br>\begin{align<em>}<br>f_{n,a} &amp;= \sum_{i=0}^n i^a m^i \<br>&amp;= m \sum_{i=0}^n i^a m^{i-1} \ \ \ //提出一个m \<br>&amp;= m \sum_{i=0}^{n-1} (i+1)^a m^i \ \ \ //用 \ i  \ 表示 \ i+1  \<br>\end{align</em>}<br>$$<br>当 $i = -1$ 时 $(i+1)^a =0$ 大力不理</p>
-<p>再根据二项式定理 $(a+b)^n = \sum_{i=0}^n C_n^i a^i b^{n-i}$<br>$$<br>\begin{align<em>}<br>&amp;= m \sum_{i=0}^{n-1} m^i \ \sum_{k=0}^a C_a^k i^k \<br>&amp;= m \sum_{k=0}^a C_a^k \ \sum_{i=0}^{n-1} i^k m^i  //交换枚举顺序 \<br>&amp;= m \sum_{k=0}^a C_a^k \ f_{n-1,k} \<br>&amp;= m \sum_{k=0}^a C_a^k \ (f_{n,k} - n^k m^n)<br>\end{align</em>}<br>$$<br>得到了$O(m^2)$ 的转移方程，完结撒花</p>
+<p>记 $f_{n,a} = \sum_{i=0}^n i^a m^i$ （这里 $i$ 从 $0$ 开始方便后面转换，$i =0$ 对答案没有影响），题目要求 $f_{n,m}$  ，考虑转移</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+f_{n,a} &= \sum_{i=0}^n i^a m^i \\
+&= m \sum_{i=0}^n i^a m^{i-1} \ \ \ //提出一个m \\
+&= m \sum_{i=0}^{n-1} (i+1)^a m^i \ \ \ //用 \ i  \ 表示 \ i+1  \\ 
+\end{align*}</script><p>当 $i = -1$ 时 $(i+1)^a =0$ 大力不理</p>
+<p>再根据二项式定理 $(a+b)^n = \sum_{i=0}^n C_n^i a^i b^{n-i}$  </p>
+<script type="math/tex; mode=display">
+\begin{align*}
+&= m \sum_{i=0}^{n-1} m^i \ \sum_{k=0}^a C_a^k i^k \\
+&= m \sum_{k=0}^a C_a^k \ \sum_{i=0}^{n-1} i^k m^i  //交换枚举顺序 \\
+&= m \sum_{k=0}^a C_a^k \ f_{n-1,k} \\  
+&= m \sum_{k=0}^a C_a^k \ (f_{n,k} - n^k m^n)  
+\end{align*}</script><p>得到了$O(m^2)$ 的转移方程，完结撒花</p>
 <p>好像 $O(m)$  的要多项式插值和快速傅里叶变换求解，<del>不会，不想填坑了</del> </p>
 <p>等等！完结不了，注意：</p>
 <p>1、上式的 $k$ 有取到 $a$ 的情况，解个关于 $f_{n,i}$ 方程就好了</p>
@@ -1029,8 +1048,8 @@
         notify: false,
         appId: '3V7rkjma2Tx2bWGMpny0bDP-gzGzoHsz',
         appKey: 'KFSD9sk3XiwzBD4pqrJsdkBos',
-        placeholder: '想说什么就写下来吧O(∩_∩)O',
-        avatar:'mm',
+        placeholder: '想说什么就写下来吧O(∩_∩)O （注：评论的时候，留下在Gravatar注册时所使用的邮箱就可以作为评论列表头像了哦）',
+        avatar:'identicon',
         meta:guest,
         pageSize:'10' || 10,
         visitor: false

@@ -121,18 +121,18 @@
 
 
 
-  <meta name="description" content="没啥写的，随便写点 记几个常用函数$$\begin{aligned}\epsilon(n) &amp;amp;=\begin{cases}    1 \ \ (n = 1) \    0 \ \ otherwise \\end{cases} \ 1(n) &amp;amp;= 1 \ id_k(n) &amp;amp;= n^k \ \mu(n) &amp;amp;=\begin{cases}1 \ \  (n = 1) \(-">
+  <meta name="description" content="没啥写的，随便写点 记几个常用函数 \begin{aligned} \epsilon(n) &amp;=  \begin{cases}      1 \ \ (n = 1) \\     0 \ \ otherwise \\ \end{cases} \\  1(n) &amp;= 1 \\  id_k(n) &amp;= n^k \\  \mu(n) &amp;=  \begin{cases}  1 \ \  (n = 1) \">
 <meta name="keywords" content="狄利克雷卷积">
 <meta property="og:type" content="article">
 <meta property="og:title" content="狄利克雷卷积 [数学]">
 <meta property="og:url" content="http://yoursite.com/2019/02/27/狄利克雷卷积/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="没啥写的，随便写点 记几个常用函数$$\begin{aligned}\epsilon(n) &amp;amp;=\begin{cases}    1 \ \ (n = 1) \    0 \ \ otherwise \\end{cases} \ 1(n) &amp;amp;= 1 \ id_k(n) &amp;amp;= n^k \ \mu(n) &amp;amp;=\begin{cases}1 \ \  (n = 1) \(-">
+<meta property="og:description" content="没啥写的，随便写点 记几个常用函数 \begin{aligned} \epsilon(n) &amp;=  \begin{cases}      1 \ \ (n = 1) \\     0 \ \ otherwise \\ \end{cases} \\  1(n) &amp;= 1 \\  id_k(n) &amp;= n^k \\  \mu(n) &amp;=  \begin{cases}  1 \ \  (n = 1) \">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-02-27T10:35:46.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="狄利克雷卷积 [数学]">
-<meta name="twitter:description" content="没啥写的，随便写点 记几个常用函数$$\begin{aligned}\epsilon(n) &amp;amp;=\begin{cases}    1 \ \ (n = 1) \    0 \ \ otherwise \\end{cases} \ 1(n) &amp;amp;= 1 \ id_k(n) &amp;amp;= n^k \ \mu(n) &amp;amp;=\begin{cases}1 \ \  (n = 1) \(-">
+<meta name="twitter:description" content="没啥写的，随便写点 记几个常用函数 \begin{aligned} \epsilon(n) &amp;=  \begin{cases}      1 \ \ (n = 1) \\     0 \ \ otherwise \\ \end{cases} \\  1(n) &amp;= 1 \\  id_k(n) &amp;= n^k \\  \mu(n) &amp;=  \begin{cases}  1 \ \  (n = 1) \">
 
 
 
@@ -524,7 +524,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">909</span>
+                <span title="本文字数">889</span>
               
 
               
@@ -538,7 +538,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -559,12 +559,26 @@
 
       
         <p>没啥写的，随便写点</p>
-<h1 id="记几个常用函数"><a href="#记几个常用函数" class="headerlink" title="记几个常用函数"></a>记几个常用函数</h1><p>$$<br>\begin{aligned}<br>\epsilon(n) &amp;=<br>\begin{cases}<br>    1 \ \ (n = 1) \<br>    0 \ \ otherwise \<br>\end{cases} \</p>
-<p>1(n) &amp;= 1 \</p>
-<p>id_k(n) &amp;= n^k \</p>
-<p>\mu(n) &amp;=<br>\begin{cases}<br>1 \ \  (n = 1) \<br>(-1)^k \ \ (n 为 k 个不同的质数的乘积) \<br>0  \ \ (n 含有质数平方因子)<br>\end{cases}<br>\end{aligned}<br>$$</p>
-<h1 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积"></a>狄利克雷卷积</h1><p>$$<br>(f * g)(n) = \sum_{d | n} f \left( d \right) g \left( \frac{n}{d} \right)<br>$$</p>
-<p>性质</p>
+<h1 id="记几个常用函数"><a href="#记几个常用函数" class="headerlink" title="记几个常用函数"></a>记几个常用函数</h1><script type="math/tex; mode=display">
+\begin{aligned}
+\epsilon(n) &= 
+\begin{cases} 
+    1 \ \ (n = 1) \\
+    0 \ \ otherwise \\
+\end{cases} \\
+
+1(n) &= 1 \\
+
+id_k(n) &= n^k \\
+
+\mu(n) &= 
+\begin{cases} 
+1 \ \  (n = 1) \\ 
+(-1)^k \ \ (n 为 k 个不同的质数的乘积) \\
+0  \ \ (n 含有质数平方因子)
+\end{cases}
+\end{aligned}</script><h1 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积"></a>狄利克雷卷积</h1><script type="math/tex; mode=display">
+(f * g)(n) = \sum_{d | n} f \left( d \right) g \left( \frac{n}{d} \right)</script><p>性质</p>
 <ul>
 <li>$f ∗ g = g ∗ f$</li>
 <li>$(f ∗ g) ∗ h = f ∗ (g ∗ h)$</li>
@@ -575,17 +589,17 @@
 <li>若 $h$ 为完全积性函数, $(f ∗ g) · h = (f · h) ∗ (g · h)$</li>
 </ul>
 <h1 id="常用狄利克雷卷积"><a href="#常用狄利克雷卷积" class="headerlink" title="常用狄利克雷卷积"></a>常用狄利克雷卷积</h1><p>$\mu$ 是 $1$ 的逆，所以</p>
-<p>$$<br>\mu * 1 = \epsilon<br>$$</p>
-<p>即</p>
-<p>$$<br>\sum_{d|n} \mu(d) = \epsilon(n) = [n = 1]<br>$$</p>
-<p>由 $\varphi$ 的性质</p>
-<p>$$<br>\varphi * 1 = id \<br>$$</p>
-<p>即</p>
-<p>$$<br>\sum_{d|n} \varphi(d) = n<br>$$</p>
-<p>也可得到 </p>
-<p>$$<br>\mu * id = \varphi \<br>$$</p>
-<p>$$<br>\sum_{d=1}^n \varphi(d) \lfloor \frac{n}{d} \rfloor = \sum_{i=1}^n i = \frac{(n + 1) \times n}{2}<br>$$</p>
-
+<script type="math/tex; mode=display">
+\mu * 1 = \epsilon</script><p>即</p>
+<script type="math/tex; mode=display">
+\sum_{d|n} \mu(d) = \epsilon(n) = [n = 1]</script><p>由 $\varphi$ 的性质</p>
+<script type="math/tex; mode=display">
+\varphi * 1 = id \\</script><p>即</p>
+<script type="math/tex; mode=display">
+\sum_{d|n} \varphi(d) = n</script><p>也可得到 </p>
+<script type="math/tex; mode=display">
+\mu * id = \varphi \\</script><script type="math/tex; mode=display">
+\sum_{d=1}^n \varphi(d) \lfloor \frac{n}{d} \rfloor = \sum_{i=1}^n i = \frac{(n + 1) \times n}{2}</script>
       
     </div>
 
@@ -1034,8 +1048,8 @@
         notify: false,
         appId: '3V7rkjma2Tx2bWGMpny0bDP-gzGzoHsz',
         appKey: 'KFSD9sk3XiwzBD4pqrJsdkBos',
-        placeholder: '想说什么就写下来吧O(∩_∩)O',
-        avatar:'mm',
+        placeholder: '想说什么就写下来吧O(∩_∩)O （注：评论的时候，留下在Gravatar注册时所使用的邮箱就可以作为评论列表头像了哦）',
+        avatar:'identicon',
         meta:guest,
         pageSize:'10' || 10,
         visitor: false
