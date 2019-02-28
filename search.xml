@@ -155,17 +155,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[bzoj2154 Crash的数字表格 [莫比乌斯反演]]]></title>
-    <url>%2F2018%2F12%2F16%2Fbzoj2154Crash%E7%9A%84%E6%95%B0%E5%AD%97%E8%A1%A8%E6%A0%BC-%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%2F</url>
-    <content type="text"><![CDATA[题意bzoj2154luogu1829 给定两个数 $n$，$m$（ $n，m \leqslant 1e7$ ），求$$\sum_{i=1}^n \sum_{j=1}^m lcm(i,j)$$ 分析这篇题解是很早以前写的了，然后搬到了博客上……果然，人总要为一些很傻的事情付出代价，就像当时的我知道 markdown 怎么转成 PDF 后删掉 markdown 源码的一样。emmmmm……大力图片 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364#include&lt;bits/stdc++.h&gt;using namespace std;namespace TYC&#123; typedef long long ll; const int p=20101009,N=1e7+10; const int inv2=(p+1)/2; int n,m,cnt,mu[N],prime[N]; ll sum[N]; bool vis[N]; inline void init(int maxn) &#123; mu[1]=1; for(int i=2;i&lt;=maxn;i++) &#123; if(!vis[i]) prime[++cnt]=i,mu[i]=-1; for(int j=1,k;j&lt;=cnt&amp;&amp;(k=i*prime[j])&lt;=maxn;j++) &#123; vis[k]=1; if(i%prime[j]==0) &#123;mu[k]=0;break;&#125; mu[k]=-mu[i]; &#125; &#125; for(int i=1;i&lt;=maxn;i++) sum[i]=(sum[i-1]+1LL*i*i*mu[i]%p)%p; &#125; inline ll cal(ll x) &#123; return (1+x)*x%p*inv2%p; &#125; ll F(int x,int y) &#123; ll ans=0,limit=min(x,y); for(ll l=1,r;l&lt;=limit;l=r+1) &#123; r=min(x/(x/l),y/(y/l)); ans=(ans+cal(x/l)*cal(y/l)%p*(sum[r]-sum[l-1]+p)%p)%p; &#125; return ans; &#125; void work() &#123; scanf("%d%d",&amp;n,&amp;m); ll limit=min(n,m),ans=0; init(limit); for(ll d=1,last;d&lt;=limit;d=last+1) &#123; last=min(n/(n/d),m/(m/d)); ans=(ans+(d+last)*(last-d+1)%p*inv2%p*F(n/d,m/d)%p)%p; &#125; printf("%lld\n",(ans+p)%p); &#125;&#125;int main()&#123; TYC::work(); return 0;&#125;]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>莫比乌斯反演</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]]]></title>
     <url>%2F2018%2F12%2F16%2FBZOJ4591%E8%B6%85%E8%83%BD%E7%B2%92%E5%AD%90%E7%82%AE%C2%B7%E6%94%B9-%E6%95%B0%E5%AD%A6%2F</url>
     <content type="text"><![CDATA[题目bzoj4591luogu4345 $t \ (t \leqslant 1e5)$ 组询问，每次给定两个数 $n、k \ (n、k \leqslant 1e18)$，求$$\sum_{i=0}^k C_n^i \mod 2333$$ 分析emmmm……和bzoj2154那篇题解一样的命运 但是不知道为什么这个 PDF 显示的 $\LaTeX$ 这么粗 （ 好丑 ），勉强看一下 毕竟实在懒得再打了 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768#include&lt;cstdio&gt;#include&lt;cstdlib&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;namespace TYC&#123; const int p=2333,N=2350; typedef long long ll; int C[N][N],f[N][N]; inline ll read() &#123; ll x=0;int f=0;char ch=getchar(); while(!isdigit(ch)) f|=(ch=='-'),ch=getchar(); while(isdigit(ch)) x=x*10+ch-'0',ch=getchar(); return f?-x:x; &#125; inline int Mod(int x) &#123;return x&gt;=p?x-p:x;&#125; inline void init() &#123; C[0][0]=1; for(int i=1;i&lt;p;i++) &#123; C[i][0]=1; for(int j=1;j&lt;=i;j++) C[i][j]=Mod(C[i-1][j-1]+C[i-1][j]); &#125; for(int i=0;i&lt;p;i++) for(int j=0;j&lt;p;j++) f[i][j]=Mod(f[i][j-1]+C[i][j]); &#125; inline int Lucas(ll n,ll m) &#123; if(!m) return 1; if(n&lt;m) return 0; return C[n%p][m%p]*Lucas(n/p,m/p)%p; &#125; inline int F(ll n,ll k) &#123; if(!k||!k) return 1; if(n&lt;p&amp;&amp;k&lt;p) return f[n][k]; return Mod(f[n%p][p-1]*F(n/p,k/p-1)%p+Lucas(n/p,k/p)*f[n%p][k%p]%p); &#125; void work() &#123; init(); int T=read(); while(T--) &#123; ll n=read(),k=read(); printf("%d\n",F(n,k)); &#125; &#125;&#125;int main()&#123; TYC::work(); return 0;&#125;]]></content>
@@ -174,6 +163,17 @@
       </categories>
       <tags>
         <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[bzoj2154 Crash的数字表格 [莫比乌斯反演]]]></title>
+    <url>%2F2018%2F12%2F16%2Fbzoj2154Crash%E7%9A%84%E6%95%B0%E5%AD%97%E8%A1%A8%E6%A0%BC-%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%2F</url>
+    <content type="text"><![CDATA[题意bzoj2154luogu1829 给定两个数 $n$，$m$（ $n，m \leqslant 1e7$ ），求$$\sum_{i=1}^n \sum_{j=1}^m lcm(i,j)$$ 分析这篇题解是很早以前写的了，然后搬到了博客上……果然，人总要为一些很傻的事情付出代价，就像当时的我知道 markdown 怎么转成 PDF 后删掉 markdown 源码的一样。emmmmm……大力图片 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364#include&lt;bits/stdc++.h&gt;using namespace std;namespace TYC&#123; typedef long long ll; const int p=20101009,N=1e7+10; const int inv2=(p+1)/2; int n,m,cnt,mu[N],prime[N]; ll sum[N]; bool vis[N]; inline void init(int maxn) &#123; mu[1]=1; for(int i=2;i&lt;=maxn;i++) &#123; if(!vis[i]) prime[++cnt]=i,mu[i]=-1; for(int j=1,k;j&lt;=cnt&amp;&amp;(k=i*prime[j])&lt;=maxn;j++) &#123; vis[k]=1; if(i%prime[j]==0) &#123;mu[k]=0;break;&#125; mu[k]=-mu[i]; &#125; &#125; for(int i=1;i&lt;=maxn;i++) sum[i]=(sum[i-1]+1LL*i*i*mu[i]%p)%p; &#125; inline ll cal(ll x) &#123; return (1+x)*x%p*inv2%p; &#125; ll F(int x,int y) &#123; ll ans=0,limit=min(x,y); for(ll l=1,r;l&lt;=limit;l=r+1) &#123; r=min(x/(x/l),y/(y/l)); ans=(ans+cal(x/l)*cal(y/l)%p*(sum[r]-sum[l-1]+p)%p)%p; &#125; return ans; &#125; void work() &#123; scanf("%d%d",&amp;n,&amp;m); ll limit=min(n,m),ans=0; init(limit); for(ll d=1,last;d&lt;=limit;d=last+1) &#123; last=min(n/(n/d),m/(m/d)); ans=(ans+(d+last)*(last-d+1)%p*inv2%p*F(n/d,m/d)%p)%p; &#125; printf("%lld\n",(ans+p)%p); &#125;&#125;int main()&#123; TYC::work(); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>莫比乌斯反演</tag>
       </tags>
   </entry>
   <entry>
