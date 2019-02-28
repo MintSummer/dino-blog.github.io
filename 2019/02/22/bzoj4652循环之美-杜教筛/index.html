@@ -529,7 +529,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.8k</span>
+                <span title="本文字数">3.7k</span>
               
 
               
@@ -581,10 +581,13 @@
 <blockquote>
 <p>裴蜀定理(推论): $a$, $b$ 互质的充要条件是存在整数$x$, $y$ 使 $ax+by=1$.</p>
 </blockquote>
-<p>所以答案为<br>$$<br>\sum_{x=1}^n \sum_{y=1}^m \epsilon(\gcd(x, y)) \epsilon(\gcd(y, k))<br>$$</p>
-<p>然后就是愉悦的推式子环节<br><img src="https://i.loli.net/2019/02/23/5c70f9ed647e4.png" alt=""></p>
+<p>所以答案为</p>
+<script type="math/tex; mode=display">
+\sum_{x=1}^n \sum_{y=1}^m \epsilon(\gcd(x, y)) \epsilon(\gcd(y, k))</script><p>然后就是愉悦的推式子环节<br><img src="https://i.loli.net/2019/02/23/5c70f9ed647e4.png" alt=""></p>
 <p>（图片中有一个 $m$ 不小心打成了 $n$）</p>
-<p>记 $h(x) = [(x,k)=1]$, $S_h$表示 $h$ 的前缀和, 记 $f(x) = [(d,k)=1] \mu(d)$<br>$$<br>= \sum_{d=1}^n f(d) \lfloor\frac{n}{d}\rfloor S(\lfloor\frac{m}{d}\rfloor)\<br>$$<br>后面两个数论分块后就要求 $f$ 的前缀和,因为 $f = \mu \cdot h$, 要杜教筛还要找一个函数 $g$, 按照套路可得 $g=h$  </p>
+<p>记 $h(x) = [(x,k)=1]$, $S_h$表示 $h$ 的前缀和, 记 $f(x) = [(d,k)=1] \mu(d)$</p>
+<script type="math/tex; mode=display">
+= \sum_{d=1}^n f(d) \lfloor\frac{n}{d}\rfloor S(\lfloor\frac{m}{d}\rfloor)\\</script><p>后面两个数论分块后就要求 $f$ 的前缀和,因为 $f = \mu \cdot h$, 要杜教筛还要找一个函数 $g$, 按照套路可得 $g=h$  </p>
 <p><img src="https://i.loli.net/2019/02/23/5c70fa13ec050.png" alt=""></p>
 <p>因为 $h(1)=1$, 故 $\sum_{i=1}^n(f * h)(n) = [n \geqslant 1]$</p>
 <p>对于 $S_h$ , 有 $S_h(n) = \lfloor\frac{n}{k}\rfloor \varphi(k) + h(n \% k) = \lfloor\frac{n}{k}\rfloor h(k) + h(n \% k)$</p>
