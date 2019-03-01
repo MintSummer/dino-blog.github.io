@@ -194,7 +194,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -204,7 +204,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -413,20 +413,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/16/loj531游戏-基环树-博弈/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TYC">
       <meta itemprop="description" content="少女省OIer">
       <meta itemprop="image" content="https://i.loli.net/2019/02/24/5c71722c07e67.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Little Dino">
     </span>
 
@@ -495,7 +495,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
 
                 
                 
@@ -603,7 +603,7 @@
 </blockquote>
 </blockquote>
 <p>考虑 $f[i]=x$ 意味着什么：当 $a=x$，$a$ 就会转移成 $i$ ，那么说明博弈的决策边应当为 $f[i]-&gt;i$ （变成基环外向树了），每次从点 $1$ 向沿决策边转移。</p>
-<p>遇到基环外向树，果断先找环，我们从外向树向环上的点递推，就可以得到 $win[i] \in {0,1}$  表示如果从点 $i$ 向外走，最后是否能够必胜。就可以得到所有状态的情况了。</p>
+<p>遇到基环外向树，果断先找环，我们从外向树向环上的点递推，就可以得到 $win[i] \in \{0,1\}$  表示如果从点 $i$ 向外走，最后是否能够必胜。就可以得到所有状态的情况了。</p>
 <p>我们记出度 $deg[ \ \ ]$，不断找没有出度的点，从 $i$ 走到 $f[i]$，并更新 $win[f[i]]$ 和$deg[f[i]]$ 即可，遍历过的点记 $deg[i]=-1$ 表示 $i$ 存在过出度减为  $0$ 的情况（即点 $i$ 不在环上，因为环上的点必然会有出度）。</p>
 <p>当点 $1$ 不在环上时，它只存在唯一 一种决策，修改环上 $u$、$v$ 的连边对它没有影响，直接输出 $win[1]$ 即可。</p>
 <p>否则点 $1$ 必然在环上，那么我们爬边 $i-&gt;f[i]$ 就可以遍历整个环，记下来。但是因为它与我们实际决策树的边相反，应当改成 $f[i]-&gt;i$ ，即要交换点 $id[i]-1$ $(f[x]==i 的点 x)$ 和 $id[i]+1 (f[i])$ ，再重新标号后就会有 $id[f[i]]+1==id[i]$ ，即边为 $f[i]-&gt;i$ （标号表现了它到点 $1$ 的距离）。</p>
@@ -615,7 +615,7 @@
 <p>首先先把 $u$、$v$ 变成它在环上的标号 $id$ ，考虑：将 $f[u]=v$ 后原本边 $f[u]-&gt;u$ 就变成了 $v-&gt;u$ ，原本的边被断掉了。</p>
 <p>分类讨论</p>
 <p>一 、$u&gt;v$ 如图</p>
-<p><img src="https://i.loli.net/2018/10/04/5bb5730d86ccf.png" alt=""></p>
+<p><img src="https://i.loli.net/2018/10/04/5bb5730d86ccf.png" alt></p>
 <p>从 $1$  到 $v$ 存在有一个必胜点 $t$，则一定会走到这个点，直接输出  $t \&amp; 1$ 即为走到 $t$ 获胜的人。</p>
 <p>不存在必胜点时，再判断：</p>
 <p>​    如果链 $v+1$ 到 $f[u] \ (u-1)$ 上存在有一个必胜点 $t$ 且与点 $v$ 的奇偶性相同，则走到  $v$ 的人一定会选择走这        条链走到点 $t$ 取胜；如果没有它可以一直走到 $f[u]$ 逼的对手无路可走，即点 $f[u]$ 的奇偶性与 $v$ 不同（即 $u$ 与 $v$ 的奇偶性相同），他也会走这条路 。最终结果都会使走到 $v$ 的人取胜。</p>
@@ -624,10 +624,10 @@
 <p>​    如果从 $u+1$ 到 $num$ 都没有必胜点，然后就相当于整个环上都没有必胜点了，平局；存在时，原本走到 $t$ 的人（$t\&amp;1$） 还要因为走了边 $v-&gt;u$ 改变奇偶性，即 <code>(u &amp; 1) ^ (v &amp; 1) ^ (tmp &amp; 1) ^ 1</code>。</p>
 <p>二 、$u&lt;v$  </p>
 <p>首先，当 $u \neq 1$ 时，如图</p>
-<p><img src="https://i.loli.net/2018/10/04/5bb57a9bccf1c.png" alt=""></p>
+<p><img src="https://i.loli.net/2018/10/04/5bb57a9bccf1c.png" alt></p>
 <p>​    就只能从点 $1$ 走到 $f[u]$ 直接看这条路上有没有必胜点，没有就看谁走到了尽头点 $f[u]$ </p>
 <p>当 $u = 1$ 时，相当于断开了 $fa[1]-&gt;1$ 的边，连上了 $v-&gt;1$</p>
-<p><img src="https://i.loli.net/2018/10/04/5bb57c2474fc7.png" alt=""></p>
+<p><img src="https://i.loli.net/2018/10/04/5bb57c2474fc7.png" alt></p>
 <p>​    那么，如果 $1-&gt;v$ 上有必胜点，就直接到必胜点了，否则考虑：如果 $v-&gt;f[u]$ 上有必胜点，况且走到 $v$ 的人刚好走到这个必胜点，或者走到 $v$ 的人刚好走到 $f[u]（num）$ 使对方无路可走，那么他就就会选择走 $v-&gt;f[u]$ 的边取胜。</p>
 <p>​    否则，他就只能走新边 $v-&gt;1$ ，但是 $1-&gt;v$ 上又没有必胜点，就变成了平局。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>终于可以看代码了……</p>
@@ -682,8 +682,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/16/BZOJ4591超能粒子炮·改-数学/" rel="prev" title="BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]">
-                BZOJ4591 [SHOI2015]超能粒子炮·改 [数学] <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/16/bzoj2154Crash的数字表格-莫比乌斯反演/" rel="prev" title="bzoj2154 Crash的数字表格 [莫比乌斯反演]">
+                bzoj2154 Crash的数字表格 [莫比乌斯反演] <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -745,7 +745,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="https://i.loli.net/2019/02/24/5c71722c07e67.png" alt="TYC">
             

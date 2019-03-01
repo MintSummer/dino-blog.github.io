@@ -193,7 +193,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -203,7 +203,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -412,20 +412,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/05/LinkCutTree-数据结构/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TYC">
       <meta itemprop="description" content="少女省OIer">
       <meta itemprop="image" content="https://i.loli.net/2019/02/24/5c71722c07e67.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Little Dino">
     </span>
 
@@ -494,7 +494,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法讲解/" itemprop="url" rel="index"><span itemprop="name">算法讲解</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法讲解/" itemprop="url" rel="index"><span itemprop="name">算法讲解</span></a></span>
 
                 
                 
@@ -579,7 +579,7 @@
 <p>所以，在 $findroot$ 后，应当将最后的 $x$ splay 到根。</p>
 <p>别忘了修改一下 $cut(x,y)$ 的部分，要先判完 $findroot(x)==findroot(y)$ 再 $split(x,y)$ ，否则树形会被修改。</p>
 <p>模板的代码是修改过的了，魔法森林的就不改了（以作对比）</p>
-<p>顺便献上发现原因 <a href="http://uoj.ac/problem/274" target="_blank" rel="noopener">uoj274 [清华集训2016]温暖会指引我们前行</a><br>修改前<br><img src="https://i.loli.net/2019/01/08/5c3453783dd67.png" alt=""><br>修改后<br><img src="https://i.loli.net/2019/01/08/5c3453866e251.png" alt=""><br>（不要在意第 $20$ 个点的时间……）</p>
+<p>顺便献上发现原因 <a href="http://uoj.ac/problem/274" target="_blank" rel="noopener">uoj274 [清华集训2016]温暖会指引我们前行</a><br>修改前<br><img src="https://i.loli.net/2019/01/08/5c3453783dd67.png" alt><br>修改后<br><img src="https://i.loli.net/2019/01/08/5c3453866e251.png" alt><br>（不要在意第 $20$ 个点的时间……）</p>
 <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>最近一直在补之前欠了好久的锅，像后缀自动机啊什么的，总算轮到 LCT 了，感觉也挺对不起的，学了这么久的 OI 了现在才学会这个……  </p>
 <p>但毕竟这个学习笔记主要还是给自己复习这个算法（老是忘）的时候看的，也就不讲的那么清楚了<del>反正写这篇博客的时候我还是会的</del></p>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>LCT实际是实链剖分，就是只有一个其中儿子的边的实边，其他的都是虚边，但是因为虚实可以动态变化，所以要用 splay 维护。</p>
@@ -653,8 +653,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/16/bzoj2154Crash的数字表格-莫比乌斯反演/" rel="next" title="bzoj2154 Crash的数字表格 [莫比乌斯反演]">
-                <i class="fa fa-chevron-left"></i> bzoj2154 Crash的数字表格 [莫比乌斯反演]
+              <a href="/2018/12/16/BZOJ4591超能粒子炮·改-数学/" rel="next" title="BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]">
+                <i class="fa fa-chevron-left"></i> BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]
               </a>
             
           </div>
@@ -726,7 +726,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="https://i.loli.net/2019/02/24/5c71722c07e67.png" alt="TYC">
             

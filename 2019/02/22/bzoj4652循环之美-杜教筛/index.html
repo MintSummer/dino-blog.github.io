@@ -190,7 +190,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -200,7 +200,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -409,20 +409,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/22/bzoj4652循环之美-杜教筛/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TYC">
       <meta itemprop="description" content="少女省OIer">
       <meta itemprop="image" content="https://i.loli.net/2019/02/24/5c71722c07e67.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Little Dino">
     </span>
 
@@ -491,7 +491,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
 
                 
                 
@@ -588,12 +588,24 @@
 <blockquote>
 <p>裴蜀定理(推论): $a$, $b$ 互质的充要条件是存在整数$x$, $y$ 使 $ax+by=1$.</p>
 </blockquote>
-<p>所以答案为<br>$$<br>\sum_{x=1}^n \sum_{y=1}^m \epsilon(\gcd(x, y)) \epsilon(\gcd(y, k))<br>$$</p>
-<p>然后就是愉悦的推式子环节  </p>
-<p>$$<br>\begin{aligned}<br>&amp;= \sum_{x=1}^n \sum_{y=1}^m \sum_{d|x,d|y} \mu(d) [(y,k)=1] \<br>&amp;= \sum_{d=1}^n \mu(d) \sum_{x=1}^{\lfloor\frac{n}{d}\rfloor} \sum_{y=1}^{\lfloor\frac{m}{d}\rfloor} [(yd,k)=1] \<br>&amp;= \sum_{d=1}^n [(d,k)=1] \mu(d) \lfloor\frac{n}{d}\rfloor \sum_{y=1}^{\lfloor\frac{m}{d}\rfloor} [(y,k)=1] \<br>\end{aligned}<br>$$</p>
-<p>记 $h(x) = [(x,k)=1]$, $S_h$表示 $h$ 的前缀和, 记 $f(x) = [(d,k)=1] \mu(d)$<br>$$<br>= \sum_{d=1}^n f(d) \lfloor\frac{n}{d}\rfloor S(\lfloor\frac{m}{d}\rfloor)\<br>$$<br>后面两个数论分块后就要求 $f$ 的前缀和,因为 $f = \mu \cdot h$, 要杜教筛还要找一个函数 $g$, 按照套路可得 $g=h$  </p>
-<p>$$<br>f <em> h \<br>\begin{aligned}<br>&amp;= (\mu \cdot h) </em> (1 \cdot h) \<br>&amp;= (\mu * 1) \cdot h \<br>&amp;= \epsilon \cdot h<br>\end{aligned}<br>$$</p>
-<p>因为 $h(1)=1$, 故 $\sum_{i=1}^n(f * h)(n) = [n \geqslant 1]$</p>
+<p>所以答案为</p>
+<script type="math/tex; mode=display">
+\sum_{x=1}^n \sum_{y=1}^m \epsilon(\gcd(x, y)) \epsilon(\gcd(y, k))</script><p>然后就是愉悦的推式子环节  </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&= \sum_{x=1}^n \sum_{y=1}^m \sum_{d|x,d|y} \mu(d) [(y,k)=1] \\
+&= \sum_{d=1}^n \mu(d) \sum_{x=1}^{\lfloor\frac{n}{d}\rfloor} \sum_{y=1}^{\lfloor\frac{m}{d}\rfloor} [(yd,k)=1] \\
+&= \sum_{d=1}^n [(d,k)=1] \mu(d) \lfloor\frac{n}{d}\rfloor \sum_{y=1}^{\lfloor\frac{m}{d}\rfloor} [(y,k)=1] \\ 
+\end{aligned}</script><p>记 $h(x) = [(x,k)=1]$, $S_h$表示 $h$ 的前缀和, 记 $f(x) = [(d,k)=1] \mu(d)$</p>
+<script type="math/tex; mode=display">
+= \sum_{d=1}^n f(d) \lfloor\frac{n}{d}\rfloor S(\lfloor\frac{m}{d}\rfloor)\\</script><p>后面两个数论分块后就要求 $f$ 的前缀和,因为 $f = \mu \cdot h$, 要杜教筛还要找一个函数 $g$, 按照套路可得 $g=h$  </p>
+<script type="math/tex; mode=display">
+f * h \\
+\begin{aligned}
+&= (\mu \cdot h) * (1 \cdot h) \\
+&= (\mu * 1) \cdot h \\
+&= \epsilon \cdot h
+\end{aligned}</script><p>因为 $h(1)=1$, 故 $\sum_{i=1}^n(f * h)(n) = [n \geqslant 1]$</p>
 <p>对于 $S_h$ , 有 $S_h(n) = \lfloor\frac{n}{k}\rfloor \varphi(k) + h(n \% k) = \lfloor\frac{n}{k}\rfloor h(k) + h(n \% k)$</p>
 <p>完结撒花~</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>因为要有 $n$ 和 $m$ 的两个数论分块后的结果(要分开)</p>
@@ -709,7 +721,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="https://i.loli.net/2019/02/24/5c71722c07e67.png" alt="TYC">
             
