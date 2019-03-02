@@ -121,23 +121,26 @@
 
 
 
-  <meta name="description" content="少女省OIer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Little Dino">
-<meta property="og:url" content="http://yoursite.com/tags/树状数组/index.html">
+  <meta name="description" content="题目Bzoj1132Luogu 平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内) 分析首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。 那么我们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bzoj1132Tro[计算几何]">
+<meta property="og:url" content="http://yoursite.com/2019/03/02/bzoj1132Tro-计算几何/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="少女省OIer">
+<meta property="og:description" content="题目Bzoj1132Luogu 平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内) 分析首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。 那么我们">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/03/03/5c7aa8da7fe20.png">
+<meta property="og:updated_time" content="2019-03-02T16:14:17.490Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Little Dino">
-<meta name="twitter:description" content="少女省OIer">
+<meta name="twitter:title" content="bzoj1132Tro[计算几何]">
+<meta name="twitter:description" content="题目Bzoj1132Luogu 平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内) 分析首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。 那么我们">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/03/5c7aa8da7fe20.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/树状数组/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/02/bzoj1132Tro-计算几何/">
 
 
 
@@ -147,7 +150,7 @@
   };
 </script>
 
-  <title>标签: 树状数组 | Little Dino</title>
+  <title>bzoj1132Tro[计算几何] | Little Dino</title>
   
 
 
@@ -195,7 +198,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -270,7 +273,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -392,85 +395,262 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>树状数组<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/bzoj1132Tro-计算几何/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TYC">
+      <meta itemprop="description" content="少女省OIer">
+      <meta itemprop="image" content="https://i.loli.net/2019/02/24/5c71722c07e67.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Little Dino">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/02/27/bzoj1109堆积木Klo-二维偏序/" itemprop="url">
-              
-                <span itemprop="name">bzoj1109 [POI2007]堆积木Klo [二维偏序]</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">bzoj1132Tro[计算几何]
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-27T15:57:42+08:00" content="2019-02-27">
-          02-27
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-02 23:02:31" itemprop="dateCreated datePublished" datetime="2019-03-02T23:02:31+08:00">2019-03-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-03 00:14:17" itemprop="dateModified" datetime="2019-03-03T00:14:17+08:00">2019-03-03</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/02/bzoj1132Tro-计算几何/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/03/02/bzoj1132Tro-计算几何/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://lydsy.com/JudgeOnline/problem.php?id=1132" target="_blank" rel="noopener">Bzoj1132</a><br><a href="https://www.luogu.org/problemnew/show/P3476" target="_blank" rel="noopener">Luogu</a></p>
+<p>平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内)</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。</p>
+<p>那么我们考虑枚举点 $A$，因为 $S_{\triangle{ABC}} = \frac{\operatorname{abs}(\operatorname{Cross}(B - A, C - A))}{2}$, 再枚举点 $B$，那么$\overrightarrow{BA}$ 是确定的，因为 $\operatorname{Cross}(P, Q) = P.x \times Q.y - P.y \times Q.x$，那么我们可以预处理 $\sum\overrightarrow{CA}.x$ 和 $\sum\overrightarrow{CA}.y$ 就可以做到 $O(n^2)$ 求解了。</p>
+<p>但是，因为叉积是有向面积，所以可能是负值，如图</p>
+<p><img src="https://i.loli.net/2019/03/03/5c7aa8da7fe20.png" alt></p>
+<p>如图，当 $\color{blue}\overrightarrow{BA}$ 确定时，若 $\color{orange}\overrightarrow{CA}$ 处在红色区域内，$\operatorname{Cross}(B - A, C - A))$ 为负值。</p>
+<p>懒人为了不重新想咋做当然要想办法去掉这个负值的情况。</p>
+<blockquote>
+<p>操作一：对初始点按照 $x$ 轴排序，就可以去掉二三象限的情况了。<br>操作二：以 $A$ 为原点，对于 $A$ 以后的点按照极角排序，就可以保证枚举到 $B$ 时剩下的 $sumx$ 和 $sumy$ 都是不在红色区域范围内的了。</p>
+</blockquote>
+<p>答案其实只有 $.0$ 或者 $.5$ 两种，极角排序可以直接用 $\operatorname{atan2}(y,x)$ 表示点 $(x, y)$ 的极角大小（弧度值），因为库里面的 $\operatorname{atan2}$ 特别慢<del>数学函数貌似都很慢</del>，预处理后再排序，相比排序是计算跑的飞快</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>真是又短又好写，$ans$ 别忘了开 $long long$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">    <span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3010</span>;</span><br><span class="line"></span><br><span class="line">    pii pos[N];</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> </span></span><br><span class="line"><span class="class">    &#123;</span> </span><br><span class="line">        pii ve; </span><br><span class="line">        <span class="keyword">double</span> angle; </span><br><span class="line">        <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;t) <span class="keyword">const</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> angle &lt; t.angle;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; arr[N];	</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;pos[i].first, &amp;pos[i].second);</span><br><span class="line">        sort(pos + <span class="number">1</span>, pos + <span class="number">1</span> + n);</span><br><span class="line">        ll ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                arr[++num].ve = pii(pos[j].first - pos[i].first, pos[j].second - pos[i].second);</span><br><span class="line">                arr[num].angle = <span class="built_in">atan2</span>(arr[num].ve.second, arr[num].ve.first);</span><br><span class="line">            &#125;</span><br><span class="line">            sort(arr + <span class="number">1</span>, arr + <span class="number">1</span> + num);</span><br><span class="line">            <span class="keyword">int</span> sumx = <span class="number">0</span>, sumy = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= num; j++)</span><br><span class="line">                sumx += arr[j].ve.first, sumy += arr[j].ve.second;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= num; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                sumx -= arr[j].ve.first, sumy -= arr[j].ve.second;</span><br><span class="line">                ans += (ll)arr[j].ve.first * sumy - (ll)arr[j].ve.second * sumx;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld.%d\n"</span>, ans &gt;&gt; <span class="number">1</span>, (ans &amp; <span class="number">1</span>) ? <span class="number">5</span> : <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/27/狄利克雷卷积/" rel="next" title="狄利克雷卷积 [数学]">
+                <i class="fa fa-chevron-left"></i> 狄利克雷卷积 [数学]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -491,8 +671,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -602,6 +791,22 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
       
       <div id="music163player">
@@ -776,6 +981,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
 
   
 
