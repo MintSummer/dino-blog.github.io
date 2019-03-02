@@ -121,19 +121,19 @@
 
 
 
-  <meta name="description" content="题目Bzoj1132Luogu 平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内) 分析首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。 那么我们">
+  <meta name="description" content="题目Bzoj1132Luogu3476 平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内) 分析首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。">
 <meta name="keywords" content="计算几何,叉积">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bzoj1132 [POI2008]Tro [计算几何]">
 <meta property="og:url" content="http://yoursite.com/2019/03/02/bzoj1132Tro-计算几何/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="题目Bzoj1132Luogu 平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内) 分析首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。 那么我们">
+<meta property="og:description" content="题目Bzoj1132Luogu3476 平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内) 分析首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/03/03/5c7aa8da7fe20.png">
-<meta property="og:updated_time" content="2019-03-02T16:23:36.684Z">
+<meta property="og:updated_time" content="2019-03-02T16:24:27.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj1132 [POI2008]Tro [计算几何]">
-<meta name="twitter:description" content="题目Bzoj1132Luogu 平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内) 分析首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。 那么我们">
+<meta name="twitter:description" content="题目Bzoj1132Luogu3476 平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内) 分析首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。">
 <meta name="twitter:image" content="https://i.loli.net/2019/03/03/5c7aa8da7fe20.png">
 
 
@@ -476,7 +476,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-03 00:23:36" itemprop="dateModified" datetime="2019-03-03T00:23:36+08:00">2019-03-03</time>
+                <time title="修改时间：2019-03-03 00:24:27" itemprop="dateModified" datetime="2019-03-03T00:24:27+08:00">2019-03-03</time>
               
             
           </span>
@@ -572,7 +572,7 @@
       
 
       
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://lydsy.com/JudgeOnline/problem.php?id=1132" target="_blank" rel="noopener">Bzoj1132</a><br><a href="https://www.luogu.org/problemnew/show/P3476" target="_blank" rel="noopener">Luogu</a></p>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://lydsy.com/JudgeOnline/problem.php?id=1132" target="_blank" rel="noopener">Bzoj1132</a><br><a href="https://www.luogu.org/problemnew/show/P3476" target="_blank" rel="noopener">Luogu3476</a></p>
 <p>平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内)</p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。</p>
 <p>那么我们考虑枚举点 $A$，因为 $S_{\triangle{ABC}} = \frac{\operatorname{abs}(\operatorname{Cross}(B - A, C - A))}{2}$, 再枚举点 $B$，那么$\overrightarrow{BA}$ 是确定的，因为 $\operatorname{Cross}(P, Q) = P.x \times Q.y - P.y \times Q.x$，那么我们可以预处理 $\sum\overrightarrow{CA}.x$ 和 $\sum\overrightarrow{CA}.y$ 就可以做到 $O(n^2)$ 求解了。</p>
