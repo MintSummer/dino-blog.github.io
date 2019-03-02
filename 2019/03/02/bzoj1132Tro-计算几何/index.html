@@ -130,7 +130,7 @@
 <meta property="og:description" content="题目Bzoj1132Luogu3476 平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内) 分析首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/03/03/5c7aa8da7fe20.png">
-<meta property="og:updated_time" content="2019-03-02T16:24:27.984Z">
+<meta property="og:updated_time" content="2019-03-02T16:28:58.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj1132 [POI2008]Tro [计算几何]">
 <meta name="twitter:description" content="题目Bzoj1132Luogu3476 平面上有 $n$ 个点. 求出所有以这 $n$ 个点为顶点的三角形的面积和 ($n \leqslant 3000$， 坐标值在 $[0,10000]$ 范围内) 分析首先我们如果 $O(n^3)$ 枚举三角形三个顶点 $(A, B, C)$，肯定是 $A:1 \to n - 2$， $B:A + 1 \to n - 1$， $C:B + 1 \to n$。">
@@ -476,7 +476,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-03 00:24:27" itemprop="dateModified" datetime="2019-03-03T00:24:27+08:00">2019-03-03</time>
+                <time title="修改时间：2019-03-03 00:28:58" itemprop="dateModified" datetime="2019-03-03T00:28:58+08:00">2019-03-03</time>
               
             
           </span>
@@ -578,8 +578,7 @@
 <p>那么我们考虑枚举点 $A$，因为 $S_{\triangle{ABC}} = \frac{\operatorname{abs}(\operatorname{Cross}(B - A, C - A))}{2}$, 再枚举点 $B$，那么$\overrightarrow{BA}$ 是确定的，因为 $\operatorname{Cross}(P, Q) = P.x \times Q.y - P.y \times Q.x$，那么我们可以预处理 $\sum\overrightarrow{CA}.x$ 和 $\sum\overrightarrow{CA}.y$ 就可以做到 $O(n^2)$ 求解了。</p>
 <p>但是，因为叉积是有向面积，所以可能是负值，如图</p>
 <p><img src="https://i.loli.net/2019/03/03/5c7aa8da7fe20.png" alt></p>
-<p>如图，当 $\overrightarrow{BA}$ 确定时，若 $\overrightarrow{CA}$ 处在红色区域内，$\operatorname{Cross}(B - A, C - A))$ 为负值。</p>
-<p>（话说 $Hexo$ 的 $MathJax$ 为什么不支持颜色啊，本来还想要用 $\operatorname{blue}$ 和 $\operatorname{orange}$ 的）</p>
+<p>如图，当 $\color{blue}{\overrightarrow{BA}}$ 确定时，若 $\color{orange}{\overrightarrow{CA}}$ 处在红色区域内，$\operatorname{Cross}(B - A, C - A))$ 为负值。</p>
 <p>懒人为了不重新想咋做当然要想办法去掉这个负值的情况。</p>
 <blockquote>
 <p>操作一：对初始点按照 $x$ 轴排序，就可以去掉二三象限的情况了。<br>操作二：以 $A$ 为原点，对于 $A$ 以后的点按照极角排序，就可以保证枚举到 $B$ 时剩下的 $sumx$ 和 $sumy$ 都是不在红色区域范围内的了。</p>
