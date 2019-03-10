@@ -14,7 +14,7 @@
 
 <html class="theme-next pisces" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -184,7 +184,7 @@
     .use-motion .logo-line-before i { left: initial; }
     .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -195,7 +195,7 @@
     
   
 
-  <div class="container sidebar-position-left 
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -458,7 +458,7 @@
                 
               
 
-              <time title="创建时间：2019-03-10 17:19:26 / 修改时间：22:34:49" itemprop="dateCreated datePublished" datetime="2019-03-10T17:19:26+08:00">2019-03-10</time>
+              <time title="创建时间：2019-03-10 17:19:26 / 修改时间：22:44:33" itemprop="dateCreated datePublished" datetime="2019-03-10T17:19:26+08:00">2019-03-10</time>
             
 
             
@@ -555,9 +555,17 @@
         
           
           安利机房大佬zyt的博客讲解， 可以点链接，也可以直接看下面的pdf（去掉了代码）
+
+
+	
+    
+	
+
+
+
 珠玉在前，当然是要膜拜大佬伏地膜，所以这里只是简单记一下怎么推的和大佬的讲解（说白了就是学习笔记，基本是转载大佬的）
 转载已获得博主同意。别走啊还有我自己补充完善的呢
-我已经荣升全机房最后一个学会 $FFT$ 的孩子
+我已经荣升全机房最后
           ...
           <!--noindex-->
           
@@ -1394,7 +1402,7 @@ Paste code ubuntu pastebin
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">889</span>
+                <span title="本文字数">909</span>
               
 
               
@@ -1408,7 +1416,7 @@ Paste code ubuntu pastebin
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -1431,17 +1439,9 @@ Paste code ubuntu pastebin
         
           
           没啥写的，随便写点
-记几个常用函数
-\begin{aligned}
-\epsilon(n) &= 
-\begin{cases} 
-    1 \ \ (n = 1) \\
-    0 \ \ otherwise \\
-\end{cases} \\
-
-1(n) &= 1 \\
-
-id_k(n) &= 
+记几个常用函数$$\begin{aligned}\epsilon(n) &amp;=\begin{cases}    1 \ \ (n = 1) \    0 \ \ otherwise \\end{cases} \
+1(n) &amp;= 1 \
+id_k(n) &amp;= 
           ...
           <!--noindex-->
           
@@ -1623,7 +1623,7 @@ id_k(n) &=
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.7k</span>
+                <span title="本文字数">4.8k</span>
               
 
               
@@ -1660,11 +1660,10 @@ id_k(n) &=
         
           
           杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。
-问题给定一个 $n$ 和函数 $f(x)$，求
-S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$ 
+问题给定一个 $n$ 和函数 $f(x)$，求$$S(n) = \sum_{i = 1} ^ n f(i)$$
+方法主要思想是构造一个函数 $g(x)$ 
 考虑 $(f * g)(n)$ 的前缀和可以变换为：  
-\begin{aligned}
-& \
+$$\begin{aligne
           ...
           <!--noindex-->
           
@@ -1871,8 +1870,8 @@ S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$
         
           
           题目bzoj3739
-
-\sum_{i = 1}^n sum_{j = 1}^n \mu \left(\operatorname{lcm}(i, j)^{\operatorname{gcd}(i, j)} \right)$T (T \leqslant 10^3)$ 组数据，$n \leqslant 
+$$\sum_{i = 1}^n sum_{j = 1}^n \mu \left(\operatorname{lcm}(i, j)^{\operatorname{gcd}(i, j)} \right)$$
+$T (T \leqslant 10^3)$ 组数据，$n \leqsl
           ...
           <!--noindex-->
           
@@ -2493,7 +2492,7 @@ S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">9.2k</span>
+                <span title="本文字数">9.3k</span>
               
 
               
@@ -3430,7 +3429,24 @@ S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$
         }, 300)
       }).append(e)
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
   

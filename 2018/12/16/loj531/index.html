@@ -14,7 +14,7 @@
 
 <html class="theme-next pisces" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -190,7 +190,7 @@
     .use-motion .logo-line-before i { left: initial; }
     .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -201,7 +201,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -603,7 +603,7 @@
 </blockquote>
 </blockquote>
 <p>考虑 $f[i]=x$ 意味着什么：当 $a=x$，$a$ 就会转移成 $i$ ，那么说明博弈的决策边应当为 $f[i]-&gt;i$ （变成基环外向树了），每次从点 $1$ 向沿决策边转移。</p>
-<p>遇到基环外向树，果断先找环，我们从外向树向环上的点递推，就可以得到 $win[i] \in \{0,1\}$  表示如果从点 $i$ 向外走，最后是否能够必胜。就可以得到所有状态的情况了。</p>
+<p>遇到基环外向树，果断先找环，我们从外向树向环上的点递推，就可以得到 $win[i] \in {0,1}$  表示如果从点 $i$ 向外走，最后是否能够必胜。就可以得到所有状态的情况了。</p>
 <p>我们记出度 $deg[ \ \ ]$，不断找没有出度的点，从 $i$ 走到 $f[i]$，并更新 $win[f[i]]$ 和$deg[f[i]]$ 即可，遍历过的点记 $deg[i]=-1$ 表示 $i$ 存在过出度减为  $0$ 的情况（即点 $i$ 不在环上，因为环上的点必然会有出度）。</p>
 <p>当点 $1$ 不在环上时，它只存在唯一 一种决策，修改环上 $u$、$v$ 的连边对它没有影响，直接输出 $win[1]$ 即可。</p>
 <p>否则点 $1$ 必然在环上，那么我们爬边 $i-&gt;f[i]$ 就可以遍历整个环，记下来。但是因为它与我们实际决策树的边相反，应当改成 $f[i]-&gt;i$ ，即要交换点 $id[i]-1$ $(f[x]==i 的点 x)$ 和 $id[i]+1 (f[i])$ ，再重新标号后就会有 $id[f[i]]+1==id[i]$ ，即边为 $f[i]-&gt;i$ （标号表现了它到点 $1$ 的距离）。</p>
@@ -1555,7 +1555,24 @@
         }, 300)
       }).append(e)
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
   

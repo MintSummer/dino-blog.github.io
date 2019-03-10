@@ -14,7 +14,7 @@
 
 <html class="theme-next pisces" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -121,18 +121,18 @@
 
 
 
-  <meta name="description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求 S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：   \begin{aligned} &amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\ &amp;= \sum_{i =">
+  <meta name="description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求$$S(n) = \sum_{i = 1} ^ n f(i)$$ 方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：   $$\begin{aligned}&amp;amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \&amp;amp;">
 <meta name="keywords" content="杜教筛">
 <meta property="og:type" content="article">
 <meta property="og:title" content="杜教筛 [筛法]">
 <meta property="og:url" content="http://yoursite.com/2019/02/27/杜教筛/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求 S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：   \begin{aligned} &amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\ &amp;= \sum_{i =">
+<meta property="og:description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求$$S(n) = \sum_{i = 1} ^ n f(i)$$ 方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：   $$\begin{aligned}&amp;amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \&amp;amp;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-03-01T05:48:00.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="杜教筛 [筛法]">
-<meta name="twitter:description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求 S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：   \begin{aligned} &amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\ &amp;= \sum_{i =">
+<meta name="twitter:description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求$$S(n) = \sum_{i = 1} ^ n f(i)$$ 方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：   $$\begin{aligned}&amp;amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \&amp;amp;">
 
 
 
@@ -186,7 +186,7 @@
     .use-motion .logo-line-before i { left: initial; }
     .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -197,7 +197,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -536,7 +536,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.7k</span>
+                <span title="本文字数">4.8k</span>
               
 
               
@@ -571,17 +571,14 @@
 
       
         <p>杜教筛解决的是一些<strong>满足特殊性质</strong>的数论函数的<strong>前缀和</strong>问题。</p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>给定一个 $n$ 和函数 $f(x)$，求</p>
-<script type="math/tex; mode=display">S(n) = \sum_{i = 1} ^ n f(i)</script><h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>主要思想是构造一个函数 $g(x)$ </p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>给定一个 $n$ 和函数 $f(x)$，求<br>$$S(n) = \sum_{i = 1} ^ n f(i)$$</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>主要思想是构造一个函数 $g(x)$ </p>
 <p>考虑 $(f * g)(n)$ 的前缀和可以变换为：  </p>
-<script type="math/tex; mode=display">\begin{aligned}
-& \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\
-&= \sum_{i = 1}^n \sum_{d | i} g(i) f(\frac{i}{d}) \\
-&= \sum_{d = 1}^n \sum_{i = 1}^{\lfloor \frac{n}{d} \rfloor} g(d)f(i) \\\ 
-&= \sum_{d = 1}^n g(d) S(\lfloor \frac{n}{d} \rfloor) \\
-&= g(1)S(n) + \sum_{d = 2}^n g(d)S(\lfloor \frac{n}{d} \rfloor)\\
-\end{aligned}</script><p>即</p>
-<script type="math/tex; mode=display">g(1)S(n) = \sum_{i = 1}^n (f * g)(i) - \sum_{d = 2}^n g(d)S(\lfloor \frac{n}{d} \rfloor)</script><script type="math/tex; mode=display">S(n) = \frac{\sum_{i = 1}^n (f * g)(i) - \sum_{d = 2}^n g(d)S(\lfloor \frac{n}{d} \rfloor)}{g(1)}</script><p><strong>只要找到一个 $g$ 使得 $f ∗ g$ 和 $g$ 的前缀和都可以快速计算，就可以使用上式计算 $S(n)$</strong></p>
+<p>$$\begin{aligned}<br>&amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \<br>&amp;= \sum_{i = 1}^n \sum_{d | i} g(i) f(\frac{i}{d}) \<br>&amp;= \sum_{d = 1}^n \sum_{i = 1}^{\lfloor \frac{n}{d} \rfloor} g(d)f(i) \\<br>&amp;= \sum_{d = 1}^n g(d) S(\lfloor \frac{n}{d} \rfloor) \<br>&amp;= g(1)S(n) + \sum_{d = 2}^n g(d)S(\lfloor \frac{n}{d} \rfloor)\<br>\end{aligned}$$</p>
+<p>即</p>
+<p>$$g(1)S(n) = \sum_{i = 1}^n (f * g)(i) - \sum_{d = 2}^n g(d)S(\lfloor \frac{n}{d} \rfloor) $$</p>
+<p>$$S(n) = \frac{\sum_{i = 1}^n (f * g)(i) - \sum_{d = 2}^n g(d)S(\lfloor \frac{n}{d} \rfloor)}{g(1)}$$</p>
+<p><strong>只要找到一个 $g$ 使得 $f ∗ g$ 和 $g$ 的前缀和都可以快速计算，就可以使用上式计算 $S(n)$</strong></p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>由于作者太菜了，所以不会证明时间复杂度到底怎么算的……</p>
 <p>如果使用上式，对所有的 $S(\lfloor \frac{n}{d} \rfloor)$ 记忆化，时间复杂度是 $O(n^{\frac{3}{4}})$ 的</p>
 <p>实际上,我们可以用线性筛预处理一部分,用之前的式子解决其它部分来优化时间复杂度,设预处理了前 $B$ 个，当时间复杂度最优时 $B = \sqrt{\frac{n}{B}}$， 解得 $B = n^{\frac{2}{3}}$ ，时间复杂度是 $O(n ^ {\frac{2}{3}})$</p>
@@ -589,30 +586,24 @@
 <h1 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h1><p>最麻烦的还是构造 $g$ 函数了…… 记几个常用的</p>
 <p>安利 <a href="https://dino.ml/2019/02/27/%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%8D%B7%E7%A7%AF/" target="_blank" rel="noopener">狄利克雷卷积</a>，不知道的先看一下</p>
 <p>$\mu <em> 1 = \epsilon$ ， $\varphi </em> 1 = id_1$ ， $id_1 * \mu = \varphi$</p>
-<script type="math/tex; mode=display">\sum_{i = 1}^n id_2(i) = \frac{n(n + 1)(2n + 1)}{6}</script><script type="math/tex; mode=display">\sum_{i = 1}^n id_3(i) = (1 + 2 + 3 + \cdots + n)^2 = \left( \sum_{i = 1}^n id_1(n) \right) ^2</script><p>如果看到了还会再补充的</p>
+<p>$$\sum_{i = 1}^n id_2(i) = \frac{n(n + 1)(2n + 1)}{6}$$</p>
+<p>$$\sum_{i = 1}^n id_3(i) = (1 + 2 + 3 + \cdots + n)^2 = \left( \sum_{i = 1}^n id_1(n) \right) ^2$$</p>
+<p>如果看到了还会再补充的</p>
 <h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p><a href="https://www.luogu.org/problemnew/show/P4213" target="_blank" rel="noopener">Luogu4213 [模板] 杜教筛</a></p>
 <p>求 $\varphi$ 和 $\mu$ 的前缀和</p>
 <p>根据 $\mu <em> 1 = \epsilon$ $\varphi </em> 1 = id$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> uint;</span><br><span class="line">    <span class="keyword">typedef</span> pair&lt;ll, <span class="keyword">int</span>&gt; pli;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> B = <span class="number">1664510</span>, S = <span class="number">1291</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n, T;</span><br><span class="line">    ll SumPhi[B + <span class="number">5</span>], ResPhi[S + <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">int</span> SumMu[B + <span class="number">5</span>], ResMu[S + <span class="number">5</span>]; </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> cnt, vis[B + <span class="number">5</span>], prime[B + <span class="number">5</span>], phi[B + <span class="number">5</span>], mu[B + <span class="number">5</span>];</span><br><span class="line">        phi[<span class="number">1</span>] = mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= B; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!vis[i])</span><br><span class="line">            &#123;</span><br><span class="line">                prime[cnt++] = i;</span><br><span class="line">                phi[i] = i - <span class="number">1</span>;</span><br><span class="line">                mu[i] = <span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, t; j &lt; cnt &amp;&amp; (t = i * prime[j]) &lt;= B; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                vis[t] = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (i % prime[j] == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    phi[t] = phi[i] * prime[j];</span><br><span class="line">                    mu[t] = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                phi[t] = phi[i] * (prime[j] - <span class="number">1</span>);</span><br><span class="line">                mu[t] = -mu[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= B; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            SumPhi[i] = SumPhi[i - <span class="number">1</span>] + phi[i];</span><br><span class="line">            SumMu[i] = SumMu[i - <span class="number">1</span>] + mu[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> vis[S + <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">    <span class="function">pli <span class="title">GetSum</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x &lt;= B) </span><br><span class="line">            <span class="keyword">return</span> pli(SumPhi[x], SumMu[x]);</span><br><span class="line">        <span class="keyword">int</span> t = n / x;</span><br><span class="line">        <span class="keyword">if</span> (!vis[t])</span><br><span class="line">        &#123;</span><br><span class="line">            vis[t] = <span class="number">1</span>;</span><br><span class="line">            ResPhi[t] = ((ll)x + <span class="number">1</span>) * x / <span class="number">2</span>;</span><br><span class="line">            ResMu[t] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (uint l = <span class="number">2</span>, r; l &lt;= x; l = r + <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                pli res = GetSum(x / l);</span><br><span class="line">                r = x / (x / l);</span><br><span class="line">                ResPhi[t] -= (r - l + <span class="number">1</span>) * res.first;</span><br><span class="line">                ResMu[t] -= (r - l + <span class="number">1</span>) * res.second;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pli(ResPhi[t], ResMu[t]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        init();</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">        <span class="keyword">while</span> (T--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">            <span class="built_in">memset</span>(vis + <span class="number">1</span>, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">bool</span>) * n / B);</span><br><span class="line">            pli ans = GetSum(n);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld %d\n"</span>, ans.first, ans.second);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>后面的就不放代码了</p>
 <h2 id="Luogu3768-简单的数学题"><a href="#Luogu3768-简单的数学题" class="headerlink" title="Luogu3768 简单的数学题"></a>Luogu3768 简单的数学题</h2><p><a href="https://www.luogu.org/problemnew/show/P3768" target="_blank" rel="noopener">Luogu3768 简单的数学题</a></p>
-<p>求</p>
-<script type="math/tex; mode=display">\sum_{i = 1}^n \sum_{j = 1}^n i j \operatorname{gcd}(i j) \mod p</script><p>$1 \leqslant n \leqslant 10^{10}$</p>
+<p>求<br>$$\sum_{i = 1}^n \sum_{j = 1}^n i j \operatorname{gcd}(i j) \mod p$$<br>$1 \leqslant n \leqslant 10^{10}$</p>
 <p>莫比乌斯反演一发</p>
-<script type="math/tex; mode=display">= \sum_{i = 1}^n \sum_{j = 1}^n i j \sum_{d | i, d | j} d \sum_{g | \frac{i}{d}, g | \frac{j}{d}} \mu(g)</script><p>记 $T = dg$</p>
-<script type="math/tex; mode=display">\begin{aligned}
-&= \sum_{T = 1}^n \sum_{d | T} d \mu(\frac{T}{d}) \sum_{i = 1}^{\lfloor \frac{n}{T} \rfloor} \sum_{j = 1}^{\lfloor \frac{n}{T} \rfloor} i j T^2 \\
-&= \sum_{T = 1}^n SumId_1(\lfloor \frac{n}{T} \rfloor)^2 T^2 \sum_{d | T} d \mu(\frac{T}{d}) \\
-&= \sum_{T = 1}^n SumId_1(\lfloor \frac{n}{T} \rfloor)^2 f(T) \\
-\end{aligned}</script><p>因为 $\mu <em> id_1 = \varphi$ ，所以 $f(T) = T^2 </em> \varphi(T)$</p>
+<p>$$= \sum_{i = 1}^n \sum_{j = 1}^n i j \sum_{d | i, d | j} d \sum_{g | \frac{i}{d}, g | \frac{j}{d}} \mu(g)$$</p>
+<p>记 $T = dg$<br>$$\begin{aligned}<br>&amp;= \sum_{T = 1}^n \sum_{d | T} d \mu(\frac{T}{d}) \sum_{i = 1}^{\lfloor \frac{n}{T} \rfloor} \sum_{j = 1}^{\lfloor \frac{n}{T} \rfloor} i j T^2 \<br>&amp;= \sum_{T = 1}^n SumId_1(\lfloor \frac{n}{T} \rfloor)^2 T^2 \sum_{d | T} d \mu(\frac{T}{d}) \<br>&amp;= \sum_{T = 1}^n SumId_1(\lfloor \frac{n}{T} \rfloor)^2 f(T) \<br>\end{aligned}$$</p>
+<p>因为 $\mu <em> id_1 = \varphi$ ，所以 $f(T) = T^2 </em> \varphi(T)$</p>
 <p>数论分块，重点变成求 $f(T)$ 的前缀和</p>
 <p>再因为 $\varphi * 1 = id$，就令 $g = (1 \cdot id_2) = id_2$</p>
-<script type="math/tex; mode=display">\begin{aligned}
-& \ \ \ \ \ (\varphi \cdot id_2) * (1 \cdot id_2) \\
-&= (\varphi * 1) \cdot id_2 \\
-&= id \cdot id_2 \\
-&= id_3
-\end{aligned}</script><p>故 $g = id_2$，$f * g = id_3$</p>
+<p>$$\begin{aligned}<br>&amp; \ \ \ \ \ (\varphi \cdot id_2) <em> (1 \cdot id_2) \<br>&amp;= (\varphi </em> 1) \cdot id_2 \<br>&amp;= id \cdot id_2 \<br>&amp;= id_3<br>\end{aligned}$$</p>
+<p>故 $g = id_2$，$f * g = id_3$</p>
 <h2 id="bzoj4652-NOI2016-循环之美"><a href="#bzoj4652-NOI2016-循环之美" class="headerlink" title="bzoj4652[NOI2016] 循环之美"></a>bzoj4652[NOI2016] 循环之美</h2><p>前几天写的了 <a href="https://dino.ml/2019/02/22/bzoj4652%E5%BE%AA%E7%8E%AF%E4%B9%8B%E7%BE%8E-%E6%9D%9C%E6%95%99%E7%AD%9B/" target="_blank" rel="noopener">bzoj4652[NOI2016] 循环之美 [杜教筛]</a></p>
 <p>也许哪天就补上了 $Min25$ 筛 <del>啥时候学会了再说</del></p>
 
@@ -1534,7 +1525,24 @@
         }, 300)
       }).append(e)
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
   

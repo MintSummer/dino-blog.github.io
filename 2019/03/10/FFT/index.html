@@ -14,7 +14,7 @@
 
 <html class="theme-next pisces" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -121,19 +121,19 @@
 
 
 
-  <meta name="description" content="安利机房大佬zyt的博客讲解， 可以点链接，也可以直接看下面的pdf（去掉了代码） 珠玉在前，当然是要膜拜大佬伏地膜，所以这里只是简单记一下怎么推的和大佬的讲解（说白了就是学习笔记，基本是转载大佬的） 转载已获得博主同意。别走啊还有我自己补充完善的呢 我已经荣升全机房最后一个学会 $FFT$ 的孩子了……（话说我以前是怎么看着大家都会 $FFT$ 而无动于衷了整整几个月的……） 方法$FFT$ 的">
+  <meta name="description" content="安利机房大佬zyt的博客讲解， 可以点链接，也可以直接看下面的pdf（去掉了代码）   	      	    珠玉在前，当然是要膜拜大佬伏地膜，所以这里只是简单记一下怎么推的和大佬的讲解（说白了就是学习笔记，基本是转载大佬的） 转载已获得博主同意。别走啊还有我自己补充完善的呢 我已经荣升全机房最后一个学会 $FFT$ 的孩子了……（话说我以前是怎么看着大家都会 $FFT$ 而无动于衷了整整几个月">
 <meta name="keywords" content="数学,多项式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快速傅里叶变换 FFT [多项式]">
 <meta property="og:url" content="http://yoursite.com/2019/03/10/FFT/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="安利机房大佬zyt的博客讲解， 可以点链接，也可以直接看下面的pdf（去掉了代码） 珠玉在前，当然是要膜拜大佬伏地膜，所以这里只是简单记一下怎么推的和大佬的讲解（说白了就是学习笔记，基本是转载大佬的） 转载已获得博主同意。别走啊还有我自己补充完善的呢 我已经荣升全机房最后一个学会 $FFT$ 的孩子了……（话说我以前是怎么看着大家都会 $FFT$ 而无动于衷了整整几个月的……） 方法$FFT$ 的">
+<meta property="og:description" content="安利机房大佬zyt的博客讲解， 可以点链接，也可以直接看下面的pdf（去掉了代码）   	      	    珠玉在前，当然是要膜拜大佬伏地膜，所以这里只是简单记一下怎么推的和大佬的讲解（说白了就是学习笔记，基本是转载大佬的） 转载已获得博主同意。别走啊还有我自己补充完善的呢 我已经荣升全机房最后一个学会 $FFT$ 的孩子了……（话说我以前是怎么看着大家都会 $FFT$ 而无动于衷了整整几个月">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/03/10/5c851c11c40f3.png">
-<meta property="og:updated_time" content="2019-03-10T14:34:49.660Z">
+<meta property="og:updated_time" content="2019-03-10T14:44:33.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速傅里叶变换 FFT [多项式]">
-<meta name="twitter:description" content="安利机房大佬zyt的博客讲解， 可以点链接，也可以直接看下面的pdf（去掉了代码） 珠玉在前，当然是要膜拜大佬伏地膜，所以这里只是简单记一下怎么推的和大佬的讲解（说白了就是学习笔记，基本是转载大佬的） 转载已获得博主同意。别走啊还有我自己补充完善的呢 我已经荣升全机房最后一个学会 $FFT$ 的孩子了……（话说我以前是怎么看着大家都会 $FFT$ 而无动于衷了整整几个月的……） 方法$FFT$ 的">
+<meta name="twitter:description" content="安利机房大佬zyt的博客讲解， 可以点链接，也可以直接看下面的pdf（去掉了代码）   	      	    珠玉在前，当然是要膜拜大佬伏地膜，所以这里只是简单记一下怎么推的和大佬的讲解（说白了就是学习笔记，基本是转载大佬的） 转载已获得博主同意。别走啊还有我自己补充完善的呢 我已经荣升全机房最后一个学会 $FFT$ 的孩子了……（话说我以前是怎么看着大家都会 $FFT$ 而无动于衷了整整几个月">
 <meta name="twitter:image" content="https://i.loli.net/2019/03/10/5c851c11c40f3.png">
 
 
@@ -188,7 +188,7 @@
     .use-motion .logo-line-before i { left: initial; }
     .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -199,7 +199,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -459,7 +459,7 @@
                 
               
 
-              <time title="创建时间：2019-03-10 17:19:26 / 修改时间：22:34:49" itemprop="dateCreated datePublished" datetime="2019-03-10T17:19:26+08:00">2019-03-10</time>
+              <time title="创建时间：2019-03-10 17:19:26 / 修改时间：22:44:33" itemprop="dateCreated datePublished" datetime="2019-03-10T17:19:26+08:00">2019-03-10</time>
             
 
             
@@ -561,99 +561,76 @@
 
       
         <p>安利<a href="https://www.cnblogs.com/zyt1253679098/p/9961191.html" target="_blank" rel="noopener">机房大佬zyt的博客讲解</a>， 可以点链接，也可以直接看下面的pdf（去掉了代码）</p>
+
+
+	<div class="row">
+    <embed src="./zyt_FFT.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
 <p>珠玉在前，当然是要膜拜大佬<del>伏地膜</del>，所以这里只是简单记一下怎么推的和大佬的讲解（说白了就是学习笔记，基本是转载大佬的）</p>
 <p>转载已获得博主同意。<del>别走啊还有我自己补充完善的呢</del></p>
 <p>我已经荣升全机房最后一个学会 $FFT$ 的孩子了……（话说我以前是怎么看着大家都会 $FFT$ 而无动于衷了整整几个月的……）</p>
 <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>$FFT$ 的本质就是将两个多项式转换成点值表示法，点值可以直接相乘，然后再由点值得到它俩乘积的系数表示。那么，带进去的 $x$ 值和计算 $f(x)$ 的方法就是突破口。</p>
 <h2 id="单位根"><a href="#单位根" class="headerlink" title="单位根"></a>单位根</h2><p><strong>$n$ 次单位复数根</strong> 是满足 $\omega^n = 1$ 的复数 $\omega$，$n$ 次单位复数根恰好有 $n$ 个，这些根是 $\operatorname{e}^{\frac{2\pi k}{n}}$。</p>
-<p>令 $a = \frac{2 \pi k}{n}$</p>
-<script type="math/tex; mode=display">
-\omega_n^k = \operatorname{e}^a = \cos(a) + i \sin(a) \ \ (0 \leqslant k < n)</script><p>或者说：</p>
+<p>令 $a = \frac{2 \pi k}{n}$<br>$$<br>\omega_n^k = \operatorname{e}^a = \cos(a) + i \sin(a) \ \ (0 \leqslant k &lt; n)<br>$$</p>
+<p>或者说：</p>
 <p>将复数平面中的单位圆 $n$ 等分后幅角最小的等分点（不考虑 $1$） 称为 $n$ 次单位根，这些等分点可以表示为 $\omega_n^k(0 \leqslant k &lt; n)$ ， 它的幅角为 $\frac{2 \pi k}{n}$。</p>
 <p>$\omega_n^k$ 是 $\omega_n^1$ 的 $k$ 次幂， $(\omega_n^1)^n = \omega_n^0 = 1$ </p>
 <p>性质：  </p>
 <ul>
-<li><p>（一）消去引理</p>
-<script type="math/tex; mode=display">\omega_{2n}^{2k} = \omega_n^k</script></li>
-<li><p>（二）折半引理</p>
-<script type="math/tex; mode=display">
-(\omega_n^k)^2 = \omega_{\frac{n}{2}}^k</script></li>
+<li><p>（一）消去引理<br>$$\omega_{2n}^{2k} = \omega_n^k $$</p>
+</li>
+<li><p>（二）折半引理<br>$$<br>(\omega_n^k)^2 = \omega_{\frac{n}{2}}^k<br>$$</p>
+</li>
 </ul>
-<script type="math/tex; mode=display">
-\omega_n^{k + \frac{2}{n}} = -\omega_n^k</script><blockquote>
+<p>$$<br>\omega_n^{k + \frac{2}{n}} = -\omega_n^k $$</p>
+<blockquote>
 <p>折半引理对于用分治策略来对多项式的系数与点值表达进行相互转换是非常重要的，因为它保证了递归子问题的规模只是递归调用前的一半。</p>
 </blockquote>
 <ul>
-<li><p>（三）zyt博客里面那个不知名的性质</p>
-<script type="math/tex; mode=display">\omega_n^{k + an} = \omega_n^k \ (a \in \Z)</script></li>
+<li><p>（三）zyt博客里面那个不知名的性质<br>$$\omega_n^{k + an} = \omega_n^k \ (a \in \Z)$$</p>
+</li>
 <li><p>（四）求和引理  </p>
 </li>
 </ul>
 <p>对于任意整数 $n \geqslant 1$ 和不能被 $n$ 整除的非负整数 $k$， 有</p>
-<script type="math/tex; mode=display">\sum_{j = 0}^{n - 1} (\omega_n^k)^j = 0</script><p>证明：等比数列求和公式对复数依旧适用</p>
-<script type="math/tex; mode=display">
-\sum_{j = 0}^{n - 1} (\omega_n^k)^j = \frac{(\omega_n^k)^n - 1}{\omega_n^k - 1} = \frac{(\omega_n^n)^k - 1}{\omega_n^k - 1} = \frac{(1)^k - 1}{\omega_n^k - 1} = 0</script><h2 id="离散傅里叶变换（DFT）"><a href="#离散傅里叶变换（DFT）" class="headerlink" title="离散傅里叶变换（DFT）"></a>离散傅里叶变换（DFT）</h2><p>$DFT$ 是把多项式从系数表示法转换成点值表示法。跟 $O(n^2)$ 的直接带值算相比，主要在于 <strong>代入单位根（幂）</strong> 和 <strong>奇偶分组运算</strong></p>
+<p>$$ \sum_{j = 0}^{n - 1} (\omega_n^k)^j = 0 $$</p>
+<p>证明：等比数列求和公式对复数依旧适用</p>
+<p>$$<br>\sum_{j = 0}^{n - 1} (\omega_n^k)^j = \frac{(\omega_n^k)^n - 1}{\omega_n^k - 1} = \frac{(\omega_n^n)^k - 1}{\omega_n^k - 1} = \frac{(1)^k - 1}{\omega_n^k - 1} = 0<br>$$</p>
+<h2 id="离散傅里叶变换（DFT）"><a href="#离散傅里叶变换（DFT）" class="headerlink" title="离散傅里叶变换（DFT）"></a>离散傅里叶变换（DFT）</h2><p>$DFT$ 是把多项式从系数表示法转换成点值表示法。跟 $O(n^2)$ 的直接带值算相比，主要在于 <strong>代入单位根（幂）</strong> 和 <strong>奇偶分组运算</strong></p>
 <p>将 $n$ 次单位根的 $0$ 到 $n - 1$ 次幂带入 $n - 1$ 次多项式 $A(x)$ （$n + 1$ 组对应的 $x$ 和 $A(x)$ 存在唯一一个最高次数为 $n$ 的多项式 $A(x)$），对 $A(x)$ 奇偶分组：</p>
-<script type="math/tex; mode=display">
-A_{0}(x) = \sum_{i = 0}^{\frac{n - 1}{2}} a_{2i} \cdot x^i \\ 
-
-A_{1}(x) = \sum_{i = 0}^{\frac{n - 1}{2}} a_{2i + 1} \cdot x^i</script><p>则有</p>
-<script type="math/tex; mode=display">A(x) = A_{0}(x^2) + x \cdot A_{1}(x^2)</script><p>带入单位根</p>
-<script type="math/tex; mode=display">
-A(\omega_n^k) = A_{0}(\omega_n^{2k}) + \omega_n^k \cdot A_{1}(\omega_n^{2k}) \\</script><p>根据消去引理</p>
-<script type="math/tex; mode=display">
-A(\omega_n^k) = A_{0}(\omega_{\frac{n}{2}}^{k}) + \omega_n^k \cdot A_{1}(\omega_{\frac{n}{2}}^{k}) \\</script><p>但是这样转化就有了一个特殊情况：当 $\frac{n}{2} \leqslant k &lt; n$ 的时候，根据折半引理（和某不知名性质）：</p>
-<script type="math/tex; mode=display">\omega_{\frac{n}{2}}^{k} = \omega_{\frac{n}{2}}^{k - \frac{n}{2}}</script><script type="math/tex; mode=display">\omega_{n}^{k}= \omega_{n}^{k - \frac{n}{2}}</script><p>令 $t = k - \frac{n}{2}$故</p>
-<script type="math/tex; mode=display">A(\omega_n^k) = A_0(\omega_{\frac{n}{2}}^t) - \omega_{n}^t \cdot A_1(\omega_{\frac{n}{2}}^t)</script><p>这样就可以递归处理，每次用 $\omega_{len}^k$ 和 $\omega_{len}^{k + \frac{len}{2}}$ 合并计算了（$len$ 为当前递归的区间长度）</p>
+<p>$$<br>A_{0}(x) = \sum_{i = 0}^{\frac{n - 1}{2}} a_{2i} \cdot x^i \ </p>
+<p>A_{1}(x) = \sum_{i = 0}^{\frac{n - 1}{2}} a_{2i + 1} \cdot x^i<br>$$</p>
+<p>则有</p>
+<p>$$ A(x) = A_{0}(x^2) + x \cdot A_{1}(x^2) $$</p>
+<p>带入单位根</p>
+<p>$$<br>A(\omega_n^k) = A_{0}(\omega_n^{2k}) + \omega_n^k \cdot A_{1}(\omega_n^{2k}) \<br>$$</p>
+<p>根据消去引理</p>
+<p>$$<br>A(\omega_n^k) = A_{0}(\omega_{\frac{n}{2}}^{k}) + \omega_n^k \cdot A_{1}(\omega_{\frac{n}{2}}^{k}) \<br>$$</p>
+<p>但是这样转化就有了一个特殊情况：当 $\frac{n}{2} \leqslant k &lt; n$ 的时候，根据折半引理（和某不知名性质）：</p>
+<p>$$ \omega_{\frac{n}{2}}^{k} = \omega_{\frac{n}{2}}^{k - \frac{n}{2}} $$</p>
+<p>$$ \omega_{n}^{k}= \omega_{n}^{k - \frac{n}{2}}$$</p>
+<p>令 $t = k - \frac{n}{2}$故</p>
+<p>$$ A(\omega_n^k) = A_0(\omega_{\frac{n}{2}}^t) - \omega_{n}^t \cdot A_1(\omega_{\frac{n}{2}}^t) $$</p>
+<p>这样就可以递归处理，每次用 $\omega_{len}^k$ 和 $\omega_{len}^{k + \frac{len}{2}}$ 合并计算了（$len$ 为当前递归的区间长度）</p>
 <p>为了每层的区间长度都能是 $2$ 的倍数，所以把 $n - 1$ 扩成 $2$ 的幂次处理。</p>
 <h1 id="离散傅里叶反变换（IDFT）"><a href="#离散傅里叶反变换（IDFT）" class="headerlink" title="离散傅里叶反变换（IDFT）"></a>离散傅里叶反变换（IDFT）</h1><p>这一段参考了《算法导论》，zyt大佬写的也是非常不错的（大佬的脑补真厉害）</p>
-<p>首先令 $\omega_n^k(0 \leqslant k &lt; n)$ 代入多项式 $A(x)$ 得到的点值为 $y(k)$，写成矩阵乘积 $y = V_n a$ ，其中 $V_n$ 是一个由 $\omega_n$ 适当幂次填充成的矩阵，对于 $j,k \in \{ t | 0 \leqslant t &lt; n \}$，$V_n$ 的 $(j, k)$ 处的元素为 $\omega_n^{jk}$</p>
-<script type="math/tex; mode=display">
-{
- \left[
- \begin{matrix}
-    y_0 \\
-    y_1 \\
-    y_2 \\
-    \vdots \\ 
-    y_{n - 1}
-  \end{matrix}
-  \right] 
-}
-=
-{
- \left[
- \begin{matrix}
-    1 & 1 & 1 & \cdots & 1 & \\
-    1 & \omega_n^1 & \omega_n^2 & \cdots & \omega_n^{n - 1}\\
-    1 & \omega_n^2 & \omega_n^4 & \cdots & \omega_n^{2(n - 1)}\\
-    \vdots & \vdots & \vdots & \ddots & \vdots \\ 
-    1 & \omega_n^{n - 1} & \omega_n^{2(n - 1)} & \cdots & \omega_n^{(n - 1)(n - 1)} \\
-
-  \end{matrix}
-  \right] 
-}
-{
- \left[
- \begin{matrix}
-    a_0 \\
-    a_1 \\
-    a_2 \\
-    \vdots \\ 
-    a_{n - 1}
-  \end{matrix}
-  \right] 
-}</script><p>那么对于逆运算 $a = DFT^{-1}(y)$ 我们把 $y$ 乘上 $V_n$ 的逆矩阵 $V_n^{-1}$ 得到</p>
+<p>首先令 $\omega_n^k(0 \leqslant k &lt; n)$ 代入多项式 $A(x)$ 得到的点值为 $y(k)$，写成矩阵乘积 $y = V_n a$ ，其中 $V_n$ 是一个由 $\omega_n$ 适当幂次填充成的矩阵，对于 $j,k \in { t | 0 \leqslant t &lt; n }$，$V_n$ 的 $(j, k)$ 处的元素为 $\omega_n^{jk}$</p>
+<p>$$<br>{<br> \left[<br> \begin{matrix}<br>    y_0 \<br>    y_1 \<br>    y_2 \<br>    \vdots \<br>    y_{n - 1}<br>  \end{matrix}<br>  \right]<br>}<br>=<br>{<br> \left[<br> \begin{matrix}<br>    1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1 &amp; \<br>    1 &amp; \omega_n^1 &amp; \omega_n^2 &amp; \cdots &amp; \omega_n^{n - 1}\<br>    1 &amp; \omega_n^2 &amp; \omega_n^4 &amp; \cdots &amp; \omega_n^{2(n - 1)}\<br>    \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>    1 &amp; \omega_n^{n - 1} &amp; \omega_n^{2(n - 1)} &amp; \cdots &amp; \omega_n^{(n - 1)(n - 1)} \</p>
+<p>  \end{matrix}<br>  \right]<br>}<br>{<br> \left[<br> \begin{matrix}<br>    a_0 \<br>    a_1 \<br>    a_2 \<br>    \vdots \<br>    a_{n - 1}<br>  \end{matrix}<br>  \right]<br>}<br>$$</p>
+<p>那么对于逆运算 $a = DFT^{-1}(y)$ 我们把 $y$ 乘上 $V_n$ 的逆矩阵 $V_n^{-1}$ 得到</p>
 <blockquote>
-<p>定理：对于 $j,k \in \{ t | 0 \leqslant t &lt; n \}$，$V_n^{-1}$ 的 $(j, k)$ 处的元素为 $\frac{\omega_n^{-jk}}{n}$</p>
+<p>定理：对于 $j,k \in { t | 0 \leqslant t &lt; n }$，$V_n^{-1}$ 的 $(j, k)$ 处的元素为 $\frac{\omega_n^{-jk}}{n}$</p>
 </blockquote>
 <p>证明：</p>
 <p>考虑 $V_n^{-1} V_n$（$n \times n$ 的单位矩阵） 中 $(j, j’)$ 处的元素：</p>
-<script type="math/tex; mode=display">
-[V_n^{-1}V_n]_{jj'} = \sum_{k = 0}^{n - 1}(\omega_n^{-jk} / n)(\omega_n^{j'k}) = \sum_{k = 0}^{n - 1} \omega_n^{(j' - j)k} / n</script><p>根据求和公式，如果 $j’ - j = 0$，此和为 $1$，否则此和为 $0$。注意：只有 $-(n - 1) \leqslant j’ - j \leqslant n - 1$，使得 $j’ - j$ 不能被 $n$ 整除，才能应用求和定理。</p>
+<p>$$<br>[V_n^{-1}V_n]<em>{jj’} = \sum</em>{k = 0}^{n - 1}(\omega_n^{-jk} / n)(\omega_n^{j’k}) = \sum_{k = 0}^{n - 1} \omega_n^{(j’ - j)k} / n<br>$$</p>
+<p>根据求和公式，如果 $j’ - j = 0$，此和为 $1$，否则此和为 $0$。注意：只有 $-(n - 1) \leqslant j’ - j \leqslant n - 1$，使得 $j’ - j$ 不能被 $n$ 整除，才能应用求和定理。</p>
 <p>得到了逆矩阵 $V_n^{-1}$，可以推导出 $DFT_n^{-1}(y)$</p>
-<script type="math/tex; mode=display">
-a_j = \frac{1}{n} \sum_{k = 0}^{n - 1} y_k \omega_n^{-jk} \ \ \  (0 \leqslant j < n)</script><p>我们直接将 $y$ 代入到 $DFT$ 中，用 $\omega_n^{-1}$ 代替 $\omega_n^1$ ，并将所得结果除以 $n$，就得到系数啦！</p>
+<p>$$<br>a_j = \frac{1}{n} \sum_{k = 0}^{n - 1} y_k \omega_n^{-jk} \ \ \  (0 \leqslant j &lt; n)<br>$$</p>
+<p>我们直接将 $y$ 代入到 $DFT$ 中，用 $\omega_n^{-1}$ 代替 $\omega_n^1$ ，并将所得结果除以 $n$，就得到系数啦！</p>
 <p>这样我们得到了一个递归的 $FFT$，常数巨大，代码呈上 zyt 的</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = (<span class="number">1e6</span> + <span class="number">10</span>) * <span class="number">4</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="number">3.141592653589793238462643383279502884197169399375105820974944</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cpx</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">double</span> a, b;</span><br><span class="line">    cpx()&#123;&#125;</span><br><span class="line">    cpx(<span class="keyword">const</span> <span class="keyword">double</span> x, <span class="keyword">const</span> <span class="keyword">double</span> y = <span class="number">0</span>)</span><br><span class="line">        : a(x), b(y)&#123;&#125;</span><br><span class="line">    cpx <span class="keyword">operator</span> + (<span class="keyword">const</span> cpx &amp;c) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> (cpx)&#123;a + c.a, b + c.b&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    cpx <span class="keyword">operator</span> - (<span class="keyword">const</span> cpx &amp;c) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> (cpx)&#123;a - c.a, b - c.b&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    cpx <span class="keyword">operator</span> * (<span class="keyword">const</span> cpx &amp;c) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> (cpx)&#123;a * c.a - b * c.b, a * c.b + b * c.a&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line">cpx a[N], b[N], buf[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> cpx <span class="title">omega</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (cpx)&#123;<span class="built_in">cos</span>(<span class="number">2</span> * PI * k / n), <span class="built_in">sin</span>(<span class="number">2</span> * PI * k / n)&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(cpx *a, <span class="keyword">const</span> <span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">bool</span> inv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">static</span> cpx buf[N];</span><br><span class="line">    <span class="keyword">int</span> mid = n &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mid; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        buf[i] = a[i &lt;&lt; <span class="number">1</span>];</span><br><span class="line">        buf[i + mid] = a[i &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(a, buf, <span class="keyword">sizeof</span>(cpx[n]));</span><br><span class="line">    <span class="comment">//now a[i] is coefficient</span></span><br><span class="line">    FFT(a, mid, inv), FFT(a + mid, mid, inv);</span><br><span class="line">    <span class="comment">//now a[i] is point value</span></span><br><span class="line">    <span class="comment">//a[i] is A1(w_n^i), a[i + mid] is A2(w_n^i)</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mid; i++)</span><br><span class="line">    &#123;<span class="comment">//calculate point value of A(w_n^i) and A(w_n^&#123;i+n/2&#125;)</span></span><br><span class="line">        cpx x = omega(n, i * (inv ? <span class="number">-1</span> : <span class="number">1</span>));</span><br><span class="line">        buf[i] = a[i] + x * a[i + mid];</span><br><span class="line">        buf[i + mid] = a[i] - x * a[i + mid];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(a, buf, <span class="keyword">sizeof</span>(cpx[n]));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    read(n), read(m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> tmp;</span><br><span class="line">        read(tmp);</span><br><span class="line">        a[i] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> tmp;</span><br><span class="line">        read(tmp);</span><br><span class="line">        b[i] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (m += n, n = <span class="number">1</span>; n &lt;= m; n &lt;&lt;= <span class="number">1</span>);</span><br><span class="line">    FFT(a, n, <span class="literal">false</span>), FFT(b, n, <span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        a[i] = a[i] * b[i];</span><br><span class="line">    FFT(a, n, <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++)</span><br><span class="line">        write((<span class="keyword">int</span>)((a[i].a / n) + <span class="number">0.5</span>)), <span class="built_in">putchar</span>(<span class="string">' '</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="实现与优化"><a href="#实现与优化" class="headerlink" title="实现与优化"></a>实现与优化</h1><h2 id="求单位根的幂次"><a href="#求单位根的幂次" class="headerlink" title="求单位根的幂次"></a>求单位根的幂次</h2><p>因为数学库里面 $\cos$ 和 $\sin$ 函数速度“可人”，所以可以算出来单位根然后用它来算单位根的幂。</p>
@@ -664,7 +641,7 @@ a_j = \frac{1}{n} \sum_{k = 0}^{n - 1} y_k \omega_n^{-jk} \ \ \  (0 \leqslant j 
 <li><p>预处理 $\omega_n^{-k}$ ，$FFT$ 时传此时用的是 $\omega_n^{k}$ 还是 $\omega_n^{-k}$ 。<br>$\omega_n^{-k}$ 相当于 $\omega_n^{k}$ 关于 实轴对称，横坐标不变，纵坐标相反。</p>
 </li>
 </ul>
-<h2 id="递归太慢了，我要迭代！"><a href="#递归太慢了，我要迭代！" class="headerlink" title="递归太慢了，我要迭代！"></a>递归太慢了，我要迭代！</h2><p>考虑我们奇偶分组的过程 $\{a_0, a_1, a_2, a_3, a_4, a_5, a_6, a_7\}$ 递归到最后一层时变成了 $\{a_0, a_4, a_2, a_6, a_1, a_5, a_3, a_7\}$，大佬告诉我说 <strong>一个数最终变成的数的下标是它的下标的二进制表示颠倒过来</strong>，例如 $1_{10} = 001_{2}$，$4_{10} = 100_{2}$，那么我们可以预处理一个 $rev$ 数组，其中 <strong>$rev[i]$ 表示 $a_i$ 递归到最后一层会到哪个位置</strong>。例如，当 $n = 8$ 时，$rev[1] = 4$。 </p>
+<h2 id="递归太慢了，我要迭代！"><a href="#递归太慢了，我要迭代！" class="headerlink" title="递归太慢了，我要迭代！"></a>递归太慢了，我要迭代！</h2><p>考虑我们奇偶分组的过程 ${a_0, a_1, a_2, a_3, a_4, a_5, a_6, a_7}$ 递归到最后一层时变成了 ${a_0, a_4, a_2, a_6, a_1, a_5, a_3, a_7}$，大佬告诉我说 <strong>一个数最终变成的数的下标是它的下标的二进制表示颠倒过来</strong>，例如 $1_{10} = 001_{2}$，$4_{10} = 100_{2}$，那么我们可以预处理一个 $rev$ 数组，其中 <strong>$rev[i]$ 表示 $a_i$ 递归到最后一层会到哪个位置</strong>。例如，当 $n = 8$ 时，$rev[1] = 4$。 </p>
 <p>根据 $rev$ 的定义，我们可以递推得到它</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((n &gt;&gt; <span class="number">1</span>) * (i &amp; <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
 <p>其中 $n$ 为大于原题中给定 $n$ 的最下的 $2$ 的幂次。</p>
@@ -672,8 +649,8 @@ a_j = \frac{1}{n} \sum_{k = 0}^{n - 1} y_k \omega_n^{-jk} \ \ \  (0 \leqslant j 
 <p>如图，矩形部分就应当是 $i &gt;&gt; 1$， $rev[i]$ 中的矩形是 $rev[i &gt;&gt; 1] &gt;&gt; 1$ （因为位数是固定的，为 $log_2n$，$i&gt;&gt;1$ 最初的多的一个 $0$ 导致 $rev[i &gt;&gt; 1]$ 最后会有一位多余的 $0$，所以还要右移一位），$n &gt;&gt; 1$ 就是 $1 &lt;&lt; (log_2n - 1)$。</p>
 <p>这样就可以直接先变成最后一层分组的的状态，然后一层一层从下向上的合并啦。</p>
 <h2 id="注意！"><a href="#注意！" class="headerlink" title="注意！"></a>注意！</h2><p>当递归的区间长度为 $len$ 时，查询 $\omega_{len}^k$ 相当于查 $\omega_n^{\frac{nk}{len}}$，<strong>一定要先除再乘，防止 $nk$ 爆 $int$</strong> <del>毕竟这是zyt神仙流过的血啊</del></p>
-<script type="math/tex; mode=display">
-\omega_{len}^k = \omega_{nlen}^{nk} = \omega_{n}^{\frac{nk}{len}}</script><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>模板 <a href="https://www.luogu.org/problemnew/show/P3803" target="_blank" rel="noopener">Luogu3803 多项式乘法</a></p>
+<p>$$<br>\omega_{len}^k = \omega_{nlen}^{nk} = \omega_{n}^{\frac{nk}{len}}<br>$$</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>模板 <a href="https://www.luogu.org/problemnew/show/P3803" target="_blank" rel="noopener">Luogu3803 多项式乘法</a></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1</span> &lt;&lt; <span class="number">21</span> | <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> rev[N];</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">cmplex</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="keyword">double</span> re, im;</span><br><span class="line">        cmplex(<span class="keyword">double</span> _re = <span class="number">0.0</span>, <span class="keyword">double</span> _im = <span class="number">0.0</span>) : re(_re), im(_im) &#123; &#125; </span><br><span class="line">        cmplex <span class="keyword">operator</span> + (<span class="keyword">const</span> cmplex &amp;a) <span class="keyword">const</span> &#123; <span class="keyword">return</span> cmplex(re + a.re, im + a.im); &#125;</span><br><span class="line">        cmplex <span class="keyword">operator</span> - (<span class="keyword">const</span> cmplex &amp;a) <span class="keyword">const</span> &#123; <span class="keyword">return</span> cmplex(re - a.re, im - a.im); &#125;</span><br><span class="line">        cmplex <span class="keyword">operator</span> * (<span class="keyword">const</span> cmplex &amp;a) <span class="keyword">const</span> &#123; <span class="keyword">return</span> cmplex(re * a.re - im * a.im, re * a.im + im * a.re); &#125; </span><br><span class="line">    &#125;w[N];</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((n &gt;&gt; <span class="number">1</span>) * (i &amp; <span class="number">1</span>));</span><br><span class="line">        w[<span class="number">0</span>] = cmplex(<span class="number">1</span>, <span class="number">0</span>), w[<span class="number">1</span>] = cmplex(<span class="built_in">cos</span>(<span class="number">2</span> * PI / n), <span class="built_in">sin</span>(<span class="number">2</span> * PI / n));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++)</span><br><span class="line">            w[i] = w[i - <span class="number">1</span>] * w[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(cmplex *a, <span class="keyword">const</span> <span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> type)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            <span class="keyword">if</span> (i &lt; rev[i])</span><br><span class="line">                swap(a[i], a[rev[i]]);</span><br><span class="line">        <span class="keyword">if</span> (type)</span><br><span class="line">            reverse(w + <span class="number">1</span>, w + n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt; n; len &lt;&lt;= <span class="number">1</span>) <span class="comment">// 枚举递归区间长度 len &lt;&lt; 1</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += (len &lt;&lt; <span class="number">1</span>)) <span class="comment">// 枚举第几个区间</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; len; k++) <span class="comment">// 将这个区间内的元素合并</span></span><br><span class="line">                &#123;</span><br><span class="line">                    cmplex x = a[i + k], y = w[n / (len &lt;&lt; <span class="number">1</span>) * k] * a[i + len + k];</span><br><span class="line">                    a[i + k] = x + y;</span><br><span class="line">                    a[i + len + k] = x - y;</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">if</span> (type)</span><br><span class="line">            reverse(w + <span class="number">1</span>, w + n);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">char</span> ch = getchar();</span><br><span class="line">        <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch))</span><br><span class="line">            f |= (ch == <span class="string">'-'</span>), ch = getchar();</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch))</span><br><span class="line">            x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>, ch = getchar();</span><br><span class="line">        <span class="keyword">return</span> f ? -x : x;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = read(), m = read(), len;</span><br><span class="line">        ++n, ++m;</span><br><span class="line">        <span class="keyword">for</span> (len = <span class="number">1</span>; len &lt; n + m; len &lt;&lt;= <span class="number">1</span>);</span><br><span class="line">        init(len);</span><br><span class="line">        <span class="keyword">static</span> cmplex a[N], b[N];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            a[i] = cmplex(read());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">            b[i] = cmplex(read());</span><br><span class="line">        FFT(a, len, <span class="number">0</span>), FFT(b, len, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">            a[i] = a[i] * b[i];</span><br><span class="line">        FFT(a, len, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n + m - <span class="number">1</span>; i++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>, <span class="keyword">int</span>(a[i].re / len + <span class="number">0.5</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我怎么转载别人的还敲了这么长啊……果然是太菜了啥都不会所以才要多记点<del>为将来忘了做准备</del></p>
 
@@ -1593,7 +1570,24 @@ a_j = \frac{1}{n} \sum_{k = 0}^{n - 1} y_k \omega_n^{-jk} \ \ \  (0 \leqslant j 
         }, 300)
       }).append(e)
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
   

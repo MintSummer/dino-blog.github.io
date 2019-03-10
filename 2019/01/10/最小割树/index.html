@@ -14,7 +14,7 @@
 
 <html class="theme-next pisces" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -186,7 +186,7 @@
     .use-motion .logo-line-before i { left: initial; }
     .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -197,7 +197,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -576,7 +576,7 @@
 <p>$n \leqslant 500$， $m \leqslant 1500$ ，$q \leqslant 10^5$</p>
 <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>emmm……不证明的话很简单</p>
 <blockquote>
-<p>首先有一个定理，就是一个n个点的图上，两点之间只有n种本质不同的最小割。因此一定存在一棵树，满足树上两点的最小割等于原图上两点的最小割。我们把这样的树称之为“最小割树”。 —Ebola</p>
+<p>首先有一个定理，就是一个n个点的图上，两点之间只有n种本质不同的最小割。因此一定存在一棵树，满足树上两点的最小割等于原图上两点的最小割。我们把这样的树称之为“最小割树”。 –Ebola</p>
 </blockquote>
 <p><del>证明自然是没有的</del></p>
 <p>在这里直接说建树方法，主要思想:<strong>分治</strong></p>
@@ -1522,7 +1522,24 @@
         }, 300)
       }).append(e)
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
   
