@@ -129,12 +129,13 @@
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="安利机房大佬zyt的博客讲解， 可以点链接，也可以直接看下面的pdf（去掉了代码）   	      	    珠玉在前，当然是要膜拜大佬伏地膜，所以这里只是简单记一下怎么推的和大佬的讲解（说白了就是学习笔记，基本是转载大佬的） 转载已获得博主同意。别走啊还有我自己补充完善的呢 我已经荣升全机房最后一个学会 $FFT$ 的孩子了……（话说我以前是怎么看着大家都会 $FFT$ 而无动于衷了整整几个月">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/03/10/5c8525b7875b5.png">
 <meta property="og:image" content="https://i.loli.net/2019/03/10/5c851c11c40f3.png">
-<meta property="og:updated_time" content="2019-03-10T14:44:33.387Z">
+<meta property="og:updated_time" content="2019-03-10T14:58:10.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速傅里叶变换 FFT [多项式]">
 <meta name="twitter:description" content="安利机房大佬zyt的博客讲解， 可以点链接，也可以直接看下面的pdf（去掉了代码）   	      	    珠玉在前，当然是要膜拜大佬伏地膜，所以这里只是简单记一下怎么推的和大佬的讲解（说白了就是学习笔记，基本是转载大佬的） 转载已获得博主同意。别走啊还有我自己补充完善的呢 我已经荣升全机房最后一个学会 $FFT$ 的孩子了……（话说我以前是怎么看着大家都会 $FFT$ 而无动于衷了整整几个月">
-<meta name="twitter:image" content="https://i.loli.net/2019/03/10/5c851c11c40f3.png">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/10/5c8525b7875b5.png">
 
 
 
@@ -459,7 +460,7 @@
                 
               
 
-              <time title="创建时间：2019-03-10 17:19:26 / 修改时间：22:44:33" itemprop="dateCreated datePublished" datetime="2019-03-10T17:19:26+08:00">2019-03-10</time>
+              <time title="创建时间：2019-03-10 17:19:26 / 修改时间：22:58:10" itemprop="dateCreated datePublished" datetime="2019-03-10T17:19:26+08:00">2019-03-10</time>
             
 
             
@@ -526,7 +527,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">10k</span>
+                <span title="本文字数">9.5k</span>
               
 
               
@@ -540,7 +541,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">17 分钟</span>
+                <span title="阅读时长">16 分钟</span>
               
             </div>
           
@@ -590,7 +591,7 @@
 <p>折半引理对于用分治策略来对多项式的系数与点值表达进行相互转换是非常重要的，因为它保证了递归子问题的规模只是递归调用前的一半。</p>
 </blockquote>
 <ul>
-<li><p>（三）zyt博客里面那个不知名的性质<br>$$\omega_n^{k + an} = \omega_n^k \ (a \in \Z)$$</p>
+<li><p>（三）zyt博客里面那个不知名的性质<br>$$\omega_n^{k + an} = \omega_n^k \ (a \in Z)$$</p>
 </li>
 <li><p>（四）求和引理  </p>
 </li>
@@ -601,8 +602,8 @@
 <p>$$<br>\sum_{j = 0}^{n - 1} (\omega_n^k)^j = \frac{(\omega_n^k)^n - 1}{\omega_n^k - 1} = \frac{(\omega_n^n)^k - 1}{\omega_n^k - 1} = \frac{(1)^k - 1}{\omega_n^k - 1} = 0<br>$$</p>
 <h2 id="离散傅里叶变换（DFT）"><a href="#离散傅里叶变换（DFT）" class="headerlink" title="离散傅里叶变换（DFT）"></a>离散傅里叶变换（DFT）</h2><p>$DFT$ 是把多项式从系数表示法转换成点值表示法。跟 $O(n^2)$ 的直接带值算相比，主要在于 <strong>代入单位根（幂）</strong> 和 <strong>奇偶分组运算</strong></p>
 <p>将 $n$ 次单位根的 $0$ 到 $n - 1$ 次幂带入 $n - 1$ 次多项式 $A(x)$ （$n + 1$ 组对应的 $x$ 和 $A(x)$ 存在唯一一个最高次数为 $n$ 的多项式 $A(x)$），对 $A(x)$ 奇偶分组：</p>
-<p>$$<br>A_{0}(x) = \sum_{i = 0}^{\frac{n - 1}{2}} a_{2i} \cdot x^i \ </p>
-<p>A_{1}(x) = \sum_{i = 0}^{\frac{n - 1}{2}} a_{2i + 1} \cdot x^i<br>$$</p>
+<p>$$<br>A_{0}(x) = \sum_{i = 0}^{\frac{n - 1}{2}} a_{2i} \cdot x^i<br>$$</p>
+<p>$$<br>A_{1}(x) = \sum_{i = 0}^{\frac{n - 1}{2}} a_{2i + 1} \cdot x^i<br>$$</p>
 <p>则有</p>
 <p>$$ A(x) = A_{0}(x^2) + x \cdot A_{1}(x^2) $$</p>
 <p>带入单位根</p>
@@ -618,18 +619,17 @@
 <p>为了每层的区间长度都能是 $2$ 的倍数，所以把 $n - 1$ 扩成 $2$ 的幂次处理。</p>
 <h1 id="离散傅里叶反变换（IDFT）"><a href="#离散傅里叶反变换（IDFT）" class="headerlink" title="离散傅里叶反变换（IDFT）"></a>离散傅里叶反变换（IDFT）</h1><p>这一段参考了《算法导论》，zyt大佬写的也是非常不错的（大佬的脑补真厉害）</p>
 <p>首先令 $\omega_n^k(0 \leqslant k &lt; n)$ 代入多项式 $A(x)$ 得到的点值为 $y(k)$，写成矩阵乘积 $y = V_n a$ ，其中 $V_n$ 是一个由 $\omega_n$ 适当幂次填充成的矩阵，对于 $j,k \in { t | 0 \leqslant t &lt; n }$，$V_n$ 的 $(j, k)$ 处的元素为 $\omega_n^{jk}$</p>
-<p>$$<br>{<br> \left[<br> \begin{matrix}<br>    y_0 \<br>    y_1 \<br>    y_2 \<br>    \vdots \<br>    y_{n - 1}<br>  \end{matrix}<br>  \right]<br>}<br>=<br>{<br> \left[<br> \begin{matrix}<br>    1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1 &amp; \<br>    1 &amp; \omega_n^1 &amp; \omega_n^2 &amp; \cdots &amp; \omega_n^{n - 1}\<br>    1 &amp; \omega_n^2 &amp; \omega_n^4 &amp; \cdots &amp; \omega_n^{2(n - 1)}\<br>    \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>    1 &amp; \omega_n^{n - 1} &amp; \omega_n^{2(n - 1)} &amp; \cdots &amp; \omega_n^{(n - 1)(n - 1)} \</p>
-<p>  \end{matrix}<br>  \right]<br>}<br>{<br> \left[<br> \begin{matrix}<br>    a_0 \<br>    a_1 \<br>    a_2 \<br>    \vdots \<br>    a_{n - 1}<br>  \end{matrix}<br>  \right]<br>}<br>$$</p>
+<p>（Hexo貌似不支持矩阵所以以图片充数）<br><img src="https://i.loli.net/2019/03/10/5c8525b7875b5.png" alt></p>
 <p>那么对于逆运算 $a = DFT^{-1}(y)$ 我们把 $y$ 乘上 $V_n$ 的逆矩阵 $V_n^{-1}$ 得到</p>
 <blockquote>
-<p>定理：对于 $j,k \in { t | 0 \leqslant t &lt; n }$，$V_n^{-1}$ 的 $(j, k)$ 处的元素为 $\frac{\omega_n^{-jk}}{n}$</p>
+<p>定理：对于 $p,k \in { t | 0 \leqslant t &lt; n }$，$V_n^{-1}$ 的 $(p, k)$ 处的元素为 $\frac{\omega_n^{-jk}}{n}$</p>
 </blockquote>
 <p>证明：</p>
-<p>考虑 $V_n^{-1} V_n$（$n \times n$ 的单位矩阵） 中 $(j, j’)$ 处的元素：</p>
-<p>$$<br>[V_n^{-1}V_n]<em>{jj’} = \sum</em>{k = 0}^{n - 1}(\omega_n^{-jk} / n)(\omega_n^{j’k}) = \sum_{k = 0}^{n - 1} \omega_n^{(j’ - j)k} / n<br>$$</p>
-<p>根据求和公式，如果 $j’ - j = 0$，此和为 $1$，否则此和为 $0$。注意：只有 $-(n - 1) \leqslant j’ - j \leqslant n - 1$，使得 $j’ - j$ 不能被 $n$ 整除，才能应用求和定理。</p>
+<p>考虑 $V_n^{-1} V_n$（$n \times n$ 的单位矩阵） 中 $(p, q)$ 处的元素：</p>
+<p>$$<br>[V_n^{-1}V_n]<em>{jj’} = \sum</em>{k = 0}^{n - 1}(\omega_n^{-jk} / n)(\omega_n^{qk}) = \sum_{k = 0}^{n - 1} \omega_n^{(q - p)k} / n<br>$$</p>
+<p>根据求和公式，如果 $q - p = 0$，此和为 $1$，否则此和为 $0$。注意：只有 $-(n - 1) \leqslant q - p \leqslant n - 1$，使得 $q - p$ 不能被 $n$ 整除，才能应用求和定理。</p>
 <p>得到了逆矩阵 $V_n^{-1}$，可以推导出 $DFT_n^{-1}(y)$</p>
-<p>$$<br>a_j = \frac{1}{n} \sum_{k = 0}^{n - 1} y_k \omega_n^{-jk} \ \ \  (0 \leqslant j &lt; n)<br>$$</p>
+<p>$$<br>a_j = \frac{1}{n} \sum_{k = 0}^{n - 1} y_k \omega_n^{-jk} \ \ \  (0 \leqslant p &lt; n)<br>$$</p>
 <p>我们直接将 $y$ 代入到 $DFT$ 中，用 $\omega_n^{-1}$ 代替 $\omega_n^1$ ，并将所得结果除以 $n$，就得到系数啦！</p>
 <p>这样我们得到了一个递归的 $FFT$，常数巨大，代码呈上 zyt 的</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = (<span class="number">1e6</span> + <span class="number">10</span>) * <span class="number">4</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="number">3.141592653589793238462643383279502884197169399375105820974944</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cpx</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">double</span> a, b;</span><br><span class="line">    cpx()&#123;&#125;</span><br><span class="line">    cpx(<span class="keyword">const</span> <span class="keyword">double</span> x, <span class="keyword">const</span> <span class="keyword">double</span> y = <span class="number">0</span>)</span><br><span class="line">        : a(x), b(y)&#123;&#125;</span><br><span class="line">    cpx <span class="keyword">operator</span> + (<span class="keyword">const</span> cpx &amp;c) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> (cpx)&#123;a + c.a, b + c.b&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    cpx <span class="keyword">operator</span> - (<span class="keyword">const</span> cpx &amp;c) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> (cpx)&#123;a - c.a, b - c.b&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    cpx <span class="keyword">operator</span> * (<span class="keyword">const</span> cpx &amp;c) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> (cpx)&#123;a * c.a - b * c.b, a * c.b + b * c.a&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line">cpx a[N], b[N], buf[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> cpx <span class="title">omega</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (cpx)&#123;<span class="built_in">cos</span>(<span class="number">2</span> * PI * k / n), <span class="built_in">sin</span>(<span class="number">2</span> * PI * k / n)&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(cpx *a, <span class="keyword">const</span> <span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">bool</span> inv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">static</span> cpx buf[N];</span><br><span class="line">    <span class="keyword">int</span> mid = n &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mid; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        buf[i] = a[i &lt;&lt; <span class="number">1</span>];</span><br><span class="line">        buf[i + mid] = a[i &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(a, buf, <span class="keyword">sizeof</span>(cpx[n]));</span><br><span class="line">    <span class="comment">//now a[i] is coefficient</span></span><br><span class="line">    FFT(a, mid, inv), FFT(a + mid, mid, inv);</span><br><span class="line">    <span class="comment">//now a[i] is point value</span></span><br><span class="line">    <span class="comment">//a[i] is A1(w_n^i), a[i + mid] is A2(w_n^i)</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mid; i++)</span><br><span class="line">    &#123;<span class="comment">//calculate point value of A(w_n^i) and A(w_n^&#123;i+n/2&#125;)</span></span><br><span class="line">        cpx x = omega(n, i * (inv ? <span class="number">-1</span> : <span class="number">1</span>));</span><br><span class="line">        buf[i] = a[i] + x * a[i + mid];</span><br><span class="line">        buf[i + mid] = a[i] - x * a[i + mid];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(a, buf, <span class="keyword">sizeof</span>(cpx[n]));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    read(n), read(m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> tmp;</span><br><span class="line">        read(tmp);</span><br><span class="line">        a[i] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> tmp;</span><br><span class="line">        read(tmp);</span><br><span class="line">        b[i] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (m += n, n = <span class="number">1</span>; n &lt;= m; n &lt;&lt;= <span class="number">1</span>);</span><br><span class="line">    FFT(a, n, <span class="literal">false</span>), FFT(b, n, <span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        a[i] = a[i] * b[i];</span><br><span class="line">    FFT(a, n, <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++)</span><br><span class="line">        write((<span class="keyword">int</span>)((a[i].a / n) + <span class="number">0.5</span>)), <span class="built_in">putchar</span>(<span class="string">' '</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -937,7 +937,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:55</span>
+    <span title="站点阅读时长">2:54</span>
   
 </div>
 
