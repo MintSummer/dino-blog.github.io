@@ -131,7 +131,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/03/10/5c8525b7875b5.png">
 <meta property="og:image" content="https://i.loli.net/2019/03/10/5c851c11c40f3.png">
-<meta property="og:updated_time" content="2019-03-10T14:58:10.506Z">
+<meta property="og:updated_time" content="2019-03-10T15:04:40.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速傅里叶变换 FFT [多项式]">
 <meta name="twitter:description" content="安利机房大佬zyt的博客讲解， 可以点链接，也可以直接看下面的pdf（去掉了代码）   	      	    珠玉在前，当然是要膜拜大佬伏地膜，所以这里只是简单记一下怎么推的和大佬的讲解（说白了就是学习笔记，基本是转载大佬的） 转载已获得博主同意。别走啊还有我自己补充完善的呢 我已经荣升全机房最后一个学会 $FFT$ 的孩子了……（话说我以前是怎么看着大家都会 $FFT$ 而无动于衷了整整几个月">
@@ -460,7 +460,7 @@
                 
               
 
-              <time title="创建时间：2019-03-10 17:19:26 / 修改时间：22:58:10" itemprop="dateCreated datePublished" datetime="2019-03-10T17:19:26+08:00">2019-03-10</time>
+              <time title="创建时间：2019-03-10 17:19:26 / 修改时间：23:04:40" itemprop="dateCreated datePublished" datetime="2019-03-10T17:19:26+08:00">2019-03-10</time>
             
 
             
@@ -626,7 +626,7 @@
 </blockquote>
 <p>证明：</p>
 <p>考虑 $V_n^{-1} V_n$（$n \times n$ 的单位矩阵） 中 $(p, q)$ 处的元素：</p>
-<p>$$<br>[V_n^{-1}V_n]<em>{jj’} = \sum</em>{k = 0}^{n - 1}(\omega_n^{-jk} / n)(\omega_n^{qk}) = \sum_{k = 0}^{n - 1} \omega_n^{(q - p)k} / n<br>$$</p>
+<p>$$<br>[V_n^{-1}V_n]<em>{pq} = \sum</em>{k = 0}^{n - 1}(\omega_n^{-pk} / n)(\omega_n^{qk}) = \sum_{k = 0}^{n - 1} \omega_n^{(q - p)k} / n<br>$$</p>
 <p>根据求和公式，如果 $q - p = 0$，此和为 $1$，否则此和为 $0$。注意：只有 $-(n - 1) \leqslant q - p \leqslant n - 1$，使得 $q - p$ 不能被 $n$ 整除，才能应用求和定理。</p>
 <p>得到了逆矩阵 $V_n^{-1}$，可以推导出 $DFT_n^{-1}(y)$</p>
 <p>$$<br>a_j = \frac{1}{n} \sum_{k = 0}^{n - 1} y_k \omega_n^{-jk} \ \ \  (0 \leqslant p &lt; n)<br>$$</p>
