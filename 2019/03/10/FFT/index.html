@@ -132,7 +132,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/03/10/5c8525b7875b5.png">
 <meta property="og:image" content="https://i.loli.net/2019/03/10/5c8528725df25.png">
 <meta property="og:image" content="https://i.loli.net/2019/03/10/5c851c11c40f3.png">
-<meta property="og:updated_time" content="2019-03-10T15:19:47.150Z">
+<meta property="og:updated_time" content="2019-03-10T23:13:34.859Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速傅里叶变换 FFT [多项式]">
 <meta name="twitter:description" content="安利机房大佬zyt的博客讲解， 可以点链接，也可以直接看下面的pdf（去掉了代码）   	      	    珠玉在前，当然是要膜拜大佬伏地膜，所以这里只是简单记一下怎么推的和大佬的讲解（说白了就是学习笔记，基本是转载大佬的） 转载已获得博主同意。别走啊还有我自己补充完善的呢 我已经荣升全机房最后一个学会 $FFT$ 的孩子了……（话说我以前是怎么看着大家都会 $FFT$ 而无动于衷了整整几个月">
@@ -461,12 +461,24 @@
                 
               
 
-              <time title="创建时间：2019-03-10 17:19:26 / 修改时间：23:19:47" itemprop="dateCreated datePublished" datetime="2019-03-10T17:19:26+08:00">2019-03-10</time>
+              <time title="创建时间：2019-03-10 17:19:26" itemprop="dateCreated datePublished" datetime="2019-03-10T17:19:26+08:00">2019-03-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-11 07:13:34" itemprop="dateModified" datetime="2019-03-11T07:13:34+08:00">2019-03-11</time>
               
             
           </span>
@@ -618,7 +630,7 @@
 <p>$$ A(\omega_n^k) = A_0(\omega_{\frac{n}{2}}^t) - \omega_{n}^t \cdot A_1(\omega_{\frac{n}{2}}^t) $$</p>
 <p>这样就可以递归处理，每次用 $\omega_{len}^k$ 和 $\omega_{len}^{k + \frac{len}{2}}$ 合并计算了（$len$ 为当前递归的区间长度）</p>
 <p>为了每层的区间长度都能是 $2$ 的倍数，所以把 $n - 1$ 扩成 $2$ 的幂次处理。</p>
-<h1 id="离散傅里叶反变换（IDFT）"><a href="#离散傅里叶反变换（IDFT）" class="headerlink" title="离散傅里叶反变换（IDFT）"></a>离散傅里叶反变换（IDFT）</h1><p>这一段参考了《算法导论》，zyt大佬写的也是非常不错的（大佬的脑补真厉害）</p>
+<h2 id="离散傅里叶反变换（IDFT）"><a href="#离散傅里叶反变换（IDFT）" class="headerlink" title="离散傅里叶反变换（IDFT）"></a>离散傅里叶反变换（IDFT）</h2><p>这一段参考了《算法导论》，zyt大佬写的也是非常不错的（大佬的脑补真厉害）</p>
 <p>首先令 $\omega_n^k(0 \leqslant k &lt; n)$ 代入多项式 $A(x)$ 得到的点值为 $y(k)$，写成矩阵乘积 $y = V_n a$ ，其中 $V_n$ 是一个由 $\omega_n$ 适当幂次填充成的矩阵，对于 $j,k \in { t | 0 \leqslant t &lt; n }$，$V_n$ 的 $(j, k)$ 处的元素为 $\omega_n^{jk}$</p>
 <p>（Hexo貌似不支持矩阵所以以图片充数）<br><img src="https://i.loli.net/2019/03/10/5c8525b7875b5.png" alt></p>
 <p>那么对于逆运算 $a = DFT^{-1}(y)$ 我们把 $y$ 乘上 $V_n$ 的逆矩阵 $V_n^{-1}$ 得到</p>
@@ -886,7 +898,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单位根"><span class="nav-text">单位根</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散傅里叶变换（DFT）"><span class="nav-text">离散傅里叶变换（DFT）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#离散傅里叶反变换（IDFT）"><span class="nav-text">离散傅里叶反变换（IDFT）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现与优化"><span class="nav-text">实现与优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#求单位根的幂次"><span class="nav-text">求单位根的幂次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDFT-的时候用-omega-n-1-代替-omega-n"><span class="nav-text">$IDFT$ 的时候用 $\omega_n^{-1}$ 代替 $\omega_n$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归太慢了，我要迭代！"><span class="nav-text">递归太慢了，我要迭代！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意！"><span class="nav-text">注意！</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单位根"><span class="nav-text">单位根</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散傅里叶变换（DFT）"><span class="nav-text">离散傅里叶变换（DFT）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散傅里叶反变换（IDFT）"><span class="nav-text">离散傅里叶反变换（IDFT）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现与优化"><span class="nav-text">实现与优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#求单位根的幂次"><span class="nav-text">求单位根的幂次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDFT-的时候用-omega-n-1-代替-omega-n"><span class="nav-text">$IDFT$ 的时候用 $\omega_n^{-1}$ 代替 $\omega_n$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归太慢了，我要迭代！"><span class="nav-text">递归太慢了，我要迭代！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意！"><span class="nav-text">注意！</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
