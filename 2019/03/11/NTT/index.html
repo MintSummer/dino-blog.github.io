@@ -121,19 +121,19 @@
 
 
 
-  <meta name="description" content="快速数论变换 NTT用于加速多项式乘法，优点是可以取模， $FFT$ 处理复数域内的运算，$NTT$ 处理模域下的多项式计算 要求  系数必须都是整数 模数限制：能使用 $NTT$ 的模数必须 存在原根 并且 $p−1$ 是 $2$ 的若干次幂的倍数，例如最常见的 $998244353 = 2^{23} \times 7 \times 17+1$  ($998244353$ 的原根为 $3$) 先">
+  <meta name="description" content="用于加速多项式乘法，优点是可以取模， $FFT$ 处理复数域内的运算，$NTT$ 处理模域下的多项式计算 要求  系数必须都是整数 模数限制：能使用 $NTT$ 的模数必须 存在原根 并且 $p−1$ 是 $2$ 的若干次幂的倍数，例如最常见的 $998244353 = 2^{23} \times 7 \times 17+1$  ($998244353$ 的原根为 $3$) 先对这个模数 $p$">
 <meta name="keywords" content="数学,多项式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快速数论变换 NTT [多项式]">
 <meta property="og:url" content="http://yoursite.com/2019/03/11/NTT/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="快速数论变换 NTT用于加速多项式乘法，优点是可以取模， $FFT$ 处理复数域内的运算，$NTT$ 处理模域下的多项式计算 要求  系数必须都是整数 模数限制：能使用 $NTT$ 的模数必须 存在原根 并且 $p−1$ 是 $2$ 的若干次幂的倍数，例如最常见的 $998244353 = 2^{23} \times 7 \times 17+1$  ($998244353$ 的原根为 $3$) 先">
+<meta property="og:description" content="用于加速多项式乘法，优点是可以取模， $FFT$ 处理复数域内的运算，$NTT$ 处理模域下的多项式计算 要求  系数必须都是整数 模数限制：能使用 $NTT$ 的模数必须 存在原根 并且 $p−1$ 是 $2$ 的若干次幂的倍数，例如最常见的 $998244353 = 2^{23} \times 7 \times 17+1$  ($998244353$ 的原根为 $3$) 先对这个模数 $p$">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/03/11/5c85c8f38abdf.png">
-<meta property="og:updated_time" content="2019-03-11T02:33:51.152Z">
+<meta property="og:updated_time" content="2019-03-11T09:35:28.576Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速数论变换 NTT [多项式]">
-<meta name="twitter:description" content="快速数论变换 NTT用于加速多项式乘法，优点是可以取模， $FFT$ 处理复数域内的运算，$NTT$ 处理模域下的多项式计算 要求  系数必须都是整数 模数限制：能使用 $NTT$ 的模数必须 存在原根 并且 $p−1$ 是 $2$ 的若干次幂的倍数，例如最常见的 $998244353 = 2^{23} \times 7 \times 17+1$  ($998244353$ 的原根为 $3$) 先">
+<meta name="twitter:description" content="用于加速多项式乘法，优点是可以取模， $FFT$ 处理复数域内的运算，$NTT$ 处理模域下的多项式计算 要求  系数必须都是整数 模数限制：能使用 $NTT$ 的模数必须 存在原根 并且 $p−1$ 是 $2$ 的若干次幂的倍数，例如最常见的 $998244353 = 2^{23} \times 7 \times 17+1$  ($998244353$ 的原根为 $3$) 先对这个模数 $p$">
 <meta name="twitter:image" content="https://i.loli.net/2019/03/11/5c85c8f38abdf.png">
 
 
@@ -459,7 +459,7 @@
                 
               
 
-              <time title="创建时间：2019-03-11 10:01:23 / 修改时间：10:33:51" itemprop="dateCreated datePublished" datetime="2019-03-11T10:01:23+08:00">2019-03-11</time>
+              <time title="创建时间：2019-03-11 10:01:23 / 修改时间：17:35:28" itemprop="dateCreated datePublished" datetime="2019-03-11T10:01:23+08:00">2019-03-11</time>
             
 
             
@@ -526,7 +526,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.8k</span>
+                <span title="本文字数">3.7k</span>
               
 
               
@@ -560,7 +560,7 @@
       
 
       
-        <h1 id="快速数论变换-NTT"><a href="#快速数论变换-NTT" class="headerlink" title="快速数论变换 NTT"></a>快速数论变换 NTT</h1><p>用于<strong>加速多项式乘法</strong>，优点是<strong>可以取模</strong>， $FFT$ 处理复数域内的运算，$NTT$ 处理模域下的多项式计算</p>
+        <p>用于<strong>加速多项式乘法</strong>，优点是<strong>可以取模</strong>， $FFT$ 处理复数域内的运算，$NTT$ 处理模域下的多项式计算</p>
 <p><strong>要求</strong></p>
 <ul>
 <li>系数必须都是整数</li>
@@ -575,7 +575,6 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1</span> &lt;&lt; <span class="number">21</span> | <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> p = <span class="number">998244353</span>;</span><br><span class="line"><span class="comment">//    const int g = 3; 懒人专用</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> cnt, prime[N], rev[N], w[N];</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[N];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">char</span> ch = getchar();</span><br><span class="line">        <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch))</span><br><span class="line">            f |= (ch == <span class="string">'-'</span>), ch = getchar();</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch))</span><br><span class="line">            x = x * <span class="number">10</span> + ch - <span class="string">'0'</span>, ch = getchar();</span><br><span class="line">        <span class="keyword">return</span> f ? -x : x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> tim)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (; tim; tim &gt;&gt;= <span class="number">1</span>, x = (ll)x * x % p)</span><br><span class="line">            <span class="keyword">if</span> (tim &amp; <span class="number">1</span>)</span><br><span class="line">                ans = (ll)ans * x % p;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">get_prime</span><span class="params">(<span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt;= t; i++)</span><br><span class="line">            <span class="keyword">if</span> (!(t % i))</span><br><span class="line">            &#123;</span><br><span class="line">                prime[++cnt] = i;</span><br><span class="line">                <span class="keyword">while</span> (!(t % i)) t /= i;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">if</span> (t != <span class="number">1</span>)</span><br><span class="line">            prime[++cnt] = t;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">get_g</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        get_prime(p - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> g = <span class="number">2</span>; ; g++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; i++)</span><br><span class="line">                flag &amp;= (qpow(g, (p - <span class="number">1</span>) / prime[i]) != <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (flag)</span><br><span class="line">                <span class="keyword">return</span> g;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        w[<span class="number">0</span>] = <span class="number">1</span>, w[<span class="number">1</span>] = qpow(get_g(), (p - <span class="number">1</span>) / n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++)</span><br><span class="line">            w[i] = <span class="keyword">int</span>((ll)w[i - <span class="number">1</span>] * w[<span class="number">1</span>] % p);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((n &gt;&gt; <span class="number">1</span>) * (i &amp; <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">NTT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> type)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            <span class="keyword">if</span> (i &lt; rev[i])</span><br><span class="line">                swap(a[i], a[rev[i]]);</span><br><span class="line">        <span class="keyword">if</span> (type)</span><br><span class="line">            reverse(w + <span class="number">1</span>, w + n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt; n; len &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += len &lt;&lt; <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; len; k++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> x = a[i + k], y = <span class="keyword">int</span>((ll)w[n / (len &lt;&lt; <span class="number">1</span>) * k] * a[i + len + k] % p);</span><br><span class="line">                    a[i + k] = (x + y) % p;</span><br><span class="line">                    a[i + len + k] = (x - y + p) % p;</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">if</span> (type)</span><br><span class="line">        &#123;</span><br><span class="line">            reverse(w + <span class="number">1</span>, w + n);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, t = qpow(n, p - <span class="number">2</span>); i &lt; n; i++)</span><br><span class="line">                a[i] = <span class="keyword">int</span>((ll)a[i] * t % p);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = read(), m = read(), len = <span class="number">1</span>;</span><br><span class="line">        ++n, ++m;</span><br><span class="line">        <span class="keyword">for</span> (len = <span class="number">1</span>; len &lt;= n + m; len &lt;&lt;= <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> a[N], b[N];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            a[i] = read();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">            b[i] = read();</span><br><span class="line">        init(len);</span><br><span class="line">        NTT(a, len, <span class="number">0</span>), NTT(b, len, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">            a[i] = <span class="keyword">int</span>((ll)a[i] * b[i] % p);</span><br><span class="line">        NTT(a, len, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n + m - <span class="number">1</span>; i++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>貌似 $NTT$ 比 $FFT$ 快不少</p>
 <p><img src="https://i.loli.net/2019/03/11/5c85c8f38abdf.png" alt></p>
-<h1 id="任意模数NTT"><a href="#任意模数NTT" class="headerlink" title="任意模数NTT"></a>任意模数NTT</h1><p>博主什么时候学回来再来填坑……</p>
 
       
     </div>
@@ -624,6 +623,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/03/11/NTT-mod/" rel="prev" title="任意模数 NTT [多项式]">
+                任意模数 NTT [多项式] <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -671,17 +674,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -698,7 +692,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -798,22 +792,6 @@
       </div>
 
       
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快速数论变换-NTT"><span class="nav-text">快速数论变换 NTT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#任意模数NTT"><span class="nav-text">任意模数NTT</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
       
       <div id="music163player">
         <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=558261233&auto=1&height=66">
@@ -851,7 +829,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">108k</span>
+    <span title="站点总字数">114k</span>
   
 
   
@@ -860,7 +838,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3:01</span>
+    <span title="站点阅读时长">3:09</span>
   
 </div>
 
