@@ -586,9 +586,15 @@
 </ul>
 <p>我们用 $d[i]$ 表示点 $i$ 在初始流中<strong>流入量-流出量</strong>的值，那么 $d[i]$ 的正负就可以表示以上三种情况。</p>
 <p>如果一个点$d[i] &lt; 0$，我们需要给多出的流入量一个出处，需要让附加流中 $i$ 的流入量比流出量少 $-d[i]$，所以<strong>建一条从 $i$ 出发的边，流量为 $-d[i]$</strong>；如果 $d[i] &gt; 0$，则<br><strong>建一条指向 $i$ 的边，流量为$d[i]$</strong>。  </p>
-<p>虚拟源汇点 $s$，$t$。分类<br>$$<br>\left{<br>\begin{aligned}<br>d[i] &gt; 0 &amp;  \ \ \ \ 建 s 指向 i 的边，使附加流中 i 的流出量增加 d[i] \<br>d[i] &lt; 0 &amp; \ \ \ \  建 i 指向 t 的边，使附加流中 i 的流入量增加 -d[i] \<br>\end{aligned}<br>\right.<br>$$</p>
-<p>为了得到一个可行流，指向 $t$ 的边的总流量上限必须等于从 $s$ 出发的边的总流量上限，因为原图上每条边对两个端点的 $d[i]$ 的贡献一正一负绝对值相同，所以 $\sum_{i=1}^n d[i] = 0$，并且<br>$$ \sum_{d[i]&lt;0} |d[i]| = \sum_{d[i]&gt;0} |d[i]|$$ </p>
-<p>除了连接 $s$，$t$ 的边以外，在连上原图中的边，流量为<strong>上界-下界</strong>。在这个图上，如果我们能够找到一个流满足所有连接 $s$，$t$ 的边都满流，那这个流在原图中边上的流量就是我们要的附加流。这样的流就是我们所建的新图中 $s$ 到 $t$ 的最大流。</p>
+<p>虚拟源汇点 $s$，$t$。分类</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+d[i] > 0 &  \ \ \ \ 建 s 指向 i 的边，使附加流中 i 的流出量增加 d[i] \\
+d[i] < 0 & \ \ \ \  建 i 指向 t 的边，使附加流中 i 的流入量增加 -d[i] \\
+\end{aligned}
+\right.</script><p>为了得到一个可行流，指向 $t$ 的边的总流量上限必须等于从 $s$ 出发的边的总流量上限，因为原图上每条边对两个端点的 $d[i]$ 的贡献一正一负绝对值相同，所以 $\sum_{i=1}^n d[i] = 0$，并且 </p>
+<script type="math/tex; mode=display">\sum_{d[i]<0} |d[i]| = \sum_{d[i]>0} |d[i]|</script><p>除了连接 $s$，$t$ 的边以外，在连上原图中的边，流量为<strong>上界-下界</strong>。在这个图上，如果我们能够找到一个流满足所有连接 $s$，$t$ 的边都满流，那这个流在原图中边上的流量就是我们要的附加流。这样的流就是我们所建的新图中 $s$ 到 $t$ 的最大流。</p>
 <p><strong>存在可行流的条件：$s$ 到 $t$ 的最大流 = $\sum_{d[i]&gt;0} d[i]$</strong></p>
 <p>最后，<strong>每条边的流量 = 下界 + 附加流中它的流量</strong></p>
 <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=2314" target="_blank" rel="noopener">ZOJ2314 Reactor Cooling</a></p>
@@ -901,7 +907,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">139k</span>
+    <span title="站点总字数">138k</span>
   
 
   
@@ -910,7 +916,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3:51</span>
+    <span title="站点阅读时长">3:50</span>
   
 </div>
 
