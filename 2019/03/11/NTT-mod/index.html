@@ -129,7 +129,7 @@
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="$NTT$ 的模数要求太严格了，根本压不住毒瘤出题人，所以就需要任意模数 $NTT$ 救场了。 题目求两个多项式 $F(x)$ 和 $G(x)$ ，求 $F(x) * G(x) \mod p$  其中 $p$ 不一定能分解成 $p = 2^ka + 1$ 的形式 $1 \leqslant n, m \leqslant 10^5$，$0 \leqslant a_i \leqslant 10^9$，$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-11T12:52:44.447Z">
+<meta property="og:updated_time" content="2019-03-13T03:28:09.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="任意模数 NTT [多项式]">
 <meta name="twitter:description" content="$NTT$ 的模数要求太严格了，根本压不住毒瘤出题人，所以就需要任意模数 $NTT$ 救场了。 题目求两个多项式 $F(x)$ 和 $G(x)$ ，求 $F(x) * G(x) \mod p$  其中 $p$ 不一定能分解成 $p = 2^ka + 1$ 的形式 $1 \leqslant n, m \leqslant 10^5$，$0 \leqslant a_i \leqslant 10^9$，$">
@@ -458,12 +458,24 @@
                 
               
 
-              <time title="创建时间：2019-03-11 17:13:49 / 修改时间：20:52:44" itemprop="dateCreated datePublished" datetime="2019-03-11T17:13:49+08:00">2019-03-11</time>
+              <time title="创建时间：2019-03-11 17:13:49" itemprop="dateCreated datePublished" datetime="2019-03-11T17:13:49+08:00">2019-03-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-13 11:28:09" itemprop="dateModified" datetime="2019-03-13T11:28:09+08:00">2019-03-13</time>
               
             
           </span>
@@ -569,10 +581,10 @@
 <p>但是，$10^{24}$ 成功炸掉了 $long \ long$， 凉凉。</p>
 <p>首先我们得到了每一位的答案：</p>
 <p>$$ ans \equiv a_0 \mod p_0 $$<br>$$ ans \equiv a_1 \mod p_1 $$<br>$$ ans \equiv a_2 \mod p_2 $$</p>
-<p>考虑合并 $p_0$， $p_1$ 的答案（$p_0p_1 \leqslant 2^{63} - 1$），用中国剩余定理，得到<br>$$<br>t_0 = (a_0 p_1 \operatorname{inv}(p_1, p_0) + a_1 p_0 \operatorname{inv}(p_0, p_1)) \mod p_0p_1<br>$$</p>
+<p>考虑合并 $p_0$， $p_1$ 的答案（$p_0p_1 \leqslant 2^{63} - 1$），用中国剩余定理，记 $t_0$ 为合并 $p_0$、$p_1$ 的结果，则<br>$$<br>t_0 = (a_0 p_1 \operatorname{inv}(p_1, p_0) + a_1 p_0 \operatorname{inv}(p_0, p_1)) \mod p_0p_1<br>$$</p>
 <p><strong>$\mod p_0 p_1$ 就要用龟速乘了，否则炸 $long \ long$</strong>，推一波 $O(1)$ 的龟速乘（$O(log n)$ 可能会被卡）</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">mul</span><span class="params">(ll a, ll b,<span class="keyword">const</span> ll p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">double</span> eps = <span class="number">1e-8</span>;</span><br><span class="line">    a = (a % p + p) % p;</span><br><span class="line">    b = (b % p + p) % p;</span><br><span class="line">    <span class="keyword">return</span> ((a * b - ll((<span class="keyword">long</span> <span class="keyword">double</span>)a / p * b + eps) * p) % p + p) % p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>那么 $ans = t_1 \times p_0p_1 + t_0$，再根据 $p_2$ 的结果</p>
+<p>记 $t_1$ 使得 $ans = t_1 \times p_0p_1 + t_0$，现在就要求 $t_1$，再根据 $p_2$ 的结果</p>
 <p>$$t_1 \times p_0p_1 + t_0 \equiv a_2 \mod p_2 $$<br>$$t_1 \times p_0p_1 \equiv a_2 - t_0 \mod p_2 $$<br>$$t_1 \equiv (a_2 - t_0)p_0^{-1}p_1^{-1} \mod p_2 $$</p>
 <p>完结撒花~</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>模板 <a href="https://www.luogu.org/problemnew/show/P4245" target="_blank" rel="noopener">Luogu4245 任意模数NTT</a></p>
@@ -868,7 +880,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3:18</span>
+    <span title="站点阅读时长">3:19</span>
   
 </div>
 
