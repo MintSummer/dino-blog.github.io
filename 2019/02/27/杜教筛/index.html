@@ -129,7 +129,7 @@
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求 S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：   \begin{aligned} &amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\ &amp;= \sum_{i =">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-11T10:56:00.844Z">
+<meta property="og:updated_time" content="2019-03-18T15:37:50.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="杜教筛 [筛法]">
 <meta name="twitter:description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求 S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：   \begin{aligned} &amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\ &amp;= \sum_{i =">
@@ -475,7 +475,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-11 18:56:00" itemprop="dateModified" datetime="2019-03-11T18:56:00+08:00">2019-03-11</time>
+                <time title="修改时间：2019-03-18 23:37:50" itemprop="dateModified" datetime="2019-03-18T23:37:50+08:00">2019-03-18</time>
               
             
           </span>
@@ -588,7 +588,7 @@
 <p>实际上,我们可以用线性筛预处理一部分,用之前的式子解决其它部分来优化时间复杂度,设预处理了前 $B$ 个，当时间复杂度最优时 $B = \sqrt{\frac{n}{B}}$， 解得 $B = n^{\frac{2}{3}}$ ，时间复杂度是 $O(n ^ {\frac{2}{3}})$</p>
 <p><strong>实现时，可以将 $S(x)$ 的值存入数组的第 $\lfloor\frac{n}{x}\rfloor$ 位以避免使用 $map$ 等数据结构，可以证明这样不会冲突。</strong></p>
 <h1 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h1><p>最麻烦的还是构造 $g$ 函数了…… 记几个常用的</p>
-<p>安利 <a href="https://dino.ml/2019/02/27/%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%8D%B7%E7%A7%AF/" target="_blank" rel="noopener">狄利克雷卷积</a>，不知道的先看一下</p>
+<p>安利 <a href="https://little-dino.top/2019/02/27/%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%8D%B7%E7%A7%AF/" target="_blank" rel="noopener">狄利克雷卷积</a>，不知道的先看一下</p>
 <p>$\mu <em> 1 = \epsilon$ ， $\varphi </em> 1 = id_1$ ， $id_1 * \mu = \varphi$</p>
 <script type="math/tex; mode=display">\sum_{i = 1}^n id_2(i) = \frac{n(n + 1)(2n + 1)}{6}</script><script type="math/tex; mode=display">\sum_{i = 1}^n id_3(i) = (1 + 2 + 3 + \cdots + n)^2 = \left( \sum_{i = 1}^n id_1(n) \right) ^2</script><p>如果看到了还会再补充的</p>
 <h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p><a href="https://www.luogu.org/problemnew/show/P4213" target="_blank" rel="noopener">Luogu4213 [模板] 杜教筛</a></p>
@@ -614,7 +614,7 @@
 &= id \cdot id_2 \\
 &= id_3
 \end{aligned}</script><p>故 $g = id_2$，$f * g = id_3$</p>
-<h2 id="bzoj4652-NOI2016-循环之美"><a href="#bzoj4652-NOI2016-循环之美" class="headerlink" title="bzoj4652[NOI2016] 循环之美"></a>bzoj4652[NOI2016] 循环之美</h2><p>前几天写的了 <a href="https://dino.ml/2019/02/22/bzoj4652%E5%BE%AA%E7%8E%AF%E4%B9%8B%E7%BE%8E-%E6%9D%9C%E6%95%99%E7%AD%9B/" target="_blank" rel="noopener">bzoj4652[NOI2016] 循环之美 [杜教筛]</a></p>
+<h2 id="bzoj4652-NOI2016-循环之美"><a href="#bzoj4652-NOI2016-循环之美" class="headerlink" title="bzoj4652[NOI2016] 循环之美"></a>bzoj4652[NOI2016] 循环之美</h2><p>前几天写的了 <a href="https://little-dino.top/2019/02/22/bzoj4652%E5%BE%AA%E7%8E%AF%E4%B9%8B%E7%BE%8E-%E6%9D%9C%E6%95%99%E7%AD%9B/" target="_blank" rel="noopener">bzoj4652[NOI2016] 循环之美 [杜教筛]</a></p>
 <p>也许哪天就补上了 $Min25$ 筛 <del>啥时候学会了再说</del></p>
 
       
