@@ -121,23 +121,25 @@
 
 
 
-  <meta name="description" content="少女省OIer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Little Dino">
-<meta property="og:url" content="http://yoursite.com/tags/数学/page/2/index.html">
+  <meta name="description" content="问题给你两个多项式 $A, B$ 求  C_{i\&amp;j} = \sum A_i \times B_j\\ C_{i|j} = \sum A_i \times B_j\\ C_{i \otimes j} = \sum A_i \times B_j\\($\otimes$ 是异或) 方法$FWT$ 用于处理多项式的位运算卷积 考虑一下 $FFT$ 的过程，就是将系数表达式变成点值表达式，点值相乘后再将">
+<meta name="keywords" content="多项式,FWT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速沃尔什变换 FWT">
+<meta property="og:url" content="http://yoursite.com/2019/03/28/FWT/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="少女省OIer">
+<meta property="og:description" content="问题给你两个多项式 $A, B$ 求  C_{i\&amp;j} = \sum A_i \times B_j\\ C_{i|j} = \sum A_i \times B_j\\ C_{i \otimes j} = \sum A_i \times B_j\\($\otimes$ 是异或) 方法$FWT$ 用于处理多项式的位运算卷积 考虑一下 $FFT$ 的过程，就是将系数表达式变成点值表达式，点值相乘后再将">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-28T03:47:36.903Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Little Dino">
-<meta name="twitter:description" content="少女省OIer">
+<meta name="twitter:title" content="快速沃尔什变换 FWT">
+<meta name="twitter:description" content="问题给你两个多项式 $A, B$ 求  C_{i\&amp;j} = \sum A_i \times B_j\\ C_{i|j} = \sum A_i \times B_j\\ C_{i \otimes j} = \sum A_i \times B_j\\($\otimes$ 是异或) 方法$FWT$ 用于处理多项式的位运算卷积 考虑一下 $FFT$ 的过程，就是将系数表达式变成点值表达式，点值相乘后再将">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/数学/page/2/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/28/FWT/">
 
 
 
@@ -147,7 +149,7 @@
   };
 </script>
 
-  <title>标签: 数学 | Little Dino</title>
+  <title>快速沃尔什变换 FWT | Little Dino</title>
   
 
 
@@ -195,7 +197,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -270,7 +272,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -392,167 +394,317 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>数学<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/28/FWT/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TYC">
+      <meta itemprop="description" content="少女省OIer">
+      <meta itemprop="image" content="https://i.loli.net/2019/03/24/5c9746e576f39.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Little Dino">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/10/FFT/" itemprop="url">
-              
-                <span itemprop="name">快速傅里叶变换 FFT [多项式]</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">快速沃尔什变换 FWT
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-10T17:19:26+08:00" content="2019-03-10">
-          03-10
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-28 09:14:57 / 修改时间：11:47:36" itemprop="dateCreated datePublished" datetime="2019-03-28T09:14:57+08:00">2019-03-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法讲解/" itemprop="url" rel="index"><span itemprop="name">算法讲解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/28/FWT/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/03/28/FWT/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">7 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/16/bzoj4591/" itemprop="url">
-              
-                <span itemprop="name">BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-16T22:55:09+08:00" content="2018-12-16">
-          12-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/16/bzoj3157&3516/" itemprop="url">
-              
-                <span itemprop="name">bzoj3157/3516 国王奇遇记 [数学]</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-16T15:52:59+08:00" content="2018-12-16">
-          12-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/16/错位排列/" itemprop="url">
-              
-                <span itemprop="name">错位排列 学习笔记 [数学]</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-16T13:17:45+08:00" content="2018-12-16">
-          12-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>给你两个多项式 $A, B$ 求</p>
+<script type="math/tex; mode=display">
+C_{i\&j} = \sum A_i \times B_j\\
+C_{i|j} = \sum A_i \times B_j\\
+C_{i \otimes j} = \sum A_i \times B_j\\</script><p>($\otimes$ 是异或)</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p><strong>$FWT$ 用于处理多项式的位运算卷积</strong></p>
+<p>考虑一下 $FFT$ 的过程，就是将系数表达式变成点值表达式，点值相乘后再将点值表达式变成系数表达式。</p>
+<p>$FWT$ 可以同样用这个过程，先用 $FWT$ 转换，再利用 $FWT(C) = FWT(A) \times FWT(B)$ （对应项相乘），然后转回去。</p>
+<p>主要思想还是 <strong>分治</strong>。</p>
+<h1 id="or-或卷积"><a href="#or-或卷积" class="headerlink" title="or 或卷积"></a>or 或卷积</h1><p>求 $C_{i | j} = \sum A_i B_j$ </p>
+<p>首先，对于 $or$ 卷积而言 $FWT(A)[i] = \sum_{j | i = i} A[j]$，就是它在或意义下的子集</p>
+<p>我们记 $A_0$ 为 $A$ 的前 $2^{n - 1}$ 项（一半），$A_1$ 为 $A$ 的后 $2^{n - 1}$ 项（记最高项为 $0$ 的归 $A_0$， 为 $1$ 归 $A_1$），假定我们已经知道了 $FWT(A_0)$ 和 $FWT(A_1)$，现在要求 $FWT(A)$</p>
+<ul>
+<li><p>当 $n = 0$ 时，$FWT(A) = A$</p>
+</li>
+<li><p>$FWT(A)$ 的前一半首位填 $0$，那么它的子集还是 $FWT(A_0)$</p>
+</li>
+<li>$FWT(A)$ 的后一半首位填 $1$，那么它的子集是 $FWT(A_0 + A_1)$</li>
+</ul>
+<p>前一半只会有 $A_0$ 有贡献，所以就是 $A_0$</p>
+<p>因为 $A_0$ 和 $A_1$ 做 $or$ 卷积时，首位被 $or$ 成 $1$，只会贡献到 $A$ 的后一半，所以后一半应当是 $A_0 + A_1$</p>
+<p>好吧，我承认自己说的奇奇怪怪的，<a href="https://www.cnblogs.com/cjyyb/p/9065615.html" target="_blank" rel="noopener">安利博客</a>， 博客里面大佬说（证）了：</p>
+<blockquote>
+<p>FWT(A + B) = FWT(A) + FWT(B)</p>
+</blockquote>
+<p>总结下来就是 </p>
+<script type="math/tex; mode=display">
+FWT(A) = 
+\begin{cases}
+(FWT(A_0), FWT(A_0) + FWT(A_1)) & n > 0 \\
+A & n = 0 \\
+\end{cases}</script><p>$(,)$ 表示两段接起来</p>
+<p>然后就可以愉快地得到 $FWT(A)$ 了。大佬还证明了 $FWT(A|B) = FWT(A) \times FWT(B)$ <del>然而我懒得写了</del>。</p>
+<p>然后再考虑转回去，倒着做 记 $A_0’$，$A_1’$ 分别为 $A$ 的前一半后一半，则 $A_0’ = A_0$，$A_1’ = A_0 + A_1$，那么</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+A_0 &= A_0' \\
+A_1 &= A_1' - A_0'\\
+\end{aligned}</script><script type="math/tex; mode=display">
+\Rightarrow IFWT(A) = (IFWT(A_0), IFWT(A_1) - IFWT(A_0))</script><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt; n; len &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += len &lt;&lt; <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; len; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> x = a[i + k], y = a[i + len + k];</span><br><span class="line">                a[i + k] = x;</span><br><span class="line">                a[i + len + k] = (x + y) % p;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">IFWT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt; n; len &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += len &lt;&lt; <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; len; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> x = a[i + k], y = a[i + len + k];</span><br><span class="line">                a[i + k] = x;</span><br><span class="line">                a[i + len + k] = (y - x + p) % p;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="and-与卷积"><a href="#and-与卷积" class="headerlink" title="and 与卷积"></a>and 与卷积</h1><p>求 $C_{i \&amp; j} = \sum A_i B_j$ </p>
+<p>因为 $FWT(A)[i] = \sum_{j \&amp; i = i} A[j]$ ，所以</p>
+<script type="math/tex; mode=display">
+FWT(A) = 
+\begin{cases}
+(FWT(A_0) + FWT(A_1)， FWT(A_1)) & n > 0 \\
+A & n = 0 \\
+\end{cases}</script><p>$IFWT$ 的时候</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+A_0 &= A_0' - A_1' \\
+A_1 &= A_1'\\
+\end{aligned}</script><script type="math/tex; mode=display">
+\Rightarrow IFWT(A) = (IFWT(A_0) - IFWT(A_1), IFWT(A_1))</script><h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt; n; len &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += len &lt;&lt; <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; len; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> x = a[i + k], y = a[i + len + k];</span><br><span class="line">                a[i + k] = (x + y) % p;</span><br><span class="line">                a[i + len + k] = y;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">IFWT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt; n; len &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += len &lt;&lt; <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; len; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> x = a[i + k], y = a[i + len + k];</span><br><span class="line">                a[i + k] = (x - y + p) % p;</span><br><span class="line">                a[i + len + k] = y;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="xor-异或卷积"><a href="#xor-异或卷积" class="headerlink" title="xor 异或卷积"></a>xor 异或卷积</h1><p>求 $C_{i \otimes j} = \sum A_i B_j$ </p>
+<p>因为 $FWT(A)[i] = \sum_{j \otimes i = i} A[j]$ ，所以</p>
+<script type="math/tex; mode=display">
+FWT(A) = 
+\begin{cases}
+(FWT(A_0) + FWT(A_1)， FWT(A_0) - FWT(A_1)) & n > 0 \\
+A & n = 0 \\
+\end{cases}</script><p>$IFWT$ 的时候</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+A_0 &= \frac{A_0' + A_1'}{2} \\
+A_1 &= \frac{A_0' - A_1'}{2}\\
+\end{aligned}</script><script type="math/tex; mode=display">
+\Rightarrow IFWT(A) = (\frac{IFWT(A_0) + IFWT(A_1)}{2}, \frac{IFWT(A_0) - IFWT(A_1)}{2})</script><h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt; n; len &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += len &lt;&lt; <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; len; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> x = a[i + k], y = a[i + len + k];</span><br><span class="line">                a[i + k] = (x + y) % p;</span><br><span class="line">                a[i + len + k] = (x - y + p) % p;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">IFWT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> INV2 = (p + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt; n; len &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += len &lt;&lt; <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; len; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> x = a[i + k], y = a[i + len + k];</span><br><span class="line">                a[i + k] = <span class="keyword">int</span>((ll)(x + y) * INV2 % p);</span><br><span class="line">                a[i + len + k] = <span class="keyword">int</span>((ll)(x - y) * INV2 % p);</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面所有的代码都是在写博客的时候直接写的，只能保证没有 $\mathrm{CE}$ （正确性应该吧……）</p>
+<p><del>总感觉这个没啥理由打上数学的标签</del></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>大佬yyb <a href="https://www.cnblogs.com/cjyyb/p/9065615.html" target="_blank" rel="noopener">https://www.cnblogs.com/cjyyb/p/9065615.html</a><br>ACMLCZH <a href="https://www.cnblogs.com/ACMLCZH/p/8022502.html" target="_blank" rel="noopener">https://www.cnblogs.com/ACMLCZH/p/8022502.html</a></p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/多项式/" rel="tag"># 多项式</a>
+          
+            <a href="/tags/FWT/" rel="tag"># FWT</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/21/bzoj3625/" rel="next" title="bzoj3625 小朋友和二叉树 [多项式]">
+                <i class="fa fa-chevron-left"></i> bzoj3625 小朋友和二叉树 [多项式]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/tags/数学/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/tags/数学/">1</a><span class="page-number current">2</span>
-  </nav>
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -573,8 +725,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -694,6 +855,22 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-text">方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#or-或卷积"><span class="nav-text">or 或卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#and-与卷积"><span class="nav-text">and 与卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-1"><span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xor-异或卷积"><span class="nav-text">xor 异或卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-2"><span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
       
       <div id="music163player">
@@ -868,6 +1045,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
 
   
 
