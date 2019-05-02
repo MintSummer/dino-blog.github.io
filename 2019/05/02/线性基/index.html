@@ -129,7 +129,7 @@
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="用于解决子集异或等一类问题 什么是线性基 基：在线性代数中，基（也称为基底）是描述、刻画向量空间的基本工具。向量空间的基是它的一个特殊的子集，基的元素称为基向量。向量空间中任意一个元素，都可以唯一地表示成基向量的线性组合。如果基中元素个数有限，就称向量空间为有限维向量空间，将元素的个数称作向量空间的维数。  线性基是一种特殊的基，一般用于处理异或运算，它的意义是：通过原集合 $S$ 的某一个最小子">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-02T08:31:03.733Z">
+<meta property="og:updated_time" content="2019-05-02T08:34:21.114Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性基">
 <meta name="twitter:description" content="用于解决子集异或等一类问题 什么是线性基 基：在线性代数中，基（也称为基底）是描述、刻画向量空间的基本工具。向量空间的基是它的一个特殊的子集，基的元素称为基向量。向量空间中任意一个元素，都可以唯一地表示成基向量的线性组合。如果基中元素个数有限，就称向量空间为有限维向量空间，将元素的个数称作向量空间的维数。  线性基是一种特殊的基，一般用于处理异或运算，它的意义是：通过原集合 $S$ 的某一个最小子">
@@ -458,7 +458,7 @@
                 
               
 
-              <time title="创建时间：2019-05-02 11:56:51 / 修改时间：16:31:03" itemprop="dateCreated datePublished" datetime="2019-05-02T11:56:51+08:00">2019-05-02</time>
+              <time title="创建时间：2019-05-02 11:56:51 / 修改时间：16:34:21" itemprop="dateCreated datePublished" datetime="2019-05-02T11:56:51+08:00">2019-05-02</time>
             
 
             
@@ -525,7 +525,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.7k</span>
+                <span title="本文字数">3.8k</span>
               
 
               
@@ -587,6 +587,7 @@
 <script type="math/tex; mode=display">x \oplus d[a] \oplus d[b] \oplus \cdots = 0</script><p>即 </p>
 <script type="math/tex; mode=display">x = d[a] \oplus d[b] \oplus \cdots</script><p>所以 $x$ 不能成功插入线性基一定是因为此时线性基中已经可以有一些数的异或值为 $x$ 了，为了保证线性基最小，不插入 $x$。</p>
 <p>根据这个插入的条件，我们可以发现，线性基中不存在 $d[a] \oplus d[b] \oplus \cdots = d[i]$ 的情况（否则 $d[i]$ 就不会插入了），所以线性基中没有异或值为 $0$ 的子集。</p>
+<h2 id="线性基合并"><a href="#线性基合并" class="headerlink" title="线性基合并"></a>线性基合并</h2><p>合并两个线性基就是把一个线性基一位一位插入到另一个里面就行了，复杂度 $O(log^2n)$</p>
 <h1 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h1><h2 id="判断一个数是否能被序列-A-中的若干个数-当前线性基中的元素异或得到"><a href="#判断一个数是否能被序列-A-中的若干个数-当前线性基中的元素异或得到" class="headerlink" title="判断一个数是否能被序列 A 中的若干个数/当前线性基中的元素异或得到"></a>判断一个数是否能被序列 A 中的若干个数/当前线性基中的元素异或得到</h2><p>依照插入时的情况，直接将 $x$ 试着插入到线性基中，如果不能成功插入，那么说明当前线性基中已经有异或值为 $x$ 的子集了。</p>
 <h2 id="最大值"><a href="#最大值" class="headerlink" title="最大值"></a>最大值</h2><p>给定序列 A，求从 A 中取出来若干个数的异或和的最大值</p>
 <p>首先构造出这个序列的线性基，从最高为开始，贪心选取，如果当前 $ans$ 异或 $d[i]$ 可以变得更大，就异或 $d[i]$</p>
@@ -648,8 +649,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/28/FWT_old/" rel="next" title="以前写的嘴子 FWT 讲解">
-                <i class="fa fa-chevron-left"></i> 以前写的嘴子 FWT 讲解
+              <a href="/2019/03/28/FWT/" rel="next" title="快速沃尔什变换 FWT">
+                <i class="fa fa-chevron-left"></i> 快速沃尔什变换 FWT
               </a>
             
           </div>
@@ -849,7 +850,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是线性基"><span class="nav-text">什么是线性基</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性质"><span class="nav-text">性质</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插入"><span class="nav-text">插入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询"><span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#判断一个数是否能被序列-A-中的若干个数-当前线性基中的元素异或得到"><span class="nav-text">判断一个数是否能被序列 A 中的若干个数/当前线性基中的元素异或得到</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大值"><span class="nav-text">最大值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小值"><span class="nav-text">最小值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-k-小值"><span class="nav-text">第 $k$ 小值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求一个数在序列-A-取若干个数异或值的集合中的排名"><span class="nav-text">求一个数在序列 A 取若干个数异或值的集合中的排名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-text">例题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是线性基"><span class="nav-text">什么是线性基</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性质"><span class="nav-text">性质</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插入"><span class="nav-text">插入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性基合并"><span class="nav-text">线性基合并</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询"><span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#判断一个数是否能被序列-A-中的若干个数-当前线性基中的元素异或得到"><span class="nav-text">判断一个数是否能被序列 A 中的若干个数/当前线性基中的元素异或得到</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大值"><span class="nav-text">最大值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小值"><span class="nav-text">最小值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-k-小值"><span class="nav-text">第 $k$ 小值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求一个数在序列-A-取若干个数异或值的集合中的排名"><span class="nav-text">求一个数在序列 A 取若干个数异或值的集合中的排名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-text">例题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
