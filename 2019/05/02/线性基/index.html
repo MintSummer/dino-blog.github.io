@@ -129,7 +129,7 @@
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="用于解决子集异或等一类问题 什么是线性基 基：在线性代数中，基（也称为基底）是描述、刻画向量空间的基本工具。向量空间的基是它的一个特殊的子集，基的元素称为基向量。向量空间中任意一个元素，都可以唯一地表示成基向量的线性组合。如果基中元素个数有限，就称向量空间为有限维向量空间，将元素的个数称作向量空间的维数。  线性基是一种特殊的基，一般用于处理异或运算，它的意义是：通过原集合 $S$ 的某一个最小子">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-02T08:34:21.114Z">
+<meta property="og:updated_time" content="2019-05-02T09:23:30.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性基">
 <meta name="twitter:description" content="用于解决子集异或等一类问题 什么是线性基 基：在线性代数中，基（也称为基底）是描述、刻画向量空间的基本工具。向量空间的基是它的一个特殊的子集，基的元素称为基向量。向量空间中任意一个元素，都可以唯一地表示成基向量的线性组合。如果基中元素个数有限，就称向量空间为有限维向量空间，将元素的个数称作向量空间的维数。  线性基是一种特殊的基，一般用于处理异或运算，它的意义是：通过原集合 $S$ 的某一个最小子">
@@ -458,7 +458,7 @@
                 
               
 
-              <time title="创建时间：2019-05-02 11:56:51 / 修改时间：16:34:21" itemprop="dateCreated datePublished" datetime="2019-05-02T11:56:51+08:00">2019-05-02</time>
+              <time title="创建时间：2019-05-02 11:56:51 / 修改时间：17:23:30" itemprop="dateCreated datePublished" datetime="2019-05-02T11:56:51+08:00">2019-05-02</time>
             
 
             
@@ -525,7 +525,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.8k</span>
+                <span title="本文字数">3.7k</span>
               
 
               
@@ -571,7 +571,7 @@
 <li>线性基是满足性质 $1$ 的<strong>最小</strong>的集合</li>
 <li>对于同一序列，线性基里面的数的<strong>个数唯一</strong></li>
 <li>线性基中<strong>没有异或和为0的子集</strong>。</li>
-<li>设序列 A 有 $n$ 个数插入线性基中，线性基的大小为 $|V|$，那么<strong>序列 A 的任意子集的异或值出现次数相同，均为 $2^{n - |V|}$</strong>（详见 <a href="zuizi">bzoj2844: albus就是要第一个出场</a>）</li>
+<li>设序列 A 有 $n$ 个数插入线性基中，线性基的大小为 $|V|$，那么<strong>序列 A 的任意子集的异或值出现次数相同，均为 $2^{n - |V|}$</strong></li>
 </ul>
 <h1 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h1><p>我们用一个数组 $d$，表示序列 A 的线性基，下标 $i$ 表示 $2^i$ 那一维。</p>
 <p><strong>注意当数值大于 $2^{31} - 1$ 时，记得写成 <code>1LL &lt;&lt; i</code></strong> </p>
