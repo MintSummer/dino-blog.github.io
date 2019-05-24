@@ -413,7 +413,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/16/bzoj4591/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/05/LinkCutTree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TYC">
@@ -433,7 +433,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/12/16/bzoj4591/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]</a>
+                <a href="/2019/01/05/LinkCutTree/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">LinkCutTree动态树 学习笔记 [数据结构]</a>
               
             
           </h1>
@@ -459,7 +459,7 @@
                 
               
 
-              <time title="创建时间：2018-12-16 22:55:09" itemprop="dateCreated datePublished" datetime="2018-12-16T22:55:09+08:00">2018-12-16</time>
+              <time title="创建时间：2019-01-05 22:28:32" itemprop="dateCreated datePublished" datetime="2019-01-05T22:28:32+08:00">2019-01-05</time>
             
 
             
@@ -476,7 +476,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-11 18:55:11" itemprop="dateModified" datetime="2019-03-11T18:55:11+08:00">2019-03-11</time>
+                <time title="修改时间：2019-03-11 18:55:26" itemprop="dateModified" datetime="2019-03-11T18:55:26+08:00">2019-03-11</time>
               
             
           </span>
@@ -493,7 +493,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法讲解/" itemprop="url" rel="index"><span itemprop="name">算法讲解</span></a></span>
 
                 
                 
@@ -508,8 +508,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/16/bzoj4591/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/16/bzoj4591/" itemprop="commentCount"></span>
+                <a href="/2019/01/05/LinkCutTree/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/05/LinkCutTree/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -531,7 +531,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.8k</span>
+                <span title="本文字数">12k</span>
               
 
               
@@ -545,7 +545,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">20 分钟</span>
               
             </div>
           
@@ -567,15 +567,14 @@
       
         
           
-          题目bzoj4591luogu4345  
-$t \ (t \leqslant 1e5)$ 组询问，每次给定两个数 $n、k \ (n、k \leqslant 1e18)$，求
-\sum_{i=0}^k C_n^i \mod 2333分析emmmm……和bzoj2154那篇题解一样的命运  
-但是不
+          upd in 2019.1.8 ：  
+真是震惊极了……我打了这么久的板子（包括网上某些LCT讲解中的代码）竟然复杂度是假的！！！
+因为 splay 的复杂度是均摊的，每一次从根遍历了一条链就要将链尾 splay 上去（例如，如果当前的 splay 树形是一条长为 $n$ 递增的链-&gt;最大点为
           ...
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2018/12/16/bzoj4591/#more" rel="contents">
+              <a class="btn" href="/2019/01/05/LinkCutTree/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -797,6 +796,228 @@ $t \ (t \leqslant 1e5)$ 组询问，每次给定两个数 $n、k \ (n、k \leqsl
           
             <div class="post-button text-center">
               <a class="btn" href="/2018/12/16/bzoj2154/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/16/bzoj4591/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TYC">
+      <meta itemprop="description" content="少女省OIer">
+      <meta itemprop="image" content="https://i.loli.net/2019/03/24/5c9746e576f39.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Little Dino">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/16/bzoj4591/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">BZOJ4591 [SHOI2015]超能粒子炮·改 [数学]</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-16 22:55:09" itemprop="dateCreated datePublished" datetime="2018-12-16T22:55:09+08:00">2018-12-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-11 18:55:11" itemprop="dateModified" datetime="2019-03-11T18:55:11+08:00">2019-03-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/16/bzoj4591/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/16/bzoj4591/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          题目bzoj4591luogu4345  
+$t \ (t \leqslant 1e5)$ 组询问，每次给定两个数 $n、k \ (n、k \leqslant 1e18)$，求
+\sum_{i=0}^k C_n^i \mod 2333分析emmmm……和bzoj2154那篇题解一样的命运  
+但是不
+          ...
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/12/16/bzoj4591/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1556,7 +1777,7 @@ $t \ (t \leqslant 1e5)$ 组询问，每次给定两个数 $n、k \ (n、k \leqsl
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1638,7 +1859,11 @@ $t \ (t \leqslant 1e5)$ 组询问，每次给定两个数 $n、k \ (n、k \leqsl
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1701,7 +1926,7 @@ $t \ (t \leqslant 1e5)$ 组询问，每次给定两个数 $n、k \ (n、k \leqsl
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">186k</span>
+    <span title="站点总字数">194k</span>
   
 
   
@@ -1710,7 +1935,7 @@ $t \ (t \leqslant 1e5)$ 组询问，每次给定两个数 $n、k \ (n、k \leqsl
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">5:10</span>
+    <span title="站点阅读时长">5:24</span>
   
 </div>
 
@@ -2229,6 +2454,8 @@ $t \ (t \leqslant 1e5)$ 组询问，每次给定两个数 $n、k \ (n、k \leqsl
     
       
         
+      
+    
       
     
       
