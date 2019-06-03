@@ -121,23 +121,27 @@
 
 
 
-  <meta name="description" content="少女省OIer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Little Dino">
-<meta property="og:url" content="http://yoursite.com/archives/page/3/index.html">
+  <meta name="description" content="题目bzoj5416  luogu4769 loj2719 uoj394 求有多少个长为 $n$ 的，字典序严格大于排列 $q$ 的排列，满足对其冒泡排序的交换次数为 $\sum_{i= 1}^n |i - p_i|$，其中 $p_i$ 为排列 $p$ 中第 $i$ 个位置的数。 $n \leqslant 6 \times 10^5$ 提示： 交换次数的下界是 $\frac{1}{2} \sum_">
+<meta name="keywords" content="动态规划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bzoj5416 [Noi2018]冒泡排序 [dp][组合数]">
+<meta property="og:url" content="http://yoursite.com/2019/06/03/bzoj5416/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="少女省OIer">
+<meta property="og:description" content="题目bzoj5416  luogu4769 loj2719 uoj394 求有多少个长为 $n$ 的，字典序严格大于排列 $q$ 的排列，满足对其冒泡排序的交换次数为 $\sum_{i= 1}^n |i - p_i|$，其中 $p_i$ 为排列 $p$ 中第 $i$ 个位置的数。 $n \leqslant 6 \times 10^5$ 提示： 交换次数的下界是 $\frac{1}{2} \sum_">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/06/03/5cf51e86409b878351.png">
+<meta property="og:updated_time" content="2019-06-03T13:57:23.634Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Little Dino">
-<meta name="twitter:description" content="少女省OIer">
+<meta name="twitter:title" content="bzoj5416 [Noi2018]冒泡排序 [dp][组合数]">
+<meta name="twitter:description" content="题目bzoj5416  luogu4769 loj2719 uoj394 求有多少个长为 $n$ 的，字典序严格大于排列 $q$ 的排列，满足对其冒泡排序的交换次数为 $\sum_{i= 1}^n |i - p_i|$，其中 $p_i$ 为排列 $p$ 中第 $i$ 个位置的数。 $n \leqslant 6 \times 10^5$ 提示： 交换次数的下界是 $\frac{1}{2} \sum_">
+<meta name="twitter:image" content="https://i.loli.net/2019/06/03/5cf51e86409b878351.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/page/3/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/03/bzoj5416/">
 
 
 
@@ -147,7 +151,7 @@
   };
 </script>
 
-  <title>归档 | Little Dino</title>
+  <title>bzoj5416 [Noi2018]冒泡排序 [dp][组合数] | Little Dino</title>
   
 
 
@@ -195,7 +199,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-archive">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -304,7 +308,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -392,355 +396,295 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        还行! 目前共计 37 篇日志。 继续努力。
-      </span>
-      
+  
 
-      
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/03/bzoj5416/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TYC">
+      <meta itemprop="description" content="少女省OIer">
+      <meta itemprop="image" content="https://i.loli.net/2019/03/24/5c9746e576f39.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Little Dino">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">bzoj5416 [Noi2018]冒泡排序 [dp][组合数]
+
+              
+            
+          </h1>
         
 
-        
+        <div class="post-meta">
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
+          <span class="post-time">
 
-        
+            
+            
+            
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/05/最小圆覆盖/" itemprop="url">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-                <span itemprop="name">最小圆覆盖 [随机增量法][计算几何]</span>
+                <span class="post-meta-item-text">发表于</span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-05T18:34:24+08:00" content="2019-03-05">
-          03-05
-        </time>
-      </div>
+              
+                
+              
 
-    </header>
-  </article>
+              <time title="创建时间：2019-06-03 18:42:46 / 修改时间：21:57:23" itemprop="dateCreated datePublished" datetime="2019-06-03T18:42:46+08:00">2019-06-03</time>
+            
 
+            
+              
 
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/03/bzoj5416/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/06/03/bzoj5416/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">8 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/03/记一些很好用的网站/" itemprop="url">
-              
-                <span itemprop="name">记一些很好用的网站</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-03T00:16:11+08:00" content="2019-03-03">
-          03-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/02/bzoj1132/" itemprop="url">
-              
-                <span itemprop="name">bzoj1132 [POI2008]Tro [计算几何]</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-02T23:02:31+08:00" content="2019-03-02">
-          03-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/27/狄利克雷卷积/" itemprop="url">
-              
-                <span itemprop="name">狄利克雷卷积 [数学]</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-27T17:40:05+08:00" content="2019-02-27">
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://lydsy.com/JudgeOnline/problem.php?id=5416" target="_blank" rel="noopener">bzoj5416</a>  <a href="https://www.luogu.org/problemnew/show/P4769" target="_blank" rel="noopener">luogu4769</a> <a href="https://loj.ac/problem/2719" target="_blank" rel="noopener">loj2719</a> <a href="http://uoj.ac/problem/394" target="_blank" rel="noopener">uoj394</a></p>
+<p>求有多少个长为 $n$ 的，字典序严格大于排列 $q$ 的排列，满足对其冒泡排序的交换次数为 $\sum_{i<br>= 1}^n |i - p_i|$，其中 $p_i$ 为排列 $p$ 中第 $i$ 个位置的数。</p>
+<p>$n \leqslant 6 \times 10^5$</p>
+<p>提示：</p>
+<p>交换次数的下界是 $\frac{1}{2} \sum_{i = 1}^n |i - p_i|$。</p>
+<p>排序本质上就是数字的移动，因此排序的交换次数应当可以用数字移动的总距离来描述。对于第 $i$ 个位置，假设在初始排列中，这个位置上的数字是 $p_i$，那么我们需要将这个数字移动到第 $p_i$ 个位置上，移动的距离是 $|i−p_i|$。从而移动的总距离就是 $\sum_{i = 1}^n|i−p_i|$，而冒泡排序每次会交换两个相邻的数字，每次交换可以使移动的总距离至多减少 $2$。因此 $\frac{1}{2} \sum_{i = 1}^n |i - p_i|$ 是冒泡排序的交换次数的下界。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>感谢给我讲了这个题的神仙跳瓜 $\textrm{jumpmelon}$。</p>
+<p>首先看给的提示，我们可以发现在这样的排序方式下，对于每一个数都只向目标位置方向走，不换向。那么对于一个数 $x$，如果有一个比它大的数在它前面，那么它必须向左走；如果有一个比它小的数在它后面，那么它必须向右走。这样的排列，是不合法的，即要求不存在长度超过 $2$ 的下降子序列。</p>
+<p>根据 $\textrm{Dilworth}$ 定理，最长下降子序列的长度不超过 $2$，即整个排列最多被划分成 $2$ 个上升子序列。</p>
+<p>先不考虑字典序严格大于 $q$ 的限制。</p>
+<p>我们记 $f_{i, j}$ 为前 $i$ 个的最大值为 $j$ 后面 $n - i$ 个位置的方案数。我们考虑第 $i$ 个数填什么。注意 $i \leqslant j$</p>
+<p>如果填比 $j$ 大的数，那么一定可以接在 $j$ 的后面；如果要填比 $j$ 小的数，那么必须填当前还没有填的中最小的，否则上升子序列将不止 $2$ 个，所以</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f_{i, j} &= 
+\begin{cases}
+f_{i + 1, k} \ \ \ \ \ (k > j) \\
+f_{i + 1, j} \ \ \ \ \ (p_i 填能填的最小的)
+\end{cases}
+\\
+&= \sum_{k = j}^n f_{i + 1, k}
+\end{aligned}</script><p>但是直接这样递推是 $O(n^2)$ 的。我们把它以图像的形式表示，$f_{i, j}$ 即表示从点 $(i, j)$ 开始，每次向右走一步，向上走 $x(x \leqslant 0)$ 步，不与直线 $y = x - 1$ （因为 $i \leqslant j$） 相交，走到点 $(n, n)$ 的方案数。</p>
+<p><img src="https://i.loli.net/2019/06/03/5cf51e86409b878351.png" alt></p>
+<p>如图，即从点 $A(i, j)$ 走到 $B(n, n)$ 的不与直线 $y = x - 1$ 相交的方案数。</p>
+<p>首先，如果不考虑与直线不想交，即为走 $n - i$ 次，每次选择向上走 $x (x \geqslant 0)$ 步，一共走了 $n - j$ 步的方案数。模仿插板法，因为 $x$ 可以取 $0$，我们把总个数加上划分数 $n - i$，变成 $n - i + n - j$ 个物品划分成　$n - i$ 块的方案数，即　$\dbinom{n-i-1}{2n - i - j - 1}$。</p>
+<p>再模仿 $\textrm{Catalan}$ 数的推法，看第一个与直线 $y = x - 1$ 相交的位置。找点 $(i, j)$ 关于直线 $y = x - 1$ 的对称点 $(j + 1, i - 1)$, 由于方案一一对应，所以，从点 $(i, j)$ 出发，经过直线的方案数即为从点 $(j + 1, i - 1)$ 出发到点 $(n, n)$ 的方案数。</p>
+<p>得到 </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f_{i, j} 
+&= calc(i, j) - calc(j + 1, i - 1) \\
+&= \dbinom{n - i - 1}{2n - i - j - 1} - \dbinom{n - j - 2}{2n - i - j - 1} \\
+\end{aligned}</script><p>这样就得到 $f$ 的 $O(1)$ 求解啦！（然而　$O(n^2)$ 有足足　$80$ 分，真香)</p>
+<p>可以发现 $f_{0, 0}$ 即为 $\textrm{Catalan}$ 数。</p>
+<p>回到有限制字典序严格大于 $q$ 的原题上来。考虑一位一位枚举，假设当前枚举到第 $i$ 项，我们计数证前 $i - 1$ 项与 $q$ 相同，第 $i$ 项大于 $q_i$ 的排列个数。</p>
+<p>记 $mx = \max_{j = 1}^{i - 1} q_j$，$mn$ 为当前还没有用过的最小的数，$v = q_i$。第　$i$ 位只能填 $mn$ 或大于 $mx$ 的数。<br>分类讨论</p>
+<ul>
+<li><p>$v = mn$ </p>
+<p>（因为 $mn$ 是最小可以填的，所以 $v$ 的下界是 $mn$。）</p>
+<p>此时，第 $i$ 项不能填 $mn$，只能大于 $mx$，故后面 $n - i$ 项的填法有 $\sum_{k = mx + 1}^n f_{i, k}$ 种（$k$ 为第 $i$ 位填的数）。</p>
+</li>
+<li><p>$mn &lt; v &lt; mx$ </p>
+<p>此时第 $i$ 位没有可以填的，后面不再存在合法方案。（但是还是要读完）</p>
+</li>
+<li><p>$v \geqslant mx$</p>
+<p>此时第 $i$ 位可以填 $mn$ 或大于 $mx$ 的数，方案数为 $\sum_{k = mx}^n f_{i, k}$。</p>
+</li>
+</ul>
+<p>问题又来了，怎么求 $f$ 的前缀和呢？考虑 $f$ 的递推式 $f_{i, j} = \sum_{k = j}^n f_{i + 1, k}$，这正是一个前缀和的形式。所以</p>
+<script type="math/tex; mode=display">\sum_{k = lim}^n f_{i, k} =  f_{i - 1, lim}</script><p>完结撒花~</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>注意数组要开 $2n$，写起来很简单，但是最开始由于没彻底搞懂导了半天</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1.2e6</span>, p = <span class="number">998244353</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> fac[N + <span class="number">5</span>], inv[N + <span class="number">5</span>], vis[N + <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> v = <span class="number">0</span>, fl = <span class="number">0</span>, ch = getchar();</span><br><span class="line">        <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch))</span><br><span class="line">            fl |= (ch == <span class="string">'-'</span>), ch = getchar();</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch))</span><br><span class="line">            v = v * <span class="number">10</span> + ch - <span class="string">'0'</span>, ch = getchar();</span><br><span class="line">        <span class="keyword">return</span> fl ? -v : v;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> tim)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (; tim; tim &gt;&gt;= <span class="number">1</span>, v = (ll)v * v % p)</span><br><span class="line">            <span class="keyword">if</span> (tim &amp; <span class="number">1</span>)</span><br><span class="line">                ans = (ll)ans * v % p;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        fac[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++)</span><br><span class="line">            fac[i] = (ll)fac[i - <span class="number">1</span>] * i % p;</span><br><span class="line">        inv[N] = qpow(fac[N], p - <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = N; i; i--)</span><br><span class="line">            inv[i - <span class="number">1</span>] = (ll)inv[i] * i % p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> n, <span class="keyword">const</span> <span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (n &lt; <span class="number">0</span> || m &lt; <span class="number">0</span> || n &lt; m) ? <span class="number">0</span> : <span class="keyword">int</span>((ll)fac[n] * inv[m] % p * inv[n - m] % p);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">F</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> i, <span class="keyword">const</span> <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> i &lt;= j &amp;&amp; j &lt;= n ? (C(<span class="number">2</span> * n - i - j - <span class="number">1</span>, n - i - <span class="number">1</span>) - C(<span class="number">2</span> * n - i - j - <span class="number">1</span>, n - j - <span class="number">2</span>) + p) % p : <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        init();</span><br><span class="line">        <span class="keyword">int</span> T = read();</span><br><span class="line">        <span class="keyword">while</span> (T--)</span><br><span class="line">        &#123;</span><br><span class="line">            n = read();</span><br><span class="line">            <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>[n + <span class="number">1</span>]));</span><br><span class="line">            <span class="keyword">int</span> ans = <span class="number">0</span>, mx = <span class="number">0</span>, mn = <span class="number">1</span>, flag = <span class="number">0</span>, v;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                v = read();</span><br><span class="line">                <span class="keyword">if</span> (flag)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                ans = (ans + (F(i - <span class="number">1</span>, max(mx, v) + <span class="number">1</span>) + p) % p) % p;</span><br><span class="line">                <span class="keyword">if</span> (mx &gt; v &amp;&amp; v &gt; mn)</span><br><span class="line">                    flag = <span class="number">1</span>;</span><br><span class="line">                mx = max(mx, v);</span><br><span class="line">                vis[v] = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span> (vis[mn]) mn++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/27/杜教筛/" itemprop="url">
-              
-                <span itemprop="name">杜教筛 [筛法]</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-27T17:37:29+08:00" content="2019-02-27">
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/27/bzoj3739/" itemprop="url">
-              
-                <span itemprop="name">bzoj3739 DZY loves math VIII [莫比乌斯反演]</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-27T16:14:56+08:00" content="2019-02-27">
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/27/bzoj1109/" itemprop="url">
-              
-                <span itemprop="name">bzoj1109 [POI2007]堆积木Klo [二维偏序]</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-27T15:57:42+08:00" content="2019-02-27">
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/23/最大团/" itemprop="url">
-              
-                <span itemprop="name">最大团 [搜索剪枝]</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-23T23:43:27+08:00" content="2019-02-23">
-          02-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/24/CF710F/" rel="next" title="CF710F String Set Queries [二进制分组][AC自动机]">
+                <i class="fa fa-chevron-left"></i> CF710F String Set Queries [二进制分组][AC自动机]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -761,8 +705,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -890,6 +843,22 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
       
       <div id="music163player">
@@ -1064,6 +1033,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
 
   
 
