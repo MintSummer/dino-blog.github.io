@@ -129,7 +129,7 @@
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="题目bzoj4200 luogu2304 loj2134 题目太长了不放了，注意 loj 上没有写 保证对于任意的整数 Y，满足 $y_i = Y$ 的树不超过 $1000$ 棵（然而扒了数据发现第 $14$ 个点 $y_i = 2$ 的有 $1667$ 个，还是用 vector 存吧） 分析二合一题。 先考虑老司机的问题，发现不存在向下走，所以必然是一层（$Y$ 相同的称为一层）走完再走下一层。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-13T07:44:27.982Z">
+<meta property="og:updated_time" content="2019-06-13T07:46:22.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj4200 [NOI2015]小园丁与老司机 [dp][有源汇上下界最小流]">
 <meta name="twitter:description" content="题目bzoj4200 luogu2304 loj2134 题目太长了不放了，注意 loj 上没有写 保证对于任意的整数 Y，满足 $y_i = Y$ 的树不超过 $1000$ 棵（然而扒了数据发现第 $14$ 个点 $y_i = 2$ 的有 $1667$ 个，还是用 vector 存吧） 分析二合一题。 先考虑老司机的问题，发现不存在向下走，所以必然是一层（$Y$ 相同的称为一层）走完再走下一层。">
@@ -458,7 +458,7 @@
                 
               
 
-              <time title="创建时间：2019-06-13 14:56:34 / 修改时间：15:44:27" itemprop="dateCreated datePublished" datetime="2019-06-13T14:56:34+08:00">2019-06-13</time>
+              <time title="创建时间：2019-06-13 14:56:34 / 修改时间：15:46:22" itemprop="dateCreated datePublished" datetime="2019-06-13T14:56:34+08:00">2019-06-13</time>
             
 
             
@@ -568,7 +568,7 @@
 <p>状态数是 $O(n)$，时间复杂度 $O(n \times m)$，其中 $m$ 是每一行最大点数。</p>
 <p>如果 $(a, b)$ 向左上走能走到 $(c, d)$，则 $b - a = d - c$ 或 $a - b = c - d$；如果 $(a, b)$ 向右上走能走到 $(c, d)$，则 $a + b = c + d$</p>
 <p>（本来想要直接开一个 map 用来 dp 的，但是算了算带个 $\log$ 就萎了，然后被离散化搞自闭了）</p>
-<p>对于小园丁，因为每条最优策略边要求走的次数下界为 $1$，上界 $INF$，发现就是一个有源汇的上下界最小流（可以戳<a href="https://little-dino.top/2019/01/10/%E6%9C%89%E4%B8%8A%E4%B8%8B%E7%95%8C%E7%9A%84%E7%BD%91%E7%BB%9C%E6%B5%81&amp;%E8%B4%B9%E7%94%A8%E6%B5%81/" target="_blank" rel="noopener">这里</a>学习）。先建源汇点（称作真实源汇）把所有点连起来，再跑此时的上下界循环流（根据初始流向超级源汇连边，别忘了连真实汇到真实源一条 $\textrm{INF}$ 的边），减去残余网络中真实汇到真实源的最大流即可。</p>
+<p>对于小园丁，因为每条最优策略边要求走的次数下界为 $1$，上界 $\textrm{INF}$，发现就是一个有源汇的上下界最小流（可以戳<a href="https://little-dino.top/2019/01/10/%E6%9C%89%E4%B8%8A%E4%B8%8B%E7%95%8C%E7%9A%84%E7%BD%91%E7%BB%9C%E6%B5%81&amp;%E8%B4%B9%E7%94%A8%E6%B5%81/" target="_blank" rel="noopener">这里</a>学习）。先建源汇点（称作真实源汇）把所有点连起来，再跑此时的上下界循环流（根据初始流向超级源汇连边，别忘了连真实汇到真实源一条 $\textrm{INF}$ 的边），减去残余网络中真实汇到真实源的最大流即可。</p>
 <p>建图只连最优策略边，我们可以先记 $end[i][j]$ 表示第 $i$ 层第 $j$ 个能否作为这一层最后一个走到的点，最终能走到一个最优解。$start[i][j]$ 表示能否使第一个。用 $end$ 得到这一层的 $start$，再用 $start$ 向下更新下层的 $end$ 即可。（就是 dp 的过程倒着退回去，要求每一步转移都只能走最优策略边）</p>
 <p>啊写的我要自闭了，越写越魔性，这代码除了有源汇上下界最小流以外不想再看第二眼了。我没有在意常数了……</p>
 <p>我 vector 在 resize 的时候忘记了 vector 从 0 开始，而我从 1 开始标号，于是贴着开就少了一个（重点还是有的地方记着有的忘了）。</p>
@@ -868,7 +868,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:11</span>
+    <span title="站点阅读时长">6:12</span>
   
 </div>
 
