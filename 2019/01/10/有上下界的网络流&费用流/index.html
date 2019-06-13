@@ -122,14 +122,14 @@
 
 
   <meta name="description" content="安利博客 liu_runda 有上下界的网络流，顺便抄一段话    有上下界的网络流的核心是”调整”,我们通过一个初始的未必可行的流调整出一个可行流,还可以从可行的未必最大/最小的流调整出最大/最小。另一个常用技巧是有源汇的流和无源汇的流(循环流)的转换。除了无源汇可行流的求解,其他有源汇的上下界网络流都要用到这个技巧。  无源汇上下界可行流 （循环流）模型给定一个网络，求一个流，满足每条边的流量">
-<meta name="keywords" content="网络流,费用流">
+<meta name="keywords" content="网络流">
 <meta property="og:type" content="article">
 <meta property="og:title" content="有上下界的网络流&#x2F;费用流 学习笔记 [网络流]">
 <meta property="og:url" content="http://yoursite.com/2019/01/10/有上下界的网络流&费用流/index.html">
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="安利博客 liu_runda 有上下界的网络流，顺便抄一段话    有上下界的网络流的核心是”调整”,我们通过一个初始的未必可行的流调整出一个可行流,还可以从可行的未必最大/最小的流调整出最大/最小。另一个常用技巧是有源汇的流和无源汇的流(循环流)的转换。除了无源汇可行流的求解,其他有源汇的上下界网络流都要用到这个技巧。  无源汇上下界可行流 （循环流）模型给定一个网络，求一个流，满足每条边的流量">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-11T10:55:57.900Z">
+<meta property="og:updated_time" content="2019-06-13T03:53:07.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="有上下界的网络流&#x2F;费用流 学习笔记 [网络流]">
 <meta name="twitter:description" content="安利博客 liu_runda 有上下界的网络流，顺便抄一段话    有上下界的网络流的核心是”调整”,我们通过一个初始的未必可行的流调整出一个可行流,还可以从可行的未必最大/最小的流调整出最大/最小。另一个常用技巧是有源汇的流和无源汇的流(循环流)的转换。除了无源汇可行流的求解,其他有源汇的上下界网络流都要用到这个技巧。  无源汇上下界可行流 （循环流）模型给定一个网络，求一个流，满足每条边的流量">
@@ -475,7 +475,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-11 18:55:57" itemprop="dateModified" datetime="2019-03-11T18:55:57+08:00">2019-03-11</time>
+                <time title="修改时间：2019-06-13 11:53:07" itemprop="dateModified" datetime="2019-06-13T11:53:07+08:00">2019-06-13</time>
               
             
           </span>
@@ -581,11 +581,11 @@
 <p>我们将之后扩大流量的流叫做<em>附加流</em>，初始流合并附加流就是可行流。那么，为达到流量守恒，一定存在：  </p>
 <ul>
 <li>如果一个点在初始流中满足流量守恒，那么它在附加流中也满足流量守恒</li>
-<li>如果一个点在初始流中的流入量比流出量多 $x$ ，那么它在附加流中流出量比流入量少 $x$ </li>
-<li>如果一个点在初始流中的流入量比流出量少 $x$ ，那么它在附加流中流出量比流入量多 $x$</li>
+<li>如果一个点在初始流中的流入量比流出量多 $x$ ，那么它在附加流中流入量比流出量少 $x$ </li>
+<li>如果一个点在初始流中的流入量比流出量少 $x$ ，那么它在附加流中流入量比流出量多 $x$</li>
 </ul>
 <p>我们用 $d[i]$ 表示点 $i$ 在初始流中<strong>流入量-流出量</strong>的值，那么 $d[i]$ 的正负就可以表示以上三种情况。</p>
-<p>如果一个点$d[i] &lt; 0$，我们需要给多出的流入量一个出处，需要让附加流中 $i$ 的流入量比流出量少 $-d[i]$，所以<strong>建一条从 $i$ 出发的边，流量为 $-d[i]$</strong>；如果 $d[i] &gt; 0$，则<br><strong>建一条指向 $i$ 的边，流量为$d[i]$</strong>。  </p>
+<p>如果一个点$d[i] &lt; 0$，我们需要给多出的流入量一个出处，需要让附加流中 $i$ 的流入量比流出量少 $-d[i]$，所以<strong>建一条从 $i$ 出发的边，流量为 $-d[i]$</strong>；如果 $d[i] &gt; 0$，则<strong>建一条指向 $i$ 的边，流量为$d[i]$</strong>。  </p>
 <p>虚拟源汇点 $s$，$t$。分类</p>
 <script type="math/tex; mode=display">
 \left\{
@@ -652,8 +652,6 @@ d[i] < 0 & \ \ \ \  建 i 指向 t 的边，使附加流中 i 的流入量增加
         <div class="post-tags">
           
             <a href="/tags/网络流/" rel="tag"># 网络流</a>
-          
-            <a href="/tags/费用流/" rel="tag"># 费用流</a>
           
         </div>
       
@@ -840,9 +838,7 @@ d[i] < 0 & \ \ \ \  建 i 指向 t 的边，使附加流中 i 的流入量增加
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
