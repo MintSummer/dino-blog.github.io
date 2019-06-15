@@ -121,18 +121,18 @@
 
 
 
-  <meta name="description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求 S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：   \begin{aligned} &amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\ &amp;= \sum_{i =">
+  <meta name="description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求 S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：     \begin{align*}  &amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\ &amp;= \sum_{i">
 <meta name="keywords" content="杜教筛">
 <meta property="og:type" content="article">
 <meta property="og:title" content="杜教筛 [筛法]">
 <meta property="og:url" content="http://yoursite.com/2019/02/27/杜教筛/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求 S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：   \begin{aligned} &amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\ &amp;= \sum_{i =">
+<meta property="og:description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求 S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：     \begin{align*}  &amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\ &amp;= \sum_{i">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-18T15:37:50.983Z">
+<meta property="og:updated_time" content="2019-06-15T02:35:51.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="杜教筛 [筛法]">
-<meta name="twitter:description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求 S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：   \begin{aligned} &amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\ &amp;= \sum_{i =">
+<meta name="twitter:description" content="杜教筛解决的是一些满足特殊性质的数论函数的前缀和问题。 问题给定一个 $n$ 和函数 $f(x)$，求 S(n) = \sum_{i = 1} ^ n f(i)方法主要思想是构造一个函数 $g(x)$  考虑 $(f * g)(n)$ 的前缀和可以变换为：     \begin{align*}  &amp; \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\ &amp;= \sum_{i">
 
 
 
@@ -475,7 +475,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-18 23:37:50" itemprop="dateModified" datetime="2019-03-18T23:37:50+08:00">2019-03-18</time>
+                <time title="修改时间：2019-06-15 10:35:51" itemprop="dateModified" datetime="2019-06-15T10:35:51+08:00">2019-06-15</time>
               
             
           </span>
@@ -575,13 +575,17 @@
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>给定一个 $n$ 和函数 $f(x)$，求</p>
 <script type="math/tex; mode=display">S(n) = \sum_{i = 1} ^ n f(i)</script><h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>主要思想是构造一个函数 $g(x)$ </p>
 <p>考虑 $(f * g)(n)$ 的前缀和可以变换为：  </p>
-<script type="math/tex; mode=display">\begin{aligned}
+<script type="math/tex; mode=display">
+
+\begin{align*}
+
 & \ \ \ \ \ \sum_{i = 1}^n (f * g)(i) \\
 &= \sum_{i = 1}^n \sum_{d | i} g(i) f(\frac{i}{d}) \\
-&= \sum_{d = 1}^n \sum_{i = 1}^{\lfloor \frac{n}{d} \rfloor} g(d)f(i) \\\ 
+&= \sum_{d = 1}^n \sum_{i = 1}^{\lfloor \frac{n}{d} \rfloor} g(d)f(i) \\
 &= \sum_{d = 1}^n g(d) S(\lfloor \frac{n}{d} \rfloor) \\
 &= g(1)S(n) + \sum_{d = 2}^n g(d)S(\lfloor \frac{n}{d} \rfloor)\\
-\end{aligned}</script><p>即</p>
+
+\end{align*}</script><p>即</p>
 <script type="math/tex; mode=display">g(1)S(n) = \sum_{i = 1}^n (f * g)(i) - \sum_{d = 2}^n g(d)S(\lfloor \frac{n}{d} \rfloor)</script><script type="math/tex; mode=display">S(n) = \frac{\sum_{i = 1}^n (f * g)(i) - \sum_{d = 2}^n g(d)S(\lfloor \frac{n}{d} \rfloor)}{g(1)}</script><p><strong>只要找到一个 $g$ 使得 $f ∗ g$ 和 $g$ 的前缀和都可以快速计算，就可以使用上式计算 $S(n)$</strong></p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>由于作者太菜了，所以不会证明时间复杂度到底怎么算的……</p>
 <p>如果使用上式，对所有的 $S(\lfloor \frac{n}{d} \rfloor)$ 记忆化，时间复杂度是 $O(n^{\frac{3}{4}})$ 的</p>
@@ -601,19 +605,19 @@
 <script type="math/tex; mode=display">\sum_{i = 1}^n \sum_{j = 1}^n i j \operatorname{gcd}(i j) \mod p</script><p>$1 \leqslant n \leqslant 10^{10}$</p>
 <p>莫比乌斯反演一发</p>
 <script type="math/tex; mode=display">= \sum_{i = 1}^n \sum_{j = 1}^n i j \sum_{d | i, d | j} d \sum_{g | \frac{i}{d}, g | \frac{j}{d}} \mu(g)</script><p>记 $T = dg$</p>
-<script type="math/tex; mode=display">\begin{aligned}
+<script type="math/tex; mode=display">\begin{align*}
 &= \sum_{T = 1}^n \sum_{d | T} d \mu(\frac{T}{d}) \sum_{i = 1}^{\lfloor \frac{n}{T} \rfloor} \sum_{j = 1}^{\lfloor \frac{n}{T} \rfloor} i j T^2 \\
 &= \sum_{T = 1}^n SumId_1(\lfloor \frac{n}{T} \rfloor)^2 T^2 \sum_{d | T} d \mu(\frac{T}{d}) \\
 &= \sum_{T = 1}^n SumId_1(\lfloor \frac{n}{T} \rfloor)^2 f(T) \\
-\end{aligned}</script><p>因为 $\mu <em> id_1 = \varphi$ ，所以 $f(T) = T^2 </em> \varphi(T)$</p>
+\end{align*}</script><p>因为 $\mu <em> id_1 = \varphi$ ，所以 $f(T) = T^2 </em> \varphi(T)$</p>
 <p>数论分块，重点变成求 $f(T)$ 的前缀和</p>
 <p>再因为 $\varphi * 1 = id$，就令 $g = (1 \cdot id_2) = id_2$</p>
-<script type="math/tex; mode=display">\begin{aligned}
+<script type="math/tex; mode=display">\begin{align*}
 & \ \ \ \ \ (\varphi \cdot id_2) * (1 \cdot id_2) \\
 &= (\varphi * 1) \cdot id_2 \\
 &= id \cdot id_2 \\
 &= id_3
-\end{aligned}</script><p>故 $g = id_2$，$f * g = id_3$</p>
+\end{align*}</script><p>故 $g = id_2$，$f * g = id_3$</p>
 <h2 id="bzoj4652-NOI2016-循环之美"><a href="#bzoj4652-NOI2016-循环之美" class="headerlink" title="bzoj4652[NOI2016] 循环之美"></a>bzoj4652[NOI2016] 循环之美</h2><p>前几天写的了 <a href="https://little-dino.top/2019/02/22/bzoj4652%E5%BE%AA%E7%8E%AF%E4%B9%8B%E7%BE%8E-%E6%9D%9C%E6%95%99%E7%AD%9B/" target="_blank" rel="noopener">bzoj4652[NOI2016] 循环之美 [杜教筛]</a></p>
 <p>也许哪天就补上了 $Min25$ 筛 <del>啥时候学会了再说</del></p>
 
@@ -740,7 +744,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -826,7 +830,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -905,7 +911,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">223k</span>
+    <span title="站点总字数">231k</span>
   
 
   
@@ -914,7 +920,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:12</span>
+    <span title="站点阅读时长">6:25</span>
   
 </div>
 
