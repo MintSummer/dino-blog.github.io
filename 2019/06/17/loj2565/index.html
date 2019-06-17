@@ -129,7 +129,7 @@
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="题目loj2565 luogu bzoj5332 多组数组。给定 $A, B, C$，求  \sum_{i = 1}^A \sum_{j = 1}^B \sum_{k = 1}^C d(ijk) \mod 10^9 + 7其中 $d(i)$ 表示 $i$ 的约数个数。 $1 \leqslant T \leqslant 10, 1 \leqslant A, B, C \leqslant 10^5,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-17T04:41:22.081Z">
+<meta property="og:updated_time" content="2019-06-17T06:48:29.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="loj2565「SDOI2018」旧试题 [莫比乌斯反演][三元环]">
 <meta name="twitter:description" content="题目loj2565 luogu bzoj5332 多组数组。给定 $A, B, C$，求  \sum_{i = 1}^A \sum_{j = 1}^B \sum_{k = 1}^C d(ijk) \mod 10^9 + 7其中 $d(i)$ 表示 $i$ 的约数个数。 $1 \leqslant T \leqslant 10, 1 \leqslant A, B, C \leqslant 10^5,">
@@ -458,7 +458,7 @@
                 
               
 
-              <time title="创建时间：2019-06-17 11:13:18 / 修改时间：12:41:22" itemprop="dateCreated datePublished" datetime="2019-06-17T11:13:18+08:00">2019-06-17</time>
+              <time title="创建时间：2019-06-17 11:13:18 / 修改时间：14:48:29" itemprop="dateCreated datePublished" datetime="2019-06-17T11:13:18+08:00">2019-06-17</time>
             
 
             
@@ -565,7 +565,7 @@
 \sum_{i = 1}^A \sum_{j = 1}^B \sum_{k = 1}^C d(ijk) \mod 10^9 + 7</script><p>其中 $d(i)$ 表示 $i$ 的约数个数。</p>
 <p>$1 \leqslant T \leqslant 10, 1 \leqslant A, B, C \leqslant 10^5, 1 \leqslant \sum \max(A, B, C) \leqslant 2 \times 10^5$</p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><h2 id="前置芝士-三元环计数"><a href="#前置芝士-三元环计数" class="headerlink" title="前置芝士 三元环计数"></a>前置芝士 三元环计数</h2><p>对于一个 $n$ 个点 $m$ 条边的图，它的三元环最多有 $m\sqrt m$ 个（完全图是满的。</p>
-<p>我们把每条无向边定向，方向为度数大的向度数小的，度数相同按标号从小到大连边（这个只要统一就无所谓了）。枚举点 $u$，标记 $u$ 的所有出点，再枚举 $u$ 指向的点 $v$，枚举 $v$ 的出边看是否有被 $u$ 标记，就可以不重不漏的枚举到所有的三元环了。</p>
+<p>我们把每条无向边定向，方向为<strong>度数大的向度数小的</strong>，度数相同按标号从小到大连边（这个无所谓了）。枚举点 $u$，标记 $u$ 的所有出点，再枚举 $u$ 指向的点 $v$，枚举 $v$ 的出边看是否有被 $u$ 标记，就可以不重不漏的枚举到所有的三元环了。</p>
 <p>首先有 </p>
 <script type="math/tex; mode=display">
 d(ijk) = \sum_{x|i}\sum_{y|j}\sum_{z|k} [(x, y) = 1][(y, z) = 1][(x, z) = 1]</script><p>（其中 $(a, b)$ 表示 $\gcd(a, b)$）</p>
