@@ -129,7 +129,7 @@
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="题目AtCoder-arc083Fvjudge-AtCoder3537 $n \times n$ 的网格上有 $2n$ 个球，给定第 $i$ 个球的坐标是 $(x_i, y_i)$。保证没有两个球在同一个位置。 有 $n$ 个 $A$ 型机器人，第 $i$ 个在 $(i, 0)$；$n$ 个 $B$ 型机器人，第 $i$ 个在 $(0, i)$。 启动一个 $A$ 型机器人以后，它会向上走，将碰到">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-19T07:22:55.857Z">
+<meta property="og:updated_time" content="2019-06-19T07:29:16.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AtCoder arc083F Collecting Balls [树][组合数学]">
 <meta name="twitter:description" content="题目AtCoder-arc083Fvjudge-AtCoder3537 $n \times n$ 的网格上有 $2n$ 个球，给定第 $i$ 个球的坐标是 $(x_i, y_i)$。保证没有两个球在同一个位置。 有 $n$ 个 $A$ 型机器人，第 $i$ 个在 $(i, 0)$；$n$ 个 $B$ 型机器人，第 $i$ 个在 $(0, i)$。 启动一个 $A$ 型机器人以后，它会向上走，将碰到">
@@ -458,7 +458,7 @@
                 
               
 
-              <time title="创建时间：2019-06-19 14:02:12 / 修改时间：15:22:55" itemprop="dateCreated datePublished" datetime="2019-06-19T14:02:12+08:00">2019-06-19</time>
+              <time title="创建时间：2019-06-19 14:02:12 / 修改时间：15:29:16" itemprop="dateCreated datePublished" datetime="2019-06-19T14:02:12+08:00">2019-06-19</time>
             
 
             
@@ -525,7 +525,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.6k</span>
+                <span title="本文字数">6.7k</span>
               
 
               
@@ -572,6 +572,7 @@
 <p>我们现在要给每一个点分配一个编号，表示它是第几个被启动的。</p>
 <p>记 $i$ 的匹配边是 $(i, fa_i)$，那么对于 $i$ 的儿子们，首先我们知道 $fa_i$ 和 $son_i$ 某一维是相同的，那么对于不同的那一维，如果 $son_i &lt; fa_i$，说明一定要先启动了 $son_i$，才能启动 $i$，有限制，保留这条边，否则可以删了它。</p>
 <p>删了没有限制的边以后，可以发现，环上边权（即 $x + y$）最大的边一定是会被删除的，那么我们可以直接删了它，这样就变成一个森林了（基环树删一条环边才好做啊）。</p>
+<p>注意：<strong>虽然删除了这条边，但是他的某一个端点还是要匹配它的</strong>。</p>
 <p>那么问题就变成了：给你一个森林，需要给每一个点分配一个编号，要求编号在 $1$ 到 $n$ 的范围内，两两不同，满足<strong>父亲的编号比儿子大</strong>（儿子启动了父亲才能启动），求方案数。</p>
 <p>首先当然是要把所有森林的根用一个超级根连起来，变成一棵树，对方案数不会有影响（加的那个超级根编号必须最大）。</p>
 <p>插入芝士：<strong>对一棵树上的每个点编号（在 $1$ 到 $n$ 范围内，两两不同），要求父亲编号比儿子大的方案数为$\frac{n!}{\sum_{i = 1}^n size_i}$</strong></p>
@@ -599,7 +600,7 @@ ans = \frac{n!}{\prod_{i = 1}^n size_i}</script><p>这样就得到这个森林�
 <li>建图，每个球 $(x, y)$ 即连边 $(x, y + n)$</li>
 <li>分连通块考虑，如果不是基环树即无解。</li>
 <li>找到环，删掉环上边权最大的边</li>
-<li>对基环树分顺逆时针两种匹配点和边</li>
+<li>对基环树分顺逆时针两种匹配点和边（删了的边也要匹配啊）</li>
 <li>对于当前匹配方式，删去没有限制的边，建出新树（森林合并而成）</li>
 <li>统计这个树的编号方案数</li>
 <li>合并每个基环树的答案</li>
