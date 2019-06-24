@@ -121,24 +121,25 @@
 
 
 
-  <meta name="description" content="非常抱歉，这篇博客咕了 题目 分析代码cpp">
+  <meta name="description" content="NTT 的模数要求太严格了，根本压不住毒瘤出题人，所以就需要任意模数 NTT 救场了。 三模数做法太慢了，要 DFT/IDFT $9$ 次，还是压不住毒瘤出题人，所以就需要拆系数法再次救场了。 但我不会告诉你实际上用的是 FFT。 题目求两个多项式 $A(x)$ 和 $B(x)$ ，求 $A(x) * B(x) \mod p$  其中 $p$ 不一定能分解成 $p = 2^ka + 1$ 的形式">
+<meta name="keywords" content="数学,多项式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="loj2497">
-<meta property="og:url" content="http://yoursite.com/2019/06/19/loj2497/index.html">
+<meta property="og:title" content="任意模数 NTT（拆系数版） [多项式]">
+<meta property="og:url" content="http://yoursite.com/2019/03/11/拆系数NTT/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="非常抱歉，这篇博客咕了 题目 分析代码cpp">
+<meta property="og:description" content="NTT 的模数要求太严格了，根本压不住毒瘤出题人，所以就需要任意模数 NTT 救场了。 三模数做法太慢了，要 DFT/IDFT $9$ 次，还是压不住毒瘤出题人，所以就需要拆系数法再次救场了。 但我不会告诉你实际上用的是 FFT。 题目求两个多项式 $A(x)$ 和 $B(x)$ ，求 $A(x) * B(x) \mod p$  其中 $p$ 不一定能分解成 $p = 2^ka + 1$ 的形式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-20T02:10:37.718Z">
+<meta property="og:updated_time" content="2019-06-24T08:05:09.316Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="loj2497">
-<meta name="twitter:description" content="非常抱歉，这篇博客咕了 题目 分析代码cpp">
+<meta name="twitter:title" content="任意模数 NTT（拆系数版） [多项式]">
+<meta name="twitter:description" content="NTT 的模数要求太严格了，根本压不住毒瘤出题人，所以就需要任意模数 NTT 救场了。 三模数做法太慢了，要 DFT/IDFT $9$ 次，还是压不住毒瘤出题人，所以就需要拆系数法再次救场了。 但我不会告诉你实际上用的是 FFT。 题目求两个多项式 $A(x)$ 和 $B(x)$ ，求 $A(x) * B(x) \mod p$  其中 $p$ 不一定能分解成 $p = 2^ka + 1$ 的形式">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/19/loj2497/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/11/拆系数NTT/">
 
 
 
@@ -148,7 +149,7 @@
   };
 </script>
 
-  <title>loj2497 | Little Dino</title>
+  <title>任意模数 NTT（拆系数版） [多项式] | Little Dino</title>
   
 
 
@@ -413,7 +414,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/19/loj2497/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/拆系数NTT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TYC">
@@ -430,7 +431,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">loj2497
+          <h1 class="post-title" itemprop="name headline">任意模数 NTT（拆系数版） [多项式]
 
               
             
@@ -457,7 +458,7 @@
                 
               
 
-              <time title="创建时间：2019-06-19 14:03:27" itemprop="dateCreated datePublished" datetime="2019-06-19T14:03:27+08:00">2019-06-19</time>
+              <time title="创建时间：2019-03-11 17:13:49" itemprop="dateCreated datePublished" datetime="2019-03-11T17:13:49+08:00">2019-03-11</time>
             
 
             
@@ -474,7 +475,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-20 10:10:37" itemprop="dateModified" datetime="2019-06-20T10:10:37+08:00">2019-06-20</time>
+                <time title="修改时间：2019-06-24 16:05:09" itemprop="dateModified" datetime="2019-06-24T16:05:09+08:00">2019-06-24</time>
               
             
           </span>
@@ -491,7 +492,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法讲解/" itemprop="url" rel="index"><span itemprop="name">算法讲解</span></a></span>
 
                 
                 
@@ -506,8 +507,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/19/loj2497/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/06/19/loj2497/" itemprop="commentCount"></span>
+                <a href="/2019/03/11/拆系数NTT/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/03/11/拆系数NTT/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -536,7 +537,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">23</span>
+                <span title="本文字数">1k</span>
               
 
               
@@ -550,7 +551,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -570,9 +571,31 @@
       
 
       
-        <p>非常抱歉，这篇博客咕了</p>
-<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href></a></p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><code>cpp</code></p>
+        <p>NTT 的模数要求太严格了，<del>根本压不住毒瘤出题人</del>，所以就需要任意模数 NTT 救场了。</p>
+<p>三模数做法太慢了，要 DFT/IDFT $9$ 次，<del>还是压不住毒瘤出题人</del>，所以就需要拆系数法再次救场了。</p>
+<p><del>但我不会告诉你实际上用的是 FFT。</del></p>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>求两个多项式 $A(x)$ 和 $B(x)$ ，求 $A(x) * B(x) \mod p$ </p>
+<p>其中 $p$ 不一定能分解成 $p = 2^ka + 1$ 的形式</p>
+<p>$1 \leqslant n, m \leqslant 10^5$，$0 \leqslant a_i \leqslant 10^9$，$2 \leqslant p \leqslant 10^9 + 9$</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>先定阈值 $S$，一般取 $S = 2^{15} = 32768$。</p>
+<p>我们把一个多项式拆成两个部分的和，比如说将 $A$ 拆成 $A_0$ 和 $A_1$，其中</p>
+<script type="math/tex; mode=display">
+A[i] = A_1[i] S + A_0 [i]</script><p>即 </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+A_0[i] &= A[i] \bmod S \\
+A_1[i] &= \frac{A[i]}{S}
+\end{aligned}</script><p>因为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+A[i]B[i] &= (A_1[i]S + A_0[i])(B_1[i]S + B_0[i]) \\
+&= A_0[i]B_0[i] + (A_0[i]B_1[i] + A_1[i]B_0[i])S + A_1[i]B_1[i]S^2
+\end{aligned}</script><p>同样可以得到</p>
+<script type="math/tex; mode=display">
+A * B = A_0 * B_0 + (A_0 * B_1 + A_1 * B_0)S + A_1B_1S^2</script><p>这样我们 DFT $A_0, A_1, B_0, B_1$，并把三个卷积的结果 IDFT，加起来得到卷积的系数。总共只用 DFT/IDFT $7$ 次了。</p>
+<p>听说可以优化到 $3$ 次<del>感到恐慌</del>。</p>
+<p>回过头来说 $S$ 的取值。不能直接一遍 FFT 解决就是因为精度太低了，我们拆成了 $\frac{x}{S}$ 和 $x \bmod s$ 后，取 $S = \sqrt p$ 即可保证 $A_0,A_1$ 的系数在 $\sqrt p$ 的范围内，卷积后的系数在 $np$ 范围内，用 long double 就可以保证精度了。（偷懒就直接用了 $2^{15}$）</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>参见 <a href></a>，这个题用到了模 $ 10^9 + 7$ 的多项式乘法。</p>
 
       
     </div>
@@ -594,6 +617,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/多项式/" rel="tag"># 多项式</a>
+          
+        </div>
+      
 
       
       
@@ -603,8 +634,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/19/AtCoder3537/" rel="next" title="AtCoder arc083F Collecting Balls [树][组合数学]">
-                <i class="fa fa-chevron-left"></i> AtCoder arc083F Collecting Balls [树][组合数学]
+              <a href="/2019/03/11/NTT/" rel="next" title="快速数论变换 NTT [多项式]">
+                <i class="fa fa-chevron-left"></i> 快速数论变换 NTT [多项式]
               </a>
             
           </div>
@@ -612,6 +643,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/11/三模数NTT/" rel="prev" title="任意模数 NTT（三模数版） [多项式]">
+                任意模数 NTT（三模数版） [多项式] <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -687,7 +722,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -777,7 +812,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">27</span>
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -812,7 +849,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-text">方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
@@ -856,7 +893,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">249k</span>
+    <span title="站点总字数">258k</span>
   
 
   
@@ -865,7 +902,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">6:56</span>
+    <span title="站点阅读时长">7:10</span>
   
 </div>
 
