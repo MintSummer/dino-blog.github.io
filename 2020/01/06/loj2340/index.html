@@ -124,14 +124,14 @@
   <meta name="description" content="loj #2340.「WC2018」州区划分 题目有 $n$ 个城市，第 $i$ 个城市的人口为 $w_i$，城市之间有 $m$ 条双向道路连接。现在要把这 $n$ 个城市划分成若干个州，要求每个州至少有一个城市，每个城市恰好在一个州内，并且每个州内不能存在欧拉回路。（指一条起终点相同，经过这个州的内部道路恰好一次，并且经过这个州的所有城市恰好一次的路径，路径长可以为 $0$） 定义一个 $k$">
 <meta name="keywords" content="FWT,WC,子集卷积">
 <meta property="og:type" content="article">
-<meta property="og:title" content="loj2399「WC2018」州区划分 [欧拉回路][子集卷积]">
+<meta property="og:title" content="loj2340「WC2018」州区划分 [欧拉回路][子集卷积]">
 <meta property="og:url" content="http://yoursite.com/2020/01/06/loj2340/index.html">
 <meta property="og:site_name" content="Little Dino">
 <meta property="og:description" content="loj #2340.「WC2018」州区划分 题目有 $n$ 个城市，第 $i$ 个城市的人口为 $w_i$，城市之间有 $m$ 条双向道路连接。现在要把这 $n$ 个城市划分成若干个州，要求每个州至少有一个城市，每个城市恰好在一个州内，并且每个州内不能存在欧拉回路。（指一条起终点相同，经过这个州的内部道路恰好一次，并且经过这个州的所有城市恰好一次的路径，路径长可以为 $0$） 定义一个 $k$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-06T02:42:45.255Z">
+<meta property="og:updated_time" content="2020-01-06T03:06:31.595Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="loj2399「WC2018」州区划分 [欧拉回路][子集卷积]">
+<meta name="twitter:title" content="loj2340「WC2018」州区划分 [欧拉回路][子集卷积]">
 <meta name="twitter:description" content="loj #2340.「WC2018」州区划分 题目有 $n$ 个城市，第 $i$ 个城市的人口为 $w_i$，城市之间有 $m$ 条双向道路连接。现在要把这 $n$ 个城市划分成若干个州，要求每个州至少有一个城市，每个城市恰好在一个州内，并且每个州内不能存在欧拉回路。（指一条起终点相同，经过这个州的内部道路恰好一次，并且经过这个州的所有城市恰好一次的路径，路径长可以为 $0$） 定义一个 $k$">
 
 
@@ -149,7 +149,7 @@
   };
 </script>
 
-  <title>loj2399「WC2018」州区划分 [欧拉回路][子集卷积] | Little Dino</title>
+  <title>loj2340「WC2018」州区划分 [欧拉回路][子集卷积] | Little Dino</title>
   
 
 
@@ -431,7 +431,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">loj2399「WC2018」州区划分 [欧拉回路][子集卷积]
+          <h1 class="post-title" itemprop="name headline">loj2340「WC2018」州区划分 [欧拉回路][子集卷积]
 
               
             
@@ -458,7 +458,7 @@
                 
               
 
-              <time title="创建时间：2020-01-06 08:42:50 / 修改时间：10:42:45" itemprop="dateCreated datePublished" datetime="2020-01-06T08:42:50+08:00">2020-01-06</time>
+              <time title="创建时间：2020-01-06 08:42:50 / 修改时间：11:06:31" itemprop="dateCreated datePublished" datetime="2020-01-06T08:42:50+08:00">2020-01-06</time>
             
 
             
@@ -565,10 +565,11 @@
 <script type="math/tex; mode=display">
 \prod_{i = 1}^k \left( \frac{\sum_{x \in V_i} w_x}{\sum_{j = 1}^i \sum_{x \in V_j} w_x} \right)^p</script><p>求所有划分的满意度之和。对 $998244353$ 取模。</p>
 <p>两个划分不同，当且仅当存在至少一个州包含的城市集合不同。</p>
-<p>$0 \leqslant n \leqslant 21$，$0 \leqslant m \leqslant \frac{n(n - 1)}{2}$，$0\leqslant p \leqslant 2$，$1 \leqslant w_i \leqlsant 100$</p>
+<p>$0 \leqslant n \leqslant 21$，$0 \leqslant m \leqslant \frac{n(n - 1)}{2}$，$0\leqslant p \leqslant 2$，$1 \leqslant w_i \leqslant 100$</p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>先预处理城市集合为 $S$ 的州是否是合法的，记为 $G_S$， 复杂度 $O(2^n m \alpha(n))$。</p>
+<p>upd：跳瓜指出，可以直接搜一遍不用并查集（我可能是个傻子了），复杂度 $O(2^n (n + m))$</p>
 <p>记 $W_S$ 为集合 $S$ 人口之和的 $p$ 次幂， $F_S$ 为当前已经划分的集合 $S$ 的满意度之和，考虑直接枚举下一个州的划分，复杂度 $O(3^n)$，即</p>
-<script type="math/tex; mode=display">F_S = \frac{1}{W_S} \sum_{T \in S} F_{S/T} \times W_T</script><p>可以发现这就是一个类似 OR 卷积，不过要求卷的两个集合不交。貌似叫做<strong>子集卷积</strong>。</p>
+<script type="math/tex; mode=display">F_S = \frac{1}{W_S} \sum_{T \in S} F_{S \setminus T} \times W_T</script><p>可以发现这就是一个类似 OR 卷积，不过要求卷的两个集合不交。貌似叫做<strong>子集卷积</strong>。</p>
 <p>考虑记 $F[i][S]$ 为已经划分的城市数是 $i$，其集合为 $S$ 的满意度之和，当 $i = \operatorname{bitcount}(S)$ 时这个状态是合法的。使用 FWT，使得</p>
 <script type="math/tex; mode=display">
 F[i][S] = \sum_{j = 0}^{i - 1} F[j][S] \times G[i - j][S]</script><p>IFWT($F[i][S]$) 回去，只保留 $i = \operatorname{bitcount}(S)$ 的 $F[i][S]$ 的值即可。</p>
@@ -617,8 +618,8 @@ F[i][S] = \sum_{j = 0}^{i - 1} F[j][S] \times G[i - j][S]</script><p>IFWT($F[i][
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/06/loj2339/" rel="next" title="loj2399「WC2018」通道 [边分治][虚树]">
-                <i class="fa fa-chevron-left"></i> loj2399「WC2018」通道 [边分治][虚树]
+              <a href="/2019/07/27/loj2478/" rel="next" title="loj2478「九省联考 2018」林克卡特树 [dp][带权二分]">
+                <i class="fa fa-chevron-left"></i> loj2478「九省联考 2018」林克卡特树 [dp][带权二分]
               </a>
             
           </div>
@@ -627,8 +628,8 @@ F[i][S] = \sum_{j = 0}^{i - 1} F[j][S] \times G[i - j][S]</script><p>IFWT($F[i][
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/01/06/loj2341/" rel="prev" title="loj2341「WC2018」即时战略 [动态点分治]">
-                loj2341「WC2018」即时战略 [动态点分治] <i class="fa fa-chevron-right"></i>
+              <a href="/2020/01/06/loj2339/" rel="prev" title="loj2399「WC2018」通道 [边分治][虚树]">
+                loj2399「WC2018」通道 [边分治][虚树] <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -807,7 +808,9 @@ F[i][S] = \sum_{j = 0}^{i - 1} F[j][S] \times G[i - j][S]</script><p>IFWT($F[i][
                     
                       
                     
-                    <span class="site-state-item-count">33</span>
+                      
+                    
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -886,7 +889,7 @@ F[i][S] = \sum_{j = 0}^{i - 1} F[j][S] \times G[i - j][S]</script><p>IFWT($F[i][
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">287k</span>
+    <span title="站点总字数">293k</span>
   
 
   
@@ -895,7 +898,7 @@ F[i][S] = \sum_{j = 0}^{i - 1} F[j][S] \times G[i - j][S]</script><p>IFWT($F[i][
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">7:58</span>
+    <span title="站点阅读时长">8:09</span>
   
 </div>
 

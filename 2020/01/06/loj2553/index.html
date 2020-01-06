@@ -121,17 +121,18 @@
 
 
 
-  <meta name="description" content="少女省OIer">
+  <meta name="description" content="题目给定两棵树，有边权，设 $dep(i)$ 为带权深度，求  \max_{i, j} \{ dep_1(i) + dep_1(j) - dep_1(LCA_1(i, j)) - dep_2(LCA_2(i, j)) \}$1 \leqslant n \leqslant 366666$，$|v| \leqslant 2017011328$ 分析 \begin{aligned} &amp; \ \ \ \">
+<meta name="keywords" content="边分治,CTSC&#x2F;CTS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="loj2553">
+<meta property="og:title" content="loj2553「CTSC2018」暴力写挂 [边分治]">
 <meta property="og:url" content="http://yoursite.com/2020/01/06/loj2553/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="少女省OIer">
+<meta property="og:description" content="题目给定两棵树，有边权，设 $dep(i)$ 为带权深度，求  \max_{i, j} \{ dep_1(i) + dep_1(j) - dep_1(LCA_1(i, j)) - dep_2(LCA_2(i, j)) \}$1 \leqslant n \leqslant 366666$，$|v| \leqslant 2017011328$ 分析 \begin{aligned} &amp; \ \ \ \">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-06T02:40:18.695Z">
+<meta property="og:updated_time" content="2020-01-06T03:14:27.774Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="loj2553">
-<meta name="twitter:description" content="少女省OIer">
+<meta name="twitter:title" content="loj2553「CTSC2018」暴力写挂 [边分治]">
+<meta name="twitter:description" content="题目给定两棵树，有边权，设 $dep(i)$ 为带权深度，求  \max_{i, j} \{ dep_1(i) + dep_1(j) - dep_1(LCA_1(i, j)) - dep_2(LCA_2(i, j)) \}$1 \leqslant n \leqslant 366666$，$|v| \leqslant 2017011328$ 分析 \begin{aligned} &amp; \ \ \ \">
 
 
 
@@ -148,7 +149,7 @@
   };
 </script>
 
-  <title>loj2553 | Little Dino</title>
+  <title>loj2553「CTSC2018」暴力写挂 [边分治] | Little Dino</title>
   
 
 
@@ -430,7 +431,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">loj2553
+          <h1 class="post-title" itemprop="name headline">loj2553「CTSC2018」暴力写挂 [边分治]
 
               
             
@@ -457,12 +458,34 @@
                 
               
 
-              <time title="创建时间：2020-01-06 10:40:18" itemprop="dateCreated datePublished" datetime="2020-01-06T10:40:18+08:00">2020-01-06</time>
+              <time title="创建时间：2020-01-06 10:40:18 / 修改时间：11:14:27" itemprop="dateCreated datePublished" datetime="2020-01-06T10:40:18+08:00">2020-01-06</time>
             
 
+            
+              
+
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -502,7 +525,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">0</span>
+                <span title="本文字数">6.3k</span>
               
 
               
@@ -516,7 +539,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">11 分钟</span>
               
             </div>
           
@@ -536,7 +559,23 @@
       
 
       
-        
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定两棵树，有边权，设 $dep(i)$ 为带权深度，求</p>
+<script type="math/tex; mode=display">
+\max_{i, j} \{ dep_1(i) + dep_1(j) - dep_1(LCA_1(i, j)) - dep_2(LCA_2(i, j)) \}</script><p>$1 \leqslant n \leqslant 366666$，$|v| \leqslant 2017011328$</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><script type="math/tex; mode=display">
+\begin{aligned}
+& \ \ \ \ \ dep_1(i) + dep_1(j) - dep_1(LCA_1(i, j)) - dep_2(LCA_2(i, j)) \\
+&= \frac{1}{2}(dis_1(i, j) + dep_1(i) + dep_1(j)) - dep_2(LCA_2(i, j))
+\end{aligned}</script><p>类似于 <a href="https://little-dino.top/2020/01/06/loj2340/" target="_blank" rel="noopener">WC2018通道</a> 的。不过注意，这里 $n$ 比较大，如果直接使用边分治+虚树dp，$O(n \log^2 n)$ 应该过不去（不过使用基数排序+欧拉序 LCA 变成 $O(n)$说不定就卡过了）。</p>
+<p>然后这道题用了一个新的东西：<strong>边分树</strong>。</p>
+<p>考虑对每个点开一个二叉树，初始只有一个点。每次分治，中心边划开两个连通块 $L, R$，就给 $L$ 中的点再往下挂一个左儿子，$R$ 中的点往下挂一个右儿子。注意，这个挂儿子是给这棵二叉树最下面的结点挂一个儿子，所以不会挂到一个位置区。其中二叉树上一个结点的权值为 $d_1(i) + dep_1(i)$，其中 $d_1(i)$ 为 $i$ 到这层分治中心边的距离。</p>
+<p>这个二叉树怎么用呢？这棵二叉树可以像线段树一样合并，并且<strong>同一个位置的结点代表了同一层的分治</strong>。</p>
+<p>我们在 dfs 的时候合并二叉树，把原本 $u$ 的二叉树变成 $u$ 在 T2 中子树所有二叉树的合并。合并 $u$ 和 $v$ 两棵二叉树的时候，考虑统计 $LCA_2(i, j) = u$ 的点对 $(i, j)$ 的贡献。因为二叉树上一个结点的左儿子和右儿子分别为这层分治的 $L$ 和 $R$ 集合，直接合并左右儿子权值贡献答案即可。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><div><div class="fold_hider"><div class="close hider_title">展开/折叠代码</div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">366666</span> * <span class="number">2</span> + <span class="number">5</span>, M = <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">const</span> ll INF = <span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n, node_cnt, rot[N];</span><br><span class="line">    ll ans;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span> <span class="keyword">int</span> v, w; &#125;;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span> <span class="keyword">int</span> son[<span class="number">2</span>]; ll val; &#125; tr[N * M];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">namespace</span> T1</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> tot, size[N], Head[N], now[N];</span><br><span class="line">        ll dis[N];</span><br><span class="line">        <span class="built_in">vector</span>&lt;edge&gt; T[N];</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span> <span class="keyword">int</span> to, next, w, vis; &#125; E[N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> u, <span class="keyword">const</span> <span class="keyword">int</span> v, <span class="keyword">const</span> <span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">static</span> <span class="keyword">int</span> ec = <span class="number">1</span>;</span><br><span class="line">            E[++ec] = &#123;v, Head[u], w, <span class="number">0</span>&#125;;</span><br><span class="line">            Head[u] = ec;</span><br><span class="line">            E[++ec] = &#123;u, Head[v], w, <span class="number">0</span>&#125;;</span><br><span class="line">            Head[v] = ec;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">buildtree</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> u, <span class="keyword">const</span> <span class="keyword">int</span> f)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> p : T[u])</span><br><span class="line">                <span class="keyword">if</span> (p.v != f)</span><br><span class="line">                &#123;</span><br><span class="line">                    dis[p.v] = dis[u] + p.w;</span><br><span class="line">                    buildtree(p.v, u);</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">static</span> <span class="built_in">vector</span>&lt;edge&gt; son;</span><br><span class="line">            son.clear();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> p : T[u])</span><br><span class="line">                <span class="keyword">if</span> (p.v != f)</span><br><span class="line">                    son.push_back(p);</span><br><span class="line">            <span class="keyword">int</span> sz = <span class="keyword">int</span>(son.size());</span><br><span class="line">            <span class="keyword">if</span> (!sz)</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sz; i++)</span><br><span class="line">                add(tot + i + <span class="number">1</span>, son[i].v, son[i].w);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; sz; i++)</span><br><span class="line">                add(tot + i, tot + i + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">            add(u, tot + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">            tot += sz;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            tot = n;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, u, v, w; i &lt; n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">                T[u].push_back(&#123;v, w&#125;);</span><br><span class="line">                T[v].push_back(&#123;u, w&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            buildtree(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">                rot[i] = now[i] = ++node_cnt;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">getsize</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> u, <span class="keyword">const</span> <span class="keyword">int</span> f)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            size[u] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = Head[u], v; i; i = E[i].next)</span><br><span class="line">                <span class="keyword">if</span> (!E[i].vis &amp;&amp; (v = E[i].to) != f)</span><br><span class="line">                &#123;</span><br><span class="line">                    getsize(v, u);</span><br><span class="line">                    size[u] += size[v];</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">getedge</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> u, <span class="keyword">const</span> <span class="keyword">int</span> f, <span class="keyword">const</span> <span class="keyword">int</span> sz, <span class="keyword">int</span> &amp;p)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = Head[u], v; i; i = E[i].next)</span><br><span class="line">                <span class="keyword">if</span> (!E[i].vis &amp;&amp; (v = E[i].to) != f)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (max(size[v], sz - size[v]) &lt; max(size[E[p].to], sz - size[E[p].to]))</span><br><span class="line">                        p = i;</span><br><span class="line">                    getedge(v, u, sz, p);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> u, <span class="keyword">const</span> <span class="keyword">int</span> f, <span class="keyword">const</span> ll d, <span class="keyword">const</span> <span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (u &lt;= n)</span><br><span class="line">            &#123;</span><br><span class="line">                tr[now[u]].son[c] = ++node_cnt;</span><br><span class="line">                tr[now[u] = node_cnt].val = d + dis[u];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = Head[u], v; i; i = E[i].next)</span><br><span class="line">                <span class="keyword">if</span> (!E[i].vis &amp;&amp; (v = E[i].to) != f)</span><br><span class="line">                    dfs(v, u, d + E[i].w, c);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            getsize(x, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span> (size[x] == <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            <span class="keyword">int</span> p = <span class="number">0</span>, u, v;</span><br><span class="line">            getedge(x, <span class="number">0</span>, size[x], p);</span><br><span class="line">            E[p].vis = E[p ^ <span class="number">1</span>].vis = <span class="number">1</span>;</span><br><span class="line">            dfs(u = E[p].to, <span class="number">0</span>, E[p].w, <span class="number">0</span>);</span><br><span class="line">            dfs(v = E[p ^ <span class="number">1</span>].to, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">            solve(u);</span><br><span class="line">            solve(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">namespace</span> T2</span><br><span class="line">    &#123;</span><br><span class="line">        ll res;</span><br><span class="line">        <span class="built_in">vector</span>&lt;edge&gt; E[N];</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x, <span class="keyword">const</span> <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (x &amp;&amp; y)</span><br><span class="line">                ans = max(ans, tr[x].val + tr[y].val - res);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> &amp;x, <span class="keyword">const</span> <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!x || !y)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">void</span>(x = x + y);</span><br><span class="line">            tr[x].val = max(tr[x].val, tr[y].val);</span><br><span class="line">            update(tr[x].son[<span class="number">0</span>], tr[y].son[<span class="number">1</span>]);</span><br><span class="line">            update(tr[x].son[<span class="number">1</span>], tr[y].son[<span class="number">0</span>]);</span><br><span class="line">            merge(tr[x].son[<span class="number">0</span>], tr[y].son[<span class="number">0</span>]);</span><br><span class="line">            merge(tr[x].son[<span class="number">1</span>], tr[y].son[<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> u, <span class="keyword">const</span> <span class="keyword">int</span> f, <span class="keyword">const</span> ll d)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            ans = max(ans, (T1::dis[u] - d) * <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> p : E[u])</span><br><span class="line">                <span class="keyword">if</span> (p.v != f)</span><br><span class="line">                &#123;</span><br><span class="line">                    dfs(p.v, u, d + p.w);</span><br><span class="line">                    res = d * <span class="number">2</span>;</span><br><span class="line">                    merge(rot[u], rot[p.v]);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, u, v, w; i &lt; n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">                E[u].push_back(&#123;v, w&#125;);</span><br><span class="line">                E[v].push_back(&#123;u, w&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            dfs(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">        T1::build();</span><br><span class="line">        T1::solve(<span class="number">1</span>);</span><br><span class="line">        T2::solve();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+
       
     </div>
 
@@ -556,6 +595,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/边分治/" rel="tag"># 边分治</a>
+          
+            <a href="/tags/CTSC-CTS/" rel="tag"># CTSC/CTS</a>
+          
+        </div>
       
 
       
@@ -623,8 +670,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -743,7 +799,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">33</span>
+                      
+                    
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -768,6 +826,22 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
       
       <div id="music163player">
@@ -806,7 +880,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">287k</span>
+    <span title="站点总字数">293k</span>
   
 
   
@@ -815,7 +889,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">7:58</span>
+    <span title="站点阅读时长">8:09</span>
   
 </div>
 
