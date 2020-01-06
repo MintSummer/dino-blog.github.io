@@ -121,18 +121,18 @@
 
 
 
-  <meta name="description" content="loj #2340.「WC2018」州区划分 题目分析代码展开/折叠代码 12">
-<meta name="keywords" content="FWT,WC">
+  <meta name="description" content="loj #2340.「WC2018」州区划分 题目有 $n$ 个城市，第 $i$ 个城市的人口为 $w_i$，城市之间有 $m$ 条双向道路连接。现在要把这 $n$ 个城市划分成若干个州，要求每个州至少有一个城市，每个城市恰好在一个州内，并且每个州内不能存在欧拉回路。（指一条起终点相同，经过这个州的内部道路恰好一次，并且经过这个州的所有城市恰好一次的路径，路径长可以为 $0$） 定义一个 $k$">
+<meta name="keywords" content="FWT,WC,子集卷积">
 <meta property="og:type" content="article">
 <meta property="og:title" content="loj2399「WC2018」通道 [边分治][虚树]">
 <meta property="og:url" content="http://yoursite.com/2020/01/06/loj2340/index.html">
 <meta property="og:site_name" content="Little Dino">
-<meta property="og:description" content="loj #2340.「WC2018」州区划分 题目分析代码展开/折叠代码 12">
+<meta property="og:description" content="loj #2340.「WC2018」州区划分 题目有 $n$ 个城市，第 $i$ 个城市的人口为 $w_i$，城市之间有 $m$ 条双向道路连接。现在要把这 $n$ 个城市划分成若干个州，要求每个州至少有一个城市，每个城市恰好在一个州内，并且每个州内不能存在欧拉回路。（指一条起终点相同，经过这个州的内部道路恰好一次，并且经过这个州的所有城市恰好一次的路径，路径长可以为 $0$） 定义一个 $k$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-06T01:21:33.662Z">
+<meta property="og:updated_time" content="2020-01-06T01:49:23.294Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="loj2399「WC2018」通道 [边分治][虚树]">
-<meta name="twitter:description" content="loj #2340.「WC2018」州区划分 题目分析代码展开/折叠代码 12">
+<meta name="twitter:description" content="loj #2340.「WC2018」州区划分 题目有 $n$ 个城市，第 $i$ 个城市的人口为 $w_i$，城市之间有 $m$ 条双向道路连接。现在要把这 $n$ 个城市划分成若干个州，要求每个州至少有一个城市，每个城市恰好在一个州内，并且每个州内不能存在欧拉回路。（指一条起终点相同，经过这个州的内部道路恰好一次，并且经过这个州的所有城市恰好一次的路径，路径长可以为 $0$） 定义一个 $k$">
 
 
 
@@ -458,7 +458,7 @@
                 
               
 
-              <time title="创建时间：2020-01-06 08:42:50 / 修改时间：09:21:33" itemprop="dateCreated datePublished" datetime="2020-01-06T08:42:50+08:00">2020-01-06</time>
+              <time title="创建时间：2020-01-06 08:42:50 / 修改时间：09:49:23" itemprop="dateCreated datePublished" datetime="2020-01-06T08:42:50+08:00">2020-01-06</time>
             
 
             
@@ -525,7 +525,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">41</span>
+                <span title="本文字数">4.6k</span>
               
 
               
@@ -539,7 +539,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">8 分钟</span>
               
             </div>
           
@@ -560,8 +560,22 @@
 
       
         <p><a href="https://loj.ac/problem/2340" target="_blank" rel="noopener">loj #2340.「WC2018」州区划分</a></p>
-<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><div><div class="fold_hider"><div class="close hider_title">展开/折叠代码</div></div><div class="fold">
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>有 $n$ 个城市，第 $i$ 个城市的人口为 $w_i$，城市之间有 $m$ 条双向道路连接。现在要把这 $n$ 个城市划分成若干个州，要求每个州至少有一个城市，每个城市恰好在一个州内，并且每个州内不能存在欧拉回路。（指一条起终点相同，经过这个州的内部道路恰好一次，并且经过这个州的所有城市恰好一次的路径，路径长可以为 $0$）</p>
+<p>定义一个 $k$ 个州的划分的满意度为，其中第 $i$ 个州的城市集合为 $V_i$</p>
+<script type="math/tex; mode=display">
+\prod_{i = 1}^k \left( \frac{\sum_{x \in V_i} w_x}{\sum_{j = 1}^i \sum_{x \in V_j} w_x} \right)^p</script><p>求所有划分的满意度之和。对 $998244353$ 取模。</p>
+<p>两个划分不同，当且仅当存在至少一个州包含的城市集合不同。</p>
+<p>$0 \leqslant n \leqslant 21$，$0 \leqslant m \leqslant \frac{n(n - 1)}{2}$，$0\leqslant p \leqslant 2$，$1 \leqslant w_i \leqlsant 100$</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>先预处理城市集合为 $S$ 的州是否是合法的，记为 $G_S$， 复杂度 $O(2^n m \alpha(n))$。</p>
+<p>记 $W_S$ 为集合 $S$ 人口之和的 $p$ 次幂， $F_S$ 为当前已经划分的集合 $S$ 的满意度之和，考虑直接枚举下一个州的划分，复杂度 $O(3^n)$，即</p>
+<script type="math/tex; mode=display">F_S = \frac{1}{W_S} \sum_{T \in S} F_{S/T} \times W_T</script><p>可以发现这就是一个类似 OR 卷积，不过要求卷的两个集合不交。貌似叫做<strong>子集卷积</strong>。</p>
+<p>考虑记 $F[i][S]$ 为已经划分的城市数是 $i$，其集合为 $S$ 的满意度之和，当 $i = \operatorname{bitcount}(S)$ 时这个状态是合法的。使用 FWT，使得</p>
+<script type="math/tex; mode=display">
+F[i][S] = \sum_{j = 0}^{i - 1} F[j][S] \times G[i - j][S]</script><p>IFWT($F[i][S]$) 回去，只保留 $i = \operatorname{bitcount}(S)$ 的 $F[i][S]$ 的值即可。</p>
+<p>复杂度 $O(2^n n^2)$</p>
+<p>具体做法可以看代码。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><div><div class="fold_hider"><div class="close hider_title">展开/折叠代码</div></div><div class="fold">
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TYC</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span>, N = <span class="number">22</span>, M = <span class="number">1</span> &lt;&lt; N | <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n, m, p, all, sum[M], cnt[M], invs[M], A[N][M], deg[N], fa[N], F[N][M];</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span> <span class="keyword">int</span> u, v, vis; &#125; e[<span class="number">21</span> * <span class="number">21</span>];</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; V;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">inv</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> x == <span class="number">1</span> ? <span class="number">1</span> : <span class="keyword">int</span>((ll)inv(mod % x) * (mod - mod / x) % mod); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> fa[x] == x ? x : fa[x] = find(fa[x]); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> S)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        V.clear();</span><br><span class="line">        <span class="built_in">memset</span>(deg, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>[n + <span class="number">1</span>]));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            <span class="keyword">if</span> (S &amp; (<span class="number">1</span> &lt;&lt; i))</span><br><span class="line">            &#123;</span><br><span class="line">                V.push_back(i);</span><br><span class="line">                fa[i + <span class="number">1</span>] = i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">            <span class="keyword">if</span> ((S &amp; (<span class="number">1</span> &lt;&lt; e[i].u)) &amp;&amp; (S &amp; (<span class="number">1</span> &lt;&lt; e[i].v)))</span><br><span class="line">            &#123;</span><br><span class="line">                fa[find(e[i].u + <span class="number">1</span>)] = find(e[i].v + <span class="number">1</span>);</span><br><span class="line">                deg[e[i].u]++, deg[e[i].v]++;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">int</span> f = find(V[<span class="number">0</span>] + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : V)</span><br><span class="line">            <span class="keyword">if</span> (find(i + <span class="number">1</span>) != f || (deg[i] &amp; <span class="number">1</span>))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> tot = all + <span class="number">1</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt; tot; len &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tot; i += len &lt;&lt; <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; len; k++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> x = a[i + k], y = a[i + len + k];</span><br><span class="line">                    a[i + k] = (x + y) % mod;</span><br><span class="line">                    a[i + len + k] = x;</span><br><span class="line">                &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">IFWT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> tot = all + <span class="number">1</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt; tot; len &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tot; i += len &lt;&lt; <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; len; k++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> x = a[i + k], y = a[i + len + k];</span><br><span class="line">                    a[i + k] = y;</span><br><span class="line">                    a[i + len + k] = (x - y + mod) % mod;</span><br><span class="line">                &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;n, &amp;m, &amp;p);</span><br><span class="line">        all = (<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;e[i].u, &amp;e[i].v);</span><br><span class="line">            e[i].u--, e[i].v--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;sum[<span class="number">1</span> &lt;&lt; i]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= all; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> t = i &amp; (-i);</span><br><span class="line">            cnt[i] = cnt[i &gt;&gt; <span class="number">1</span>] + (i &amp; <span class="number">1</span>);</span><br><span class="line">            sum[i] = sum[i ^ t] + sum[t];</span><br><span class="line">            <span class="keyword">int</span> v = <span class="keyword">int</span>(ll(<span class="built_in">pow</span>(sum[i], p)) % mod);</span><br><span class="line">            invs[i] = inv(v);</span><br><span class="line">            <span class="keyword">if</span> (check(i))</span><br><span class="line">                A[cnt[i]][i] = v;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            FWT(A[i]);</span><br><span class="line">        F[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            FWT(F[i - <span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> s = <span class="number">0</span>; s &lt;= all; s++)</span><br><span class="line">                    F[i][s] = <span class="keyword">int</span>((F[i][s] + (ll)F[j][s] * A[i - j][s] % mod) % mod);</span><br><span class="line">            IFWT(F[i]);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> s = <span class="number">0</span>; s &lt;= all; s++)</span><br><span class="line">                F[i][s] = cnt[s] == i ? <span class="keyword">int</span>((ll)F[i][s] * invs[s] % mod) : <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, F[n][all]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TYC::work();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </div></div>
       
@@ -590,6 +604,8 @@
           
             <a href="/tags/WC/" rel="tag"># WC</a>
           
+            <a href="/tags/子集卷积/" rel="tag"># 子集卷积</a>
+          
         </div>
       
 
@@ -610,6 +626,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/06/loj2341/" rel="prev" title="loj2341「WC2018」即时战略">
+                loj2341「WC2018」即时战略 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -685,7 +705,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -781,7 +801,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -860,7 +886,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">277k</span>
+    <span title="站点总字数">287k</span>
   
 
   
@@ -869,7 +895,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">7:42</span>
+    <span title="站点阅读时长">7:58</span>
   
 </div>
 
