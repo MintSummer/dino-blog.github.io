@@ -130,7 +130,7 @@
 <meta property="og:description" content="loj #2339.「WC2018」通道 题目给定 $3$ 棵数，有边权，求  \max_{a, b} dis_{T1}(a, b) + dis_{T2}(a, b) + dis_{T3}(a, b)$2 \leqslant n \leqslant 10^5$，$0 \leqslant w \leqslant 10^{12}$ 分析前置芝士 边分治参考点分治，点分治一般是处理树上路径问题，每次对一">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://cdn.luogu.com.cn/upload/pic/40815.png">
-<meta property="og:updated_time" content="2020-01-06T02:49:15.611Z">
+<meta property="og:updated_time" content="2020-01-06T05:52:42.985Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="loj2399「WC2018」通道 [边分治][虚树]">
 <meta name="twitter:description" content="loj #2339.「WC2018」通道 题目给定 $3$ 棵数，有边权，求  \max_{a, b} dis_{T1}(a, b) + dis_{T2}(a, b) + dis_{T3}(a, b)$2 \leqslant n \leqslant 10^5$，$0 \leqslant w \leqslant 10^{12}$ 分析前置芝士 边分治参考点分治，点分治一般是处理树上路径问题，每次对一">
@@ -460,7 +460,7 @@
                 
               
 
-              <time title="创建时间：2020-01-06 08:42:50 / 修改时间：10:49:15" itemprop="dateCreated datePublished" datetime="2020-01-06T08:42:50+08:00">2020-01-06</time>
+              <time title="创建时间：2020-01-06 08:42:50 / 修改时间：13:52:42" itemprop="dateCreated datePublished" datetime="2020-01-06T08:42:50+08:00">2020-01-06</time>
             
 
             
@@ -571,7 +571,7 @@
 <p>（图片来自 luoguP4220 shadowice1984 的题解）</p>
 <p>其中方点为新建的虚点。注意，灰色的新建边也是可以作为中心边的。</p>
 <p>为什么转成二叉树复杂度就对了呢，考虑每次找到的中心边一定是重心和重心最大的儿子那条边，那么剩下两棵子树大小加起来不会超过 $\frac{2}{3}$，这样可以保证每次至少切成 $\frac{1}{3} - \frac{2}{3}$ 的两块，复杂度 $O(n \log n)$。 （跳瓜：$\log$ 的底数算常数）</p>
-<p>例题: <a href="https://loj.ac/problem/2553" target="_blank" rel="noopener">loj#2553.「CTSC2018」暴力写挂</a></p>
+<p>例题: <a href="https://little-dino.top/2020/01/06/loj2553/" target="_blank" rel="noopener">「CTSC2018」暴力写挂</a></p>
 <h2 id="回到原题"><a href="#回到原题" class="headerlink" title="回到原题"></a>回到原题</h2><p>对 T1 边分治，设中心边把这棵子树分成 $L, R$ 两个连通块，设点 $i$ 到中心边的距离为 $d_1(i)$（特别地，我们另 $L$ 或 $R$ 这个连通块的距离额外的加上中心边的长度）。那么现在要找一对 $i \in L, j \in R$ 使得 $d_1(i) + d_1(j) + dis_{T2}(i, j) + dis_{T3}(i, j)$ 最大。</p>
 <p>我们把 $L,R$ 中的点在 T2 中找出来，建立虚树，记 $d_2(i)$ 为在虚树中 $i$ 到根的距离。考虑枚举到 $p$ 的时候，所有在 T2 中 $LCA(i, j)$ 为 $p$，$i \in L, j \in R$ 的点对 $(i, j)$，它的贡献转化为 $d_1(i) + d_1(j) + d_2(i) + d_2(j) + dis_{T3}(i, j) - 2 \times d_2(p)$，最后一项和 $i, j$ 无关，先不管。那么如果我们给 T3 每个点增加一个权值 $v(i) = d_1(i) + d_2(i)$，这个权值就变成了 $v_i + v_j + dis_{T3}(i, j)$，即 T3 中合法点集的最长路。</p>
 <p>由于<strong>边权非负</strong>，性质“<strong>集合合并后最长路的端点一定是两个集合各自的最长路端点中的两个点</strong>”成立。我们记虚树中 $F_{i, 0/1}$ 表示 $i$ 的子树中，两个点都在 $L/R$ 集合中，并在 T3 中距离最远的两个端点。</p>
@@ -709,7 +709,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -813,7 +813,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">34</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -892,7 +896,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">293k</span>
+    <span title="站点总字数">305k</span>
   
 
   
@@ -901,7 +905,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:09</span>
+    <span title="站点阅读时长">8:29</span>
   
 </div>
 
